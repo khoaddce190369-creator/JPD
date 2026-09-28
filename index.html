@@ -50,7 +50,12 @@
         <div class="progress-bar"><div id="progressFill"></div></div>
         <div id="progressText" class="hint-text" style="margin-top:6px">0%</div>
         <div class="btn-row" style="margin-top:10px">
-          <button class="btn btn-danger" id="resetProgressBtn" style="width:100%;justify-content:center">Reset tiến độ</button>
+          <button class="btn btn-secondary btn-sm" id="exportProgressBtn" style="flex:1;justify-content:center" title="Tải xuống file sao lưu tiến độ (.json)">Sao lưu</button>
+          <button class="btn btn-secondary btn-sm" id="importProgressBtn" style="flex:1;justify-content:center" title="Khôi phục tiến độ từ file .json">Khôi phục</button>
+        </div>
+        <input type="file" id="importFileInput" accept=".json,application/json" style="display:none" />
+        <div class="btn-row" style="margin-top:6px">
+          <button class="btn btn-danger btn-sm" id="resetProgressBtn" style="width:100%;justify-content:center">Reset tiến độ</button>
         </div>
       </div>
     </aside>

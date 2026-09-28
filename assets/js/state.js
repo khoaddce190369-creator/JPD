@@ -5,9 +5,24 @@
 function loadState() {
   try {
     const raw = localStorage.getItem("jpd123_local_full");
-    return raw ? JSON.parse(raw) : { doneLessons: [], scores: {}, roadmapCheck: {} };
+    const parsed = raw ? JSON.parse(raw) : {};
+    return {
+      doneLessons: Array.isArray(parsed.doneLessons) ? parsed.doneLessons : [],
+      scores: (parsed.scores && typeof parsed.scores === "object") ? parsed.scores : {},
+      roadmapCheck: (parsed.roadmapCheck && typeof parsed.roadmapCheck === "object") ? parsed.roadmapCheck : {},
+      lessonSections: (parsed.lessonSections && typeof parsed.lessonSections === "object") ? parsed.lessonSections : {},
+      practiceDone: (parsed.practiceDone && typeof parsed.practiceDone === "object") ? parsed.practiceDone : {},
+      customRoadmap: Array.isArray(parsed.customRoadmap) ? parsed.customRoadmap : null
+    };
   } catch(e) {
-    return { doneLessons: [], scores: {}, roadmapCheck: {} };
+    return {
+      doneLessons: [],
+      scores: {},
+      roadmapCheck: {},
+      lessonSections: {},
+      practiceDone: {},
+      customRoadmap: null
+    };
   }
 }
 
@@ -16,6 +31,116 @@ const state = loadState();
 function saveState() {
   localStorage.setItem("jpd123_local_full", JSON.stringify(state));
   renderProgress();
+  if (typeof updateSidebarLessonNav === "function") {
+    updateSidebarLessonNav();
+  }
+}
+
+/* ---- Completion Status Helpers ---- */
+function toggleLessonDone(id) {
+  const numId = Number(id);
+  const idx = state.doneLessons.indexOf(numId);
+  const willBeDone = idx === -1;
+  if (willBeDone) {
+    state.doneLessons.push(numId);
+    showToast(`Bài ${numId}: Đã hoàn thành! 🎉`, "success");
+  } else {
+    state.doneLessons.splice(idx, 1);
+    showToast(`Bài ${numId}: Đã chuyển sang Chưa hoàn thành`, "info");
+  }
+  saveState();
+  return willBeDone;
+}
+
+function isLessonDone(id) {
+  return state.doneLessons.includes(Number(id));
+}
+
+function toggleSectionDone(key) {
+  state.lessonSections[key] = !state.lessonSections[key];
+  const isDone = !!state.lessonSections[key];
+  saveState();
+  showToast(isDone ? "Đã đánh dấu hoàn thành mục này!" : "Đã hủy đánh dấu mục này.", isDone ? "success" : "info");
+  return isDone;
+}
+
+function isSectionDone(key) {
+  return !!state.lessonSections[key];
+}
+
+function toggleRoadmapDay(day) {
+  const numDay = Number(day);
+  state.roadmapCheck[numDay] = !state.roadmapCheck[numDay];
+  const isDone = !!state.roadmapCheck[numDay];
+  saveState();
+  showToast(isDone ? `Ngày ${numDay}: Đã hoàn thành!` : `Ngày ${numDay}: Chưa hoàn thành.`, isDone ? "success" : "info");
+  return isDone;
+}
+
+function isRoadmapDayDone(day) {
+  return !!state.roadmapCheck[Number(day)];
+}
+
+function togglePracticeLesson(id) {
+  const key = `lesson-${id}`;
+  state.practiceDone[key] = !state.practiceDone[key];
+  const isDone = !!state.practiceDone[key];
+  saveState();
+  showToast(isDone ? `Luyện tập Bài ${id}: Đã hoàn thành!` : `Luyện tập Bài ${id}: Chưa hoàn thành.`, isDone ? "success" : "info");
+  return isDone;
+}
+
+function isPracticeLessonDone(id) {
+  return !!state.practiceDone[`lesson-${id}`];
+}
+
+function toggleMidtermDone(setNo) {
+  const key = `midterm-${setNo}`;
+  state.practiceDone[key] = !state.practiceDone[key];
+  const isDone = !!state.practiceDone[key];
+  saveState();
+  showToast(isDone ? `Đề Midterm ${setNo}: Đã hoàn thành!` : `Đề Midterm ${setNo}: Chưa hoàn thành.`, isDone ? "success" : "info");
+  return isDone;
+}
+
+function isMidtermDone(setNo) {
+  return !!state.practiceDone[`midterm-${setNo}`];
+}
+
+/* ---- Backup / Restore ---- */
+function exportStateBackup() {
+  try {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+    const a = document.createElement("a");
+    const dateStr = new Date().toISOString().slice(0, 10);
+    a.setAttribute("href", dataStr);
+    a.setAttribute("download", `JPD123_TienDo_${dateStr}.json`);
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast("Đã tải xuống file sao lưu tiến độ!", "success");
+  } catch (e) {
+    showToast("Lỗi tải file sao lưu: " + e.message, "error");
+  }
+}
+
+function importStateBackup(jsonString) {
+  try {
+    const parsed = JSON.parse(jsonString);
+    if (!parsed || typeof parsed !== "object") throw new Error("Dữ liệu JSON không hợp lệ");
+    state.doneLessons = Array.isArray(parsed.doneLessons) ? parsed.doneLessons : [];
+    state.scores = (parsed.scores && typeof parsed.scores === "object") ? parsed.scores : {};
+    state.roadmapCheck = (parsed.roadmapCheck && typeof parsed.roadmapCheck === "object") ? parsed.roadmapCheck : {};
+    state.lessonSections = (parsed.lessonSections && typeof parsed.lessonSections === "object") ? parsed.lessonSections : {};
+    state.practiceDone = (parsed.practiceDone && typeof parsed.practiceDone === "object") ? parsed.practiceDone : {};
+    state.customRoadmap = Array.isArray(parsed.customRoadmap) ? parsed.customRoadmap : null;
+    saveState();
+    showToast("Khôi phục tiến độ thành công!", "success");
+    return true;
+  } catch (e) {
+    showToast("Lỗi nhập dữ liệu: " + e.message, "error");
+    return false;
+  }
 }
 
 function renderProgress() {

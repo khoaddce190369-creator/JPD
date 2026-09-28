@@ -4,11 +4,7 @@
    ============================================================ */
 
 function markLessonDone(id) {
-  if (!state.doneLessons.includes(id)) {
-    state.doneLessons.push(id);
-    saveState();
-    showToast(`Bài ${id} hoàn thành!`, "success");
-  }
+  toggleLessonDone(id);
   renderLesson(id);
 }
 
@@ -56,21 +52,26 @@ function renderHome() {
 
       <!-- 7 bài map -->
       <section class="card">
-        <div class="section-head"><h3>7 bài học</h3></div>
+        <div class="section-head">
+          <h3>7 bài học</h3>
+          <span class="text-muted" style="font-size:12px">${lessonDone}/7 bài hoàn thành</span>
+        </div>
         <div class="lesson-map-grid">
           ${LESSONS.map(l => {
-            const done = state.doneLessons.includes(l.id);
+            const done = isLessonDone(l.id);
             const vScore = state.scores[`vocab-${l.id}`];
             const pct = vScore ? Math.round(vScore.score/vScore.total*100) : null;
             return `
             <div class="lesson-map-card ${done ? 'map-done' : ''}">
               <div class="map-head">
-                <span class="map-num">${l.id}</span>
-                ${done ? '<span class="badge badge-done">Done</span>' : ''}
+                <span class="map-num">Bài ${l.id}</span>
+                <button class="status-toggle-btn ${done ? 'status-done' : 'status-undone'} toggle-home-lesson" data-id="${l.id}" title="Bấm để đổi trạng thái">
+                  ${done ? '✓ Đã xong' : '○ Chưa xong'}
+                </button>
               </div>
               <div class="map-title">${l.title}</div>
               ${pct !== null ? `<div class="map-score-bar"><div class="map-score-fill" style="width:${pct}%"></div></div>` : ''}
-              <button class="btn btn-sm btn-secondary open-lesson" data-id="${l.id}">Mở</button>
+              <button class="btn btn-sm btn-secondary open-lesson" data-id="${l.id}">Mở học</button>
             </div>`;
           }).join("")}
         </div>
@@ -100,6 +101,14 @@ function renderHome() {
   document.querySelectorAll(".open-lesson").forEach(btn =>
     btn.onclick = () => renderLesson(Number(btn.dataset.id))
   );
+  document.querySelectorAll(".toggle-home-lesson").forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      const id = Number(btn.dataset.id);
+      toggleLessonDone(id);
+      renderHome();
+    };
+  });
   setTimeout(() => patchVocabularyTables(main), 0);
 }
 
@@ -124,20 +133,22 @@ function renderRoadmap() {
       </div>
 
       <div class="roadmap-grid">
-        ${data.map(item => `
-          <div class="plan-day ${state.roadmapCheck[item.day] ? 'plan-done' : ''}">
+        ${data.map(item => {
+          const isDone = isRoadmapDayDone(item.day);
+          return `
+          <div class="plan-day ${isDone ? 'plan-done' : ''}">
             <div class="plan-top">
               <span class="plan-num">Ngày ${item.day}</span>
-              <button class="btn btn-sm ${state.roadmapCheck[item.day] ? 'btn-done' : 'btn-secondary'} toggle-day" data-day="${item.day}">
-                ${state.roadmapCheck[item.day] ? 'Xong' : 'Đánh dấu'}
+              <button class="status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-day" data-day="${item.day}" title="Bấm để đổi trạng thái">
+                ${isDone ? '✓ Hoàn thành' : '○ Chưa xong'}
               </button>
             </div>
             <div class="plan-title">${item.title}</div>
             <ul class="plan-tasks">
               ${item.tasks.map(t => `<li>${t}</li>`).join("")}
             </ul>
-          </div>
-        `).join("")}
+          </div>`;
+        }).join("")}
       </div>
     </div>
   `;
@@ -145,9 +156,7 @@ function renderRoadmap() {
   document.querySelectorAll(".toggle-day").forEach(btn => {
     btn.onclick = () => {
       const day = Number(btn.dataset.day);
-      state.roadmapCheck[day] = !state.roadmapCheck[day];
-      saveState();
-      showToast(state.roadmapCheck[day] ? `Ngày ${day} xong!` : `Bỏ đánh dấu ngày ${day}.`);
+      toggleRoadmapDay(day);
       renderRoadmap();
     };
   });
@@ -224,7 +233,7 @@ function renderLesson(id) {
   const main = document.getElementById("main");
   const grammarQuestions = (GRAMMAR_BANK[id] || []).map(([q, choices, answer, explain]) => ({ q, choices, answer, explain }));
   const kanjiQuestions = makeKanjiQuestions(lesson);
-  const isDone = state.doneLessons.includes(id);
+  const isDone = isLessonDone(id);
 
   main.innerHTML = `
     <div class="page">
@@ -236,8 +245,8 @@ function renderLesson(id) {
           <p class="text-muted">${lesson.objective}</p>
         </div>
         <div class="lesson-header-right">
-          <button class="btn ${isDone ? 'btn-done' : 'btn-primary'}" id="doneLessonBtn">
-            ${isDone ? 'Đã hoàn thành' : 'Đánh dấu xong'}
+          <button class="btn ${isDone ? 'btn-done' : 'btn-secondary'} btn-toggle-lesson" id="doneLessonBtn" title="${isDone ? 'Bấm để chuyển về Chưa hoàn thành' : 'Bấm để đánh dấu Hoàn thành'}">
+            ${isDone ? '✓ Đã hoàn thành (Bấm để hủy)' : '○ Đánh dấu hoàn thành'}
           </button>
         </div>
       </div>
@@ -246,7 +255,12 @@ function renderLesson(id) {
       <section class="card" id="vocabTableSection">
         <div class="section-head">
           <h3>Từ vựng <span class="count-badge">${lesson.vocab.length}</span></h3>
-          ${scoreLabel(`vocab-${id}`)}
+          <div class="section-actions">
+            ${scoreLabel(`vocab-${id}`)}
+            <button class="status-toggle-btn ${isSectionDone(`l${id}-vocab`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-vocab" title="Đánh dấu đã học xong từ vựng">
+              ${isSectionDone(`l${id}-vocab`) ? '✓ Đã xong' : '○ Chưa xong'}
+            </button>
+          </div>
         </div>
 
         <!-- Selection action bar -->
@@ -279,7 +293,12 @@ function renderLesson(id) {
       <section class="card">
         <div class="section-head">
           <h3>Ngữ pháp <span class="count-badge">${lesson.grammar.length}</span></h3>
-          ${scoreLabel(`grammar-${id}`)}
+          <div class="section-actions">
+            ${scoreLabel(`grammar-${id}`)}
+            <button class="status-toggle-btn ${isSectionDone(`l${id}-grammar`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-grammar" title="Đánh dấu đã học xong ngữ pháp">
+              ${isSectionDone(`l${id}-grammar`) ? '✓ Đã xong' : '○ Chưa xong'}
+            </button>
+          </div>
         </div>
         <div class="grammar-list">
           ${lesson.grammar.map(g => `
@@ -296,7 +315,12 @@ function renderLesson(id) {
       <!-- 3+4. Katakana & Passage -->
       <div class="grid-2">
         <section class="card">
-          <div class="section-head"><h3>Katakana</h3></div>
+          <div class="section-head">
+            <h3>Katakana</h3>
+            <button class="status-toggle-btn ${isSectionDone(`l${id}-kata`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-kata">
+              ${isSectionDone(`l${id}-kata`) ? '✓ Đã xong' : '○ Chưa xong'}
+            </button>
+          </div>
           <div class="kata-grid">
             ${lesson.katakana.map(k => `
               <div class="kata-item">
@@ -309,7 +333,12 @@ function renderLesson(id) {
         </section>
 
         <section class="card">
-          <div class="section-head"><h3>Passage</h3></div>
+          <div class="section-head">
+            <h3>Passage</h3>
+            <button class="status-toggle-btn ${isSectionDone(`l${id}-reading`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-reading">
+              ${isSectionDone(`l${id}-reading`) ? '✓ Đã xong' : '○ Chưa xong'}
+            </button>
+          </div>
           <div class="reading jp">${lesson.reading}</div>
         </section>
       </div>
@@ -318,7 +347,12 @@ function renderLesson(id) {
       <section class="card">
         <div class="section-head">
           <h3>Kanji <span class="count-badge">${lesson.kanji.length}</span></h3>
-          ${scoreLabel(`kanji-${id}`)}
+          <div class="section-actions">
+            ${scoreLabel(`kanji-${id}`)}
+            <button class="status-toggle-btn ${isSectionDone(`l${id}-kanji`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-kanji" title="Đánh dấu đã học xong Kanji">
+              ${isSectionDone(`l${id}-kanji`) ? '✓ Đã xong' : '○ Chưa xong'}
+            </button>
+          </div>
         </div>
         <div class="k-grid">
           ${lesson.kanji.map(k => `
@@ -334,7 +368,12 @@ function renderLesson(id) {
 
       <!-- 6. Speaking -->
       <section class="card">
-        <div class="section-head"><h3>Speaking drill</h3></div>
+        <div class="section-head">
+          <h3>Speaking drill</h3>
+          <button class="status-toggle-btn ${isSectionDone(`l${id}-speaking`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-speaking">
+            ${isSectionDone(`l${id}-speaking`) ? '✓ Đã xong' : '○ Chưa xong'}
+          </button>
+        </div>
         <div class="speaking-list">
           ${lesson.speaking.map((s, i) => `
             <div class="speaking-item">
@@ -350,7 +389,16 @@ function renderLesson(id) {
     </div>
   `;
 
-  document.getElementById("doneLessonBtn").onclick = () => markLessonDone(id);
+  document.getElementById("doneLessonBtn").onclick = () => {
+    toggleLessonDone(id);
+    renderLesson(id);
+  };
+  document.querySelectorAll(".toggle-section-btn").forEach(btn => {
+    btn.onclick = () => {
+      toggleSectionDone(btn.dataset.key);
+      renderLesson(id);
+    };
+  });
   buildMCQ("vocabQuizWrap", makeVocabQuestions(lesson), `vocab-${id}`);
   buildMCQ("grammarQuizWrap", grammarQuestions, `grammar-${id}`);
   buildMCQ("kanjiQuizWrap", kanjiQuestions, `kanji-${id}`);

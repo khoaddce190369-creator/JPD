@@ -21,10 +21,17 @@ function renderPracticeHub() {
 
       <!-- Lesson practice grid -->
       <div class="practice-grid">
-        ${LESSONS.map(l => `
-          <div class="practice-card">
+        ${LESSONS.map(l => {
+          const isDone = isPracticeLessonDone(l.id);
+          return `
+          <div class="practice-card ${isDone ? 'practice-done' : ''}">
             <div class="practice-card-head">
-              <span class="practice-num">Bài ${l.id}</span>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="practice-num">Bài ${l.id}</span>
+                <button class="status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-practice-lesson" data-id="${l.id}" title="Bấm để đổi trạng thái">
+                  ${isDone ? '✓ Hoàn thành' : '○ Chưa xong'}
+                </button>
+              </div>
               <span class="practice-title">${l.title}</span>
             </div>
             <div class="practice-scores">
@@ -34,8 +41,8 @@ function renderPracticeHub() {
               <div class="score-row"><span>Kanji</span>${scoreLabel(`practice-kanji-${l.id}`)}</div>
             </div>
             <button class="btn btn-primary btn-block open-practice-lesson" data-id="${l.id}">Luyện tập</button>
-          </div>
-        `).join("")}
+          </div>`;
+        }).join("")}
       </div>
 
       <!-- Midterm -->
@@ -45,13 +52,21 @@ function renderPracticeHub() {
           <span class="text-muted">15 câu • 4 vocab + 4 kanji + 7 grammar</span>
         </div>
         <div class="midterm-grid">
-          ${Array.from({ length: 10 }, (_, i) => `
-            <div class="midterm-item">
-              <div class="midterm-num">Đề ${i + 1}</div>
-              <div class="midterm-score">${scoreLabel(`midterm-${i + 1}`)}</div>
-              <button class="btn btn-sm btn-primary open-midterm-practice" data-set="${i + 1}">Làm</button>
-            </div>
-          `).join("")}
+          ${Array.from({ length: 10 }, (_, i) => {
+            const setNo = i + 1;
+            const isDone = isMidtermDone(setNo);
+            return `
+            <div class="midterm-item ${isDone ? 'midterm-done' : ''}">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="midterm-num">Đề ${setNo}</div>
+                <button class="status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-midterm-done" data-set="${setNo}" title="Bấm để đổi trạng thái">
+                  ${isDone ? '✓ Xong' : '○ Chưa'}
+                </button>
+              </div>
+              <div class="midterm-score">${scoreLabel(`midterm-${setNo}`)}</div>
+              <button class="btn btn-sm btn-primary open-midterm-practice" data-set="${setNo}">Làm</button>
+            </div>`;
+          }).join("")}
         </div>
       </section>
     </div>
@@ -63,6 +78,20 @@ function renderPracticeHub() {
   document.querySelectorAll(".open-midterm-practice").forEach(btn =>
     btn.onclick = () => startPracticeMidterm(Number(btn.dataset.set))
   );
+  document.querySelectorAll(".toggle-practice-lesson").forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      togglePracticeLesson(Number(btn.dataset.id));
+      renderPracticeHub();
+    };
+  });
+  document.querySelectorAll(".toggle-midterm-done").forEach(btn => {
+    btn.onclick = e => {
+      e.stopPropagation();
+      toggleMidtermDone(Number(btn.dataset.set));
+      renderPracticeHub();
+    };
+  });
 }
 
 function renderPracticeLesson(id) {
@@ -210,6 +239,10 @@ function submitPracticeMidterm() {
 
   saveScore(`midterm-${currentPracticeMidtermSetNo}`, score, currentPracticeMidterm.length);
   const pct = Math.round((score / currentPracticeMidterm.length) * 100);
+  if (pct >= 60) {
+    state.practiceDone[`midterm-${currentPracticeMidtermSetNo}`] = true;
+    saveState();
+  }
   const cls = pct >= 80 ? "result-good" : pct >= 60 ? "result-warn" : "result-bad";
 
   document.getElementById("practiceMidtermResult").innerHTML = `

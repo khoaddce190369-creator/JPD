@@ -44,11 +44,41 @@ function toggleMobileSidebar() {
   }
 }
 
+function updateSidebarLessonNav() {
+  const lessonNav = document.getElementById("lessonNav");
+  if (!lessonNav) return;
+  lessonNav.querySelectorAll(".nav-btn").forEach(btn => {
+    const view = btn.dataset.view;
+    if (view && view.startsWith("lesson-")) {
+      const id = Number(view.replace("lesson-", ""));
+      const isDone = isLessonDone(id);
+      btn.classList.toggle("nav-lesson-done", isDone);
+      let badge = btn.querySelector(".nav-check-badge");
+      if (isDone) {
+        if (!badge) {
+          badge = document.createElement("span");
+          badge.className = "nav-check-badge";
+          badge.textContent = "✓";
+          btn.appendChild(badge);
+        }
+      } else {
+        if (badge) badge.remove();
+      }
+    }
+  });
+}
+
 function initNav() {
   const lessonNav = document.getElementById("lessonNav");
-  lessonNav.innerHTML = LESSONS.map(l => `
-    <button class="nav-btn" data-view="lesson-${l.id}">Bài ${l.id} — ${l.title}</button>
-  `).join("");
+  lessonNav.innerHTML = LESSONS.map(l => {
+    const isDone = isLessonDone(l.id);
+    return `
+      <button class="nav-btn ${isDone ? 'nav-lesson-done' : ''}" data-view="lesson-${l.id}">
+        <span class="nav-btn-text">Bài ${l.id} — ${l.title}</span>
+        ${isDone ? '<span class="nav-check-badge">✓</span>' : ''}
+      </button>
+    `;
+  }).join("");
 
   document.querySelectorAll(".nav-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -158,10 +188,39 @@ function initSidebarToggle() {
   });
 }
 
+/* ---- Backup & Restore (Frontend only) ---- */
+function initBackupRestore() {
+  const expBtn = document.getElementById("exportProgressBtn");
+  const impBtn = document.getElementById("importProgressBtn");
+  const fileInput = document.getElementById("importFileInput");
+
+  if (expBtn) {
+    expBtn.onclick = () => exportStateBackup();
+  }
+
+  if (impBtn && fileInput) {
+    impBtn.onclick = () => fileInput.click();
+    fileInput.onchange = e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const success = importStateBackup(ev.target.result);
+        if (success) {
+          setTimeout(() => location.reload(), 600);
+        }
+      };
+      reader.readAsText(file);
+      fileInput.value = "";
+    };
+  }
+}
+
 /* ---- Boot ---- */
 primeJapaneseVoices();
 initNav();
 initSidebarToggle();
 initBackToTop();
+initBackupRestore();
 renderProgress();
 renderHome();
