@@ -159,6 +159,7 @@ function renderStudyModal() {
   document.getElementById("closeStudyModal").addEventListener("click", closeStudyModal);
   modal.addEventListener("click", e => { if (e.target === modal) closeStudyModal(); });
 
+  document.body.classList.add("modal-open");
   requestAnimationFrame(() => modal.classList.add("study-modal-visible"));
   renderStudyBody();
 }
@@ -166,6 +167,7 @@ function renderStudyModal() {
 function closeStudyModal() {
   const modal = document.getElementById("studyModal");
   if (!modal) return;
+  document.body.classList.remove("modal-open");
   modal.classList.remove("study-modal-visible");
   setTimeout(() => modal.remove(), 280);
 }

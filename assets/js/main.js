@@ -9,6 +9,7 @@ function setActiveNav(view) {
 }
 
 function renderView(view) {
+  window.scrollTo({ top: 0, behavior: "instant" });
   if (view === "home") renderHome();
   else if (view === "roadmap") renderRoadmap();
   else if (view === "speaking") renderSpeaking();
@@ -76,23 +77,45 @@ document.getElementById("resetProgressBtn").onclick = () => {
     </div>
   `;
   document.body.appendChild(overlay);
+  document.body.classList.add("modal-open");
   requestAnimationFrame(() => overlay.classList.add("modal-visible"));
 
-  overlay.querySelector("#cancelReset").onclick = () => {
+  const closeResetModal = () => {
     overlay.classList.remove("modal-visible");
+    document.body.classList.remove("modal-open");
     setTimeout(() => overlay.remove(), 300);
   };
+
+  overlay.querySelector("#cancelReset").onclick = closeResetModal;
   overlay.querySelector("#confirmReset").onclick = () => {
+    document.body.classList.remove("modal-open");
     localStorage.removeItem("jpd123_local_full");
     location.reload();
   };
   overlay.addEventListener("click", e => {
     if (e.target === overlay) {
-      overlay.classList.remove("modal-visible");
-      setTimeout(() => overlay.remove(), 300);
+      closeResetModal();
     }
   });
 };
+
+/* ---- Back to Top Floating Button ---- */
+function initBackToTop() {
+  const btn = document.getElementById("backToTopBtn");
+  if (!btn) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.add("visible");
+    } else {
+      btn.classList.remove("visible");
+    }
+  }, { passive: true });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 /* ---- Sidebar toggle ---- */
 function initSidebarToggle() {
@@ -139,5 +162,6 @@ function initSidebarToggle() {
 primeJapaneseVoices();
 initNav();
 initSidebarToggle();
+initBackToTop();
 renderProgress();
 renderHome();

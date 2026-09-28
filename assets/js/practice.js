@@ -8,6 +8,7 @@ let practiceMidtermTimer = null;
 let practiceMidtermTimeLeft = 0;
 
 function renderPracticeHub() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav("practice");
   const main = document.getElementById("main");
 
@@ -65,6 +66,7 @@ function renderPracticeHub() {
 }
 
 function renderPracticeLesson(id) {
+  window.scrollTo({ top: 0, behavior: "instant" });
   const lesson = LESSONS.find(x => x.id === id);
   if (!lesson) return renderPracticeHub();
 
@@ -129,6 +131,7 @@ function renderPracticeLesson(id) {
 }
 
 function startPracticeMidterm(setNo) {
+  window.scrollTo({ top: 0, behavior: "instant" });
   currentPracticeMidtermSetNo = setNo;
   currentPracticeMidterm = makeMidtermSet(setNo);
   practiceMidtermTimeLeft = 15 * 60;

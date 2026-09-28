@@ -14,6 +14,7 @@ function markLessonDone(id) {
 
 /* ---------- HOME ---------- */
 function renderHome() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav("home");
   const main = document.getElementById("main");
   const lessonDone = state.doneLessons.length;
@@ -104,6 +105,7 @@ function renderHome() {
 
 /* ---------- ROADMAP ---------- */
 function renderRoadmap() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav("roadmap");
   const main = document.getElementById("main");
   const data = state.customRoadmap || ROADMAP;
@@ -154,6 +156,7 @@ function renderRoadmap() {
 }
 
 function renderRoadmapEdit() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   const main = document.getElementById("main");
   const data = state.customRoadmap || ROADMAP;
   
@@ -215,6 +218,7 @@ function renderRoadmapEdit() {
 
 /* ---------- LESSON ---------- */
 function renderLesson(id) {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav(`lesson-${id}`);
   const lesson = LESSONS.find(x => x.id === id);
   const main = document.getElementById("main");
@@ -370,6 +374,7 @@ function renderLesson(id) {
 
 /* ---------- SPEAKING ---------- */
 function renderSpeaking() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav("speaking");
   const main = document.getElementById("main");
 
@@ -434,6 +439,7 @@ let examTimer = null;
 let examTimeLeft = 20 * 60;
 
 function renderExamHome() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   setActiveNav("exam");
   const main = document.getElementById("main");
   const lastScore = state.scores["mock-all"];
@@ -475,6 +481,7 @@ function renderExamHome() {
 }
 
 function startExam() {
+  window.scrollTo({ top: 0, behavior: "instant" });
   currentExam = makeExamSet();
   examTimeLeft = 20 * 60;
   clearInterval(examTimer);
