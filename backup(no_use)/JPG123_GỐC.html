@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JPD123 - 30 ngày 8+ toàn môn & 8.5+ speaking</title>
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --panel:#ffffff;
+      --line:#e5e7eb;
+      --text:#111111;
+      --muted:#555555;
+      --accent:#dc2626;
+      --accent-2:#ef4444;
+      --shadow:0 10px 28px rgba(0,0,0,.06);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--text);
+      font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif
+    }
+    button,input,select,textarea{font:inherit}
+    .jp{font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif}
+    .app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+    .sidebar{
+      border-right:1px solid var(--line);
+      background:#fff;
+      position:sticky;top:0;align-self:start;height:100vh;
+      padding:22px 18px 28px;overflow:auto
+    }
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+    .brand-badge{
+      width:48px;height:48px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;place-items:center;color:#fff;font-weight:900;font-size:22px;
+      box-shadow:var(--shadow)
+    }
+    .brand h1{font-size:18px;line-height:1.2;margin:0}
+    .brand small{color:var(--muted)}
+    .section-title{
+      margin:18px 8px 8px;
+      font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+      color:#991b1b;font-weight:800
+    }
+    .nav-btn{
+      width:100%;background:#fff;color:var(--text);border:1px solid transparent;
+      border-radius:14px;padding:12px 14px;text-align:left;margin:4px 0;
+      cursor:pointer;transition:.2s ease
+    }
+    .nav-btn:hover{background:#fef2f2;border-color:#fecaca}
+    .nav-btn.active{background:#fef2f2;border-color:#fca5a5;color:#991b1b}
+    .nav-sub{font-size:13px;color:var(--muted);margin-top:4px}
+    .progress-box{margin-top:18px;padding:16px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+    .progress-bar{height:10px;border-radius:999px;background:#f1f5f9;overflow:hidden;border:1px solid var(--line)}
+    .progress-bar>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:.3s ease}
+    .main{padding:28px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:20px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:20px
+    }
+    .page{display:flex;flex-direction:column;gap:18px}
+    .hero h2,.page h2,.lesson-head h2{margin:0 0 8px;font-size:28px;line-height:1.2}
+    .muted{color:var(--muted)}
+    .tiny{font-size:13px;color:var(--muted)}
+    .pill-row,.chips,.btn-row{display:flex;flex-wrap:wrap;gap:8px}
+    .pill,.chip{
+      display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;
+      border:1px solid var(--line);background:#fafafa;color:#111;font-size:13px;font-weight:600
+    }
+    .btn-row{margin-top:12px;gap:10px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .mini-stat{padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .mini-stat strong{display:block;font-size:22px}
+    .btn{
+      border:none;cursor:pointer;padding:11px 15px;border-radius:13px;
+      background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;font-weight:800;
+      transition:transform .12s ease,opacity .2s ease
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:#fff;color:#b91c1c;border:1px solid #fca5a5}
+    .btn.good{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff}
+    .btn.warn{background:linear-gradient(135deg,#ef4444,#f87171);color:#fff}
+    .lesson-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+    .tag{
+      display:inline-flex;align-items:center;
+      font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      color:#b91c1c;border:1px solid #fecaca;padding:7px 10px;border-radius:999px;background:#fff5f5
+    }
+    table{
+      width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;
+      border:1px solid var(--line);background:#fff
+    }
+    th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#fafafa;text-align:left;color:#111}
+    tr:last-child td{border-bottom:none}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px
+    }
+    .section-head h3{margin:0;font-size:21px}
+    .note,.callout{
+      padding:14px 16px;border-left:4px solid var(--accent);
+      background:#fff5f5;border-radius:14px;color:#111
+    }
+    .callout{border-left:none;border:1px solid #fecaca}
+    .grammar-card{
+      border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px;margin-bottom:12px
+    }
+    .grammar-card code{
+      background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:2px 8px;color:#b91c1c
+    }
+    .k-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .kanji-item{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+    .kanji-word{font-size:24px;font-weight:800}
+    .quiz-wrap{
+      border:1px solid #fecaca;border-radius:18px;background:#fff;padding:16px;margin-top:14px
+    }
+    .q-block{
+      border:1px solid var(--line);background:#fafafa;padding:14px;border-radius:14px;margin-bottom:12px
+    }
+    .q-block:last-child{margin-bottom:0}
+    .choice{
+      display:block;padding:9px 11px;border-radius:12px;border:1px solid var(--line);
+      background:#fff;margin-top:8px;cursor:pointer
+    }
+    .choice input{margin-right:8px}
+    .score-box{
+      padding:12px 14px;border-radius:14px;background:#fff5f5;border:1px solid #fecaca;margin-top:12px
+    }
+    .score-box.bad{background:#fef2f2;border-color:#fca5a5}
+    .plan-day{border:1px solid var(--line);border-radius:16px;background:#fff;padding:16px}
+    .plan-day h4{margin:0 0 8px}
+    .plan-day ul{margin:0;padding-left:18px}
+    .speaking-box{
+      border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff;margin-bottom:12px
+    }
+    .reading{
+      padding:16px;border-radius:16px;background:#fafafa;border:1px solid var(--line);
+      font-size:18px;line-height:1.9;color:#111
+    }
+    .ok{color:#15803d}.warn-text{color:#b45309}.danger-text{color:#b91c1c}
+    .timer{
+      padding:10px 14px;border-radius:12px;border:1px solid #fecaca;background:#fff5f5;
+      font-weight:800;color:#991b1b
+    }
+    @media (max-width:1100px){
+      .app{grid-template-columns:1fr}
+      .sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+      .hero,.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-badge">日</div>
+        <div>
+          <h1>JPD123 30 ngày</h1>
+          <small>8+ toàn môn • 8.5+ speaking</small>
+        </div>
+      </div>
+
+      <div class="section-title">Điều hướng</div>
+      <button class="nav-btn" data-view="home">🏠 Tổng quan<div class="nav-sub">Mục tiêu, cách dùng web</div></button>
+      <button class="nav-btn" data-view="roadmap">🗓️ Lộ trình 30 ngày<div class="nav-sub">Học gì từng ngày</div></button>
+      <button class="nav-btn" data-view="speaking">🗣️ Speaking 8.5+<div class="nav-sub">Reading, shadowing, Q&A</div></button>
+      <button class="nav-btn" data-view="exam">🧪 Mock test<div class="nav-sub">Tổng hợp vocab / grammar / kanji</div></button>
+
+      <div class="section-title">7 bài</div>
+      <div id="lessonNav"></div>
+
+      <div class="progress-box">
+        <div class="tiny" style="margin-bottom:8px">Tiến độ cá nhân</div>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <div id="progressText" class="tiny" style="margin-top:8px">0% hoàn thành</div>
+        <div class="btn-row">
+          <button class="btn secondary" id="resetProgressBtn">Reset tiến độ</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main"></main>
+  </div>
+
+  <script>
+    const LESSONS = [
+      {
+        id: 1,
+        title: "Bài 1 - はじめまして",
+        vnTitle: "Tự giới thiệu: tên, quốc tịch, tuổi, sinh nhật, sở thích",
+        days: "Ngày 1-4",
+        objective: "Dùng được các mẫu tự giới thiệu cơ bản, trả lời được câu hỏi về tên, quốc gia, ngày sinh, tuổi và sở thích.",
+        katakana: [
+          { word: "スポーツ", note: "trường âm ー" },
+          { word: "サッカー", note: "âm ngắt ッ" },
+          { word: "テニス", note: "katakana cơ bản" },
+          { word: "ブラジル", note: "âm ngoại lai" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "N1 は N2 です", use: "Giới thiệu / khẳng định", example: "わたしはベトナム人です。", vocabLink: "Gắn với 国, 学生, 大学生." },
+          { pattern: "N1 は N2 ですか", use: "Hỏi xác nhận", example: "ミンさんは学生ですか。", vocabLink: "Gắn với 学生, 日本人." },
+          { pattern: "N は どちら / いつ / 何ですか", use: "Hỏi quốc gia, sinh nhật, sở thích", example: "お国はどちらですか。誕生日はいつですか。趣味は何ですか。", vocabLink: "Gắn với 国, 誕生日, 趣味." },
+          { pattern: "N1 の N2", use: "Sở hữu / bổ nghĩa", example: "わたしの誕生日は五月四日です。", vocabLink: "Gắn với 名前, 趣味." },
+          { pattern: "N1 と N2", use: "Liệt kê 2 danh từ", example: "趣味は音楽と旅行です。", vocabLink: "Gắn với sở thích." },
+          { pattern: "N も", use: "Cũng", example: "わたしの趣味も料理です。", vocabLink: "Làm câu tự nhiên hơn." }
+        ],
+        kanji: [
+          { word: "私", reading: "わたし", meaning: "tôi" },
+          { word: "人", reading: "ひと / じん", meaning: "người" },
+          { word: "才", reading: "さい", meaning: "tuổi" },
+          { word: "学校", reading: "がっこう", meaning: "trường học" },
+          { word: "大学", reading: "だいがく", meaning: "đại học" },
+          { word: "大学生", reading: "だいがくせい", meaning: "sinh viên đại học" },
+          { word: "日本", reading: "にほん", meaning: "Nhật Bản" },
+          { word: "日本語", reading: "にほんご", meaning: "tiếng Nhật" },
+          { word: "日本人", reading: "にほんじん", meaning: "người Nhật" },
+          { word: "名前", reading: "なまえ", meaning: "tên" },
+          { word: "国", reading: "くに", meaning: "quốc gia" }
+        ],
+        reading: "はじめまして。わたしはミンです。ベトナム人です。大学生です。日本語を勉強しています。誕生日は五月四日です。趣味は音楽と旅行です。スポーツも好きです。サッカーはあまり上手じゃありませんが、見るのは好きです。",
+        speaking: [
+          { q: "お名前は何ですか。", a: "わたしの名前は ___ です。" },
+          { q: "お国はどちらですか。", a: "ベトナムです。" },
+          { q: "趣味は何ですか。", a: "趣味は 音楽 と 読書 です。" }
+        ]
+      },
+      {
+        id: 2,
+        title: "Bài 2 - 買い物・食事",
+        vnTitle: "Mua sắm, hỏi chỗ, hỏi giá, gọi món",
+        days: "Ngày 5-8",
+        objective: "Xử lý được các mẫu hỏi địa điểm, hỏi giá, gọi món.",
+        katakana: [
+          { word: "スーパー", note: "trường âm ー" },
+          { word: "レストラン", note: "katakana dài" },
+          { word: "エレベーター", note: "trường âm ー" },
+          { word: "Tシャツ", note: "chữ cái Latin + katakana" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "これ / それ / あれ", use: "Chỉ đồ vật", example: "これは10,000円です。", vocabLink: "Gắn với かばん, 時計." },
+          { pattern: "この / その / あの + N", use: "Chỉ danh từ cụ thể", example: "あのTシャツは3,000円です。", vocabLink: "Gắn với đồ mua sắm." },
+          { pattern: "ここ / そこ / あそこ / どこ", use: "Hỏi địa điểm", example: "トイレはどこですか。― あそこです。", vocabLink: "Cực hay ra speaking." },
+          { pattern: "N を（〜つ）ください", use: "Gọi món / mua đồ", example: "カレーを一つください。", vocabLink: "Gắn với カレー, スープ." },
+          { pattern: "これは いくらですか", use: "Hỏi giá", example: "このかばんはいくらですか。", vocabLink: "Gắn với Tシャツ, かばん." },
+          { pattern: "何の N / どこの N / 誰の N", use: "Hỏi loại / xuất xứ / chủ sở hữu", example: "これは何のカレーですか。", vocabLink: "Hay ra hỏi đáp." },
+          { pattern: "〜で 何ですか", use: "Hỏi bằng ngôn ngữ", example: "『ぶたにく』は英語で何ですか。", vocabLink: "Gắn với 英語 / 日本語." }
+        ],
+        kanji: [
+          { word: "一円", reading: "いちえん", meaning: "1 yên" },
+          { word: "百円", reading: "ひゃくえん", meaning: "100 yên" },
+          { word: "千円", reading: "せんえん", meaning: "1000 yên" },
+          { word: "一万円", reading: "いちまんえん", meaning: "10,000 yên" },
+          { word: "一月", reading: "いちがつ", meaning: "tháng 1" },
+          { word: "三月", reading: "さんがつ", meaning: "tháng 3" },
+          { word: "五月", reading: "ごがつ", meaning: "tháng 5" },
+          { word: "七月", reading: "しちがつ", meaning: "tháng 7" },
+          { word: "八月", reading: "はちがつ", meaning: "tháng 8" },
+          { word: "十月", reading: "じゅうがつ", meaning: "tháng 10" },
+          { word: "十一月", reading: "じゅういちがつ", meaning: "tháng 11" },
+          { word: "十二月", reading: "じゅうにがつ", meaning: "tháng 12" },
+          { word: "二人", reading: "ふたり", meaning: "2 người" },
+          { word: "九人", reading: "きゅうにん", meaning: "9 người" }
+        ],
+        reading: "きょう、スーパーへ行きました。レジの近くでTシャツを見ました。あのTシャツはきれいでした。店員さんに『これはいくらですか』と聞きました。三千円でした。それからレストランでカレーとスープを注文しました。コーヒーも飲みました。",
+        speaking: [
+          { q: "トイレはどこですか。", a: "あそこです。/ こちらです。" },
+          { q: "このTシャツはいくらですか。", a: "三千円です。" },
+          { q: "これは何の料理ですか。", a: "豚肉の料理です。" }
+        ]
+      },
+      {
+        id: 3,
+        title: "Bài 3 - スケジュール",
+        vnTitle: "Giờ giấc, lịch trình, sinh hoạt hằng ngày",
+        days: "Ngày 9-12",
+        objective: "Nắm vững giờ, ngày trong tuần, lịch hàng ngày và mẫu từ ... đến ....",
+        katakana: [
+          { word: "スケジュール", note: "ngoại lai dài" },
+          { word: "アルバイト", note: "katakana dài" },
+          { word: "バーベキュー", note: "âm ghép + trường âm" },
+          { word: "ホームステイ", note: "trường âm" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "Vます / Vません", use: "Hoạt động hiện tại / thói quen", example: "毎日、朝ご飯を食べます。", vocabLink: "Gắn với 起きます, 寝ます." },
+          { pattern: "N へ Vます", use: "Đi đâu", example: "日曜日、図書館へ行きます。", vocabLink: "Gắn với 図書館, 公園." },
+          { pattern: "N を Vます", use: "Tân ngữ trực tiếp", example: "日本語を勉強します。", vocabLink: "Gắn với 朝ご飯, 日本語." },
+          { pattern: "N に Vます", use: "Mốc thời gian", example: "六時に起きます。", vocabLink: "Cực quan trọng cho bài 3." },
+          { pattern: "N で Vます", use: "Nơi diễn ra hành động / phương tiện", example: "北海道でスキーをします。", vocabLink: "Hay tái dùng về sau." },
+          { pattern: "〜から 〜まで", use: "Từ ... đến ...", example: "郵便局は午前九時から午後五時までです。", vocabLink: "Câu điểm cao." },
+          { pattern: "N や N など", use: "Liệt kê mở", example: "朝、パンやサラダなどを食べます。", vocabLink: "Câu tự nhiên hơn." }
+        ],
+        kanji: [
+          { word: "何", reading: "なに / なん", meaning: "cái gì" },
+          { word: "月曜日", reading: "げつようび", meaning: "thứ hai" },
+          { word: "火曜日", reading: "かようび", meaning: "thứ ba" },
+          { word: "水曜日", reading: "すいようび", meaning: "thứ tư" },
+          { word: "木曜日", reading: "もくようび", meaning: "thứ năm" },
+          { word: "金曜日", reading: "きんようび", meaning: "thứ sáu" },
+          { word: "土曜日", reading: "どようび", meaning: "thứ bảy" },
+          { word: "日曜日", reading: "にちようび", meaning: "chủ nhật" },
+          { word: "二時", reading: "にじ", meaning: "2 giờ" },
+          { word: "四時", reading: "よじ", meaning: "4 giờ" },
+          { word: "七時", reading: "しちじ", meaning: "7 giờ" },
+          { word: "九時", reading: "くじ", meaning: "9 giờ" },
+          { word: "十分", reading: "じゅっぷん", meaning: "10 phút" },
+          { word: "時間", reading: "じかん", meaning: "thời gian/tiếng" }
+        ],
+        reading: "わたしは毎日六時に起きます。午前七時に朝ご飯を食べます。八時から授業があります。午後、図書館で日本語を勉強します。日曜日は公園へ行きます。ときどきアルバイトもします。ホームステイの友だちとバーベキューをすることもあります。",
+        speaking: [
+          { q: "図書館は何時から何時までですか。", a: "午前九時から午後五時までです。" },
+          { q: "毎日、何時に起きますか。", a: "毎日、六時に起きます。" },
+          { q: "日曜日にどこへ行きますか。", a: "公園へ行きます。" }
+        ]
+      },
+      {
+        id: 4,
+        title: "Bài 4 - 私の国・町",
+        vnTitle: "Nói về quốc gia, thành phố, khoảng cách, đặc điểm nơi chốn",
+        days: "Ngày 13-16",
+        objective: "Diễn tả được quê hương/quốc gia/thành phố, hỏi khoảng cách và mô tả nơi chốn.",
+        katakana: [
+          { word: "チョコレート", note: "katakana dài" },
+          { word: "ビル", note: "katakana đơn" },
+          { word: "メロン", note: "katakana đơn" },
+          { word: "ツアー", note: "trường âm" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "N は A です / くないです / じゃありません", use: "Nói đặc điểm nơi chốn", example: "わたしの町はきれいです。", vocabLink: "Gắn với きれい, 静か, にぎやか." },
+          { pattern: "A + N / ナA + な + N", use: "Bổ nghĩa danh từ", example: "きれいなところです。", vocabLink: "Cực hay dùng khi speaking." },
+          { pattern: "N に N があります", use: "Nói nơi có gì", example: "町にきれいな川があります。", vocabLink: "Gắn với 山, 川, 温泉." },
+          { pattern: "N は N の 東/西/南/北/真ん中です", use: "Nói vị trí", example: "沖縄は日本の南です。", vocabLink: "Rất quan trọng." },
+          { pattern: "〜から〜までどのくらいですか", use: "Hỏi khoảng cách / thời lượng", example: "東京から箱根までどのくらいですか。", vocabLink: "Speaking trọng điểm." },
+          { pattern: "N で", use: "Bằng phương tiện", example: "電車で三十分です。", vocabLink: "Gắn với 車, 電車, 飛行機." },
+          { pattern: "どんな N ですか", use: "Hỏi nơi chốn thế nào", example: "アユタヤはどんなところですか。", vocabLink: "Câu mẫu speaking." },
+          { pattern: "そして / が", use: "Nối ý / đối lập nhẹ", example: "この町はきれいです。そして、にぎやかです。", vocabLink: "Giúp câu không quá ngắn." }
+        ],
+        kanji: [
+          { word: "東", reading: "ひがし / とう", meaning: "đông" },
+          { word: "市", reading: "し", meaning: "thành phố / thị" },
+          { word: "前日", reading: "ぜんじつ", meaning: "ngày hôm trước" },
+          { word: "午前", reading: "ごぜん", meaning: "buổi sáng" },
+          { word: "外国", reading: "がいこく", meaning: "nước ngoài" },
+          { word: "区", reading: "く", meaning: "quận/khu" },
+          { word: "国", reading: "くに / こく", meaning: "nước" },
+          { word: "東京", reading: "とうきょう", meaning: "Tokyo" },
+          { word: "女の人", reading: "おんなのひと", meaning: "người phụ nữ" },
+          { word: "男の人", reading: "おとこのひと", meaning: "người đàn ông" },
+          { word: "男女", reading: "だんじょ", meaning: "nam nữ" }
+        ],
+        reading: "わたしの町はベトナムの北です。にぎやかで、きれいなところです。町の近くに山と川があります。駅まで十分くらいです。ハノイからホーチミンまで飛行機で二時間くらいです。チョコレートやメロンもおいしいです。",
+        speaking: [
+          { q: "ハノイからホーチミンまでどのくらいですか。", a: "飛行機で二時間くらいです。" },
+          { q: "あなたの町はどんなところですか。", a: "きれいで、にぎやかなところです。" },
+          { q: "あなたの国に何がありますか。", a: "きれいな山や川があります。" }
+        ]
+      },
+      {
+        id: 5,
+        title: "Bài 5 - 休みの日",
+        vnTitle: "Ngày nghỉ, quá khứ, thích/ghét, muốn, muốn làm",
+        days: "Ngày 17-20",
+        objective: "Nói được việc đã làm vào ngày nghỉ, cảm nhận sau hoạt động, điều mình thích/muốn.",
+        katakana: [
+          { word: "アニメ", note: "katakana ngắn" },
+          { word: "パソコン", note: "ngoại lai cơ bản" },
+          { word: "インターネット", note: "katakana dài" },
+          { word: "テスト", note: "katakana cơ bản" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "Vました / Vませんでした", use: "Quá khứ động từ", example: "昨日、勉強しました。", vocabLink: "Nói việc đã làm." },
+          { pattern: "イAかったです / ナAでした", use: "Quá khứ tính từ", example: "旅行は楽しかったです。", vocabLink: "Câu speaking rất hay dùng." },
+          { pattern: "N が 好きです / 嫌いです", use: "Nói thích/ghét", example: "日本のアニメが好きです。", vocabLink: "Gắn với アニメ, 音楽." },
+          { pattern: "N が ほしいです", use: "Muốn có", example: "パソコンがほしいです。", vocabLink: "Speaking cá nhân." },
+          { pattern: "Vたいです", use: "Muốn làm gì", example: "北海道へ行きたいです。", vocabLink: "Gắn với động từ." },
+          { pattern: "N へ Vます-に行きます", use: "Đi đâu để làm gì", example: "渋谷へ買い物に行きます。", vocabLink: "Rất quan trọng." },
+          { pattern: "どこかへ / どこへも", use: "Có đi đâu không / không đi đâu cả", example: "どこへも行きませんでした。", vocabLink: "Hay gặp trong hỏi đáp." },
+          { pattern: "どうして ... から", use: "Hỏi/nói lý do", example: "忙しかったですから、何も食べませんでした。", vocabLink: "Giúp câu có lý do." },
+          { pattern: "それから / N と Vます", use: "Nối mạch kể chuyện", example: "映画を見ました。それから、食事をしました。", vocabLink: "Giúp kể chuyện mượt." }
+        ],
+        kanji: [
+          { word: "先生", reading: "せんせい", meaning: "giáo viên" },
+          { word: "買い物", reading: "かいもの", meaning: "mua sắm" },
+          { word: "見学", reading: "けんがく", meaning: "tham quan học tập" },
+          { word: "午後", reading: "ごご", meaning: "buổi chiều" },
+          { word: "午前", reading: "ごぜん", meaning: "buổi sáng" },
+          { word: "先週", reading: "せんしゅう", meaning: "tuần trước" },
+          { word: "食事", reading: "しょくじ", meaning: "bữa ăn" },
+          { word: "先月", reading: "せんげつ", meaning: "tháng trước" },
+          { word: "先日", reading: "せんじつ", meaning: "hôm trước" },
+          { word: "飲み物", reading: "のみもの", meaning: "đồ uống" },
+          { word: "毎日", reading: "まいにち", meaning: "mỗi ngày" },
+          { word: "毎週", reading: "まいしゅう", meaning: "mỗi tuần" },
+          { word: "毎月", reading: "まいつき / まいげつ", meaning: "mỗi tháng" },
+          { word: "毎年", reading: "まいとし / まいねん", meaning: "mỗi năm" },
+          { word: "休日", reading: "きゅうじつ", meaning: "ngày nghỉ" }
+        ],
+        reading: "先週の土曜日、友だちと公園へ行きました。天気がよかったですから、写真をたくさん撮りました。それから、レストランで食事をしました。食べ物はおいしかったです。夜はアニメを見ました。とても楽しかったです。",
+        speaking: [
+          { q: "きのう、どこかへ行きましたか。", a: "はい、公園へ行きました。/ いいえ、どこへも行きませんでした。" },
+          { q: "旅行はどうでしたか。", a: "とても楽しかったです。" },
+          { q: "何がほしいですか。", a: "新しいパソコンがほしいです。" }
+        ]
+      },
+      {
+        id: 6,
+        title: "Bài 6 - 一緒に！",
+        vnTitle: "Rủ rê, so sánh, chọn lựa, hẹn gặp",
+        days: "Ngày 21-24",
+        objective: "Rủ được bạn, so sánh được 2 lựa chọn, hẹn thời gian/địa điểm.",
+        katakana: [
+          { word: "カラオケ", note: "katakana cơ bản" },
+          { word: "コンサート", note: "trường âm ー" },
+          { word: "チケット", note: "âm ngắt nhỏ" },
+          { word: "ジャズ", note: "âm ngoại lai" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "Vませんか / Vましょう", use: "Rủ rê / cùng làm", example: "今晩、ご飯を食べに行きませんか。", vocabLink: "Cực kỳ quan trọng." },
+          { pattern: "N があります / Nで Nがあります", use: "Có lịch hẹn / sự kiện", example: "明日、約束があります。", vocabLink: "Gắn với 約束, 試合, コンサート." },
+          { pattern: "N が（〜枚）あります", use: "Có số lượng vật", example: "映画のチケットが二枚あります。", vocabLink: "Hay đi với lời rủ." },
+          { pattern: "Nで Nがいちばん Aです", use: "Cái gì nhất trong một nhóm", example: "スポーツで野球がいちばんおもしろいです。", vocabLink: "Hay ra sở thích." },
+          { pattern: "N1 は N2 より Aです", use: "So sánh hơn", example: "七月は八月より雨が多いです。", vocabLink: "Gắn với thời tiết / mùa." },
+          { pattern: "N1 と N2 と どちらが Aですか / N のほうが Aです", use: "So sánh 2 lựa chọn", example: "夏と冬とどちらが好きですか。", vocabLink: "Speaking trọng điểm." },
+          { pattern: "もう Vましたか。― はい、Vました / いいえ、まだです", use: "Hỏi đã làm chưa", example: "もう行きましたか。", vocabLink: "Phản xạ hội thoại." },
+          { pattern: "N はどうですか / 〜ね / 〜よ", use: "Gợi ý, xác nhận, nhấn thông tin", example: "おすしはどうですか。", vocabLink: "Câu tự nhiên hơn." }
+        ],
+        kanji: [
+          { word: "今週", reading: "こんしゅう", meaning: "tuần này" },
+          { word: "来年", reading: "らいねん", meaning: "năm sau" },
+          { word: "来月", reading: "らいげつ", meaning: "tháng sau" },
+          { word: "来週", reading: "らいしゅう", meaning: "tuần sau" },
+          { word: "読書", reading: "どくしょ", meaning: "đọc sách" },
+          { word: "辞書", reading: "じしょ", meaning: "từ điển" },
+          { word: "電話", reading: "でんわ", meaning: "điện thoại" },
+          { word: "今年", reading: "ことし", meaning: "năm nay" },
+          { word: "今日", reading: "きょう", meaning: "hôm nay" },
+          { word: "言語", reading: "げんご", meaning: "ngôn ngữ" },
+          { word: "言葉", reading: "ことば", meaning: "từ/ngôn ngữ" },
+          { word: "今月", reading: "こんげつ", meaning: "tháng này" },
+          { word: "帰国", reading: "きこく", meaning: "về nước" },
+          { word: "会社", reading: "かいしゃ", meaning: "công ty" },
+          { word: "新聞", reading: "しんぶん", meaning: "báo" },
+          { word: "会話", reading: "かいわ", meaning: "hội thoại" }
+        ],
+        reading: "来週、友だちとコンサートへ行きます。チケットが二枚あります。今月は忙しいですが、土曜日の夜は大丈夫です。映画館もいいですが、わたしはジャズのコンサートのほうが好きです。五時に駅で会いましょう。楽しみですね。",
+        speaking: [
+          { q: "今晩、一緒にご飯を食べに行きませんか。", a: "いいですね。行きましょう。/ すみません、今日はちょっと……。" },
+          { q: "夏と冬とどちらが好きですか。", a: "夏のほうが好きです。" },
+          { q: "もうその映画を見ましたか。", a: "はい、見ました。/ いいえ、まだです。" }
+        ]
+      },
+      {
+        id: 7,
+        title: "Bài 7 - 友達の家で",
+        vnTitle: "Chỉ đường, vị trí, nhờ vả, chuẩn bị tiệc, đang làm gì",
+        days: "Ngày 25-28",
+        objective: "Nói được vị trí đồ vật/người, xin chỉ đường, nhờ người khác làm gì, tự đề nghị giúp.",
+        katakana: [
+          { word: "アパート", note: "trường âm ー" },
+          { word: "ポスト", note: "katakana cơ bản" },
+          { word: "スプーン", note: "trường âm ー" },
+          { word: "ギター", note: "trường âm ー" }
+        ],
+        vocab: [],
+        grammar: [
+          { pattern: "N は 場所 に います / あります", use: "Nói người/vật ở đâu", example: "わたしは本屋にいます。", vocabLink: "Cực quan trọng cho vị trí." },
+          { pattern: "場所 に N が います / あります", use: "Nói ở đâu có ai/có gì", example: "銀行の前に本屋があります。", vocabLink: "Chỉ đường." },
+          { pattern: "Vてください", use: "Nhờ / hướng dẫn", example: "かばんを取ってください。", vocabLink: "Bài 7 phải phản xạ được." },
+          { pattern: "Vています", use: "Đang làm gì", example: "電話をかけています。", vocabLink: "Tả tranh speaking." },
+          { pattern: "Vましょうか", use: "Đề nghị giúp", example: "手伝いましょうか。", vocabLink: "Điểm cộng tự nhiên." },
+          { pattern: "（Nの）V方を教えてください", use: "Xin hướng dẫn cách làm", example: "料理の作り方を教えてください。", vocabLink: "Gắn với nấu ăn / làm việc." },
+          { pattern: "まだ / もう", use: "Còn chưa / đã rồi", example: "サラダはまだありますか。― いいえ、もうありません。", vocabLink: "Rất hay gặp." },
+          { pattern: "誰が / どのN / どれ / NでV", use: "Hỏi ai làm; chọn đồ; công cụ", example: "誰が作りましたか。塩はどれですか。", vocabLink: "Phủ rộng câu hỏi." }
+        ],
+        kanji: [
+          { word: "牛肉", reading: "ぎゅうにく", meaning: "thịt bò" },
+          { word: "一時半", reading: "いちじはん", meaning: "1 giờ rưỡi" },
+          { word: "大学", reading: "だいがく", meaning: "đại học" },
+          { word: "小学生", reading: "しょうがくせい", meaning: "học sinh tiểu học" },
+          { word: "大学生", reading: "だいがくせい", meaning: "sinh viên đại học" },
+          { word: "小学校", reading: "しょうがっこう", meaning: "trường tiểu học" },
+          { word: "大会", reading: "たいかい", meaning: "đại hội/giải đấu" },
+          { word: "大人", reading: "おとな", meaning: "người lớn" },
+          { word: "鶏肉", reading: "とりにく", meaning: "thịt gà" },
+          { word: "野菜", reading: "やさい", meaning: "rau" },
+          { word: "半年", reading: "はんとし / はんねん", meaning: "nửa năm" },
+          { word: "豚肉", reading: "ぶたにく", meaning: "thịt heo" },
+          { word: "半分", reading: "はんぶん", meaning: "một nửa" },
+          { word: "料金", reading: "りょうきん", meaning: "phí" },
+          { word: "料理", reading: "りょうり", meaning: "món ăn/nấu ăn" }
+        ],
+        reading: "きょう、友だちのアパートへ行きました。でも、道がわかりませんでした。駅で電話をかけて、『いま、交番の前にいます』と言いました。友だちは『そこからまっすぐ来てください。ポストの横にわたしがいます』と言いました。家でピザを食べて、ギターを聞きました。",
+        speaking: [
+          { q: "あなたは今どこにいますか。", a: "わたしは本屋の前にいます。" },
+          { q: "バス停はどこにありますか。", a: "コンビニの前にあります。" },
+          { q: "手伝いましょうか。", a: "はい、お願いします。/ ありがとうございます。" }
+        ]
+      }
+    ];
+
+    const VOCAB_FULL = {
+      1: [
+        ["私","tôi","わたし"],["（お）名前","tên","なまえ"],["（お）国","nước","くに"],["日本","Nhật Bản","にほん"],
+        ["アメリカ","Mỹ"],["イタリア","Ý"],["オーストラリア","Úc"],["韓国","Hàn Quốc","かんこく"],
+        ["タイ","Thái Lan"],["中国","Trung Quốc","ちゅうごく"],["ロシア","Nga"],["高校","trung học phổ thông","こうこう"],
+        ["大学","đại học","だいがく"],["日本語学校","trường tiếng Nhật","にほんごがっこう"],["（お）仕事","công việc","しごと"],
+        ["学生","học sinh / sinh viên","がくせい"],["先生","giáo viên","せんせい"],["教師","giáo viên","きょうし"],
+        ["会社員","nhân viên công ty","かいしゃいん"],["社員","nhân viên công ty","しゃいん"],["～さん","anh/chị ~"],
+        ["～人","người ~","じん"],["どちら","nào / ở đâu"],["はじめまして","rất hân hạnh gặp lần đầu"],
+        ["（どうぞ）よろしくお願いします","rất mong được giúp đỡ","よろしくおねがいします"],["こちらこそ","chính tôi cũng vậy"],
+        ["あのう","à... / ừm..."],["すみません","xin lỗi"],["そうですか","thế à"],["はい","vâng"],["いいえ","không"],
+        ["誕生日","sinh nhật","たんじょうび"],["ブラジル","Brazil"],["～月","tháng ~","がつ"],["～日","ngày ~","にち"],
+        ["～歳","~ tuổi","さい"],["いつ","khi nào"],["趣味","sở thích","しゅみ"],["スポーツ","thể thao"],["サッカー","bóng đá"],
+        ["テニス","quần vợt"],["水泳","bơi","すいえい"],["映画","điện ảnh / phim","えいが"],["音楽","âm nhạc","おんがく"],
+        ["読書","đọc sách","どくしょ"],["旅行","du lịch","りょこう"],["料理","nấu ăn","りょうり"],["何","gì / cái gì","なに・なん"],
+        ["あ（っ）","a / à"],["わあ","ôi"],["同じですね","giống nhau nhỉ","おなじですね"]
+      ],
+      2: [
+        ["おいしい","ngon"],["ここ／こちら","chỗ này"],["そこ／そちら","chỗ đấy"],["あそこ／あちら","chỗ kia"],["インフォメーション","thông tin"],
+        ["ＡＴＭ","máy rút tiền"],["エスカレーター","cầu thang cuốn"],["エレベーター","thang máy"],["喫煙所","chỗ hút thuốc","きつえんじょ"],["トイレ","toilet"],
+        ["レジ","quầy tính tiền"],["喫茶店","quán trà / cà phê","きっさてん"],["スーパー","siêu thị"],["100円ショップ","cửa hàng 100 yên","ひゃくえんショップ"],
+        ["レストラン","nhà hàng"],["地下","dưới lòng đất","ちか"],["カメラ","máy ảnh"],["携帯電話","điện thoại cầm tay","けいたいでんわ"],
+        ["電子辞書","từ điển điện tử","でんしじしょ"],["パソコン","máy vi tính"],["靴","giày","くつ"],["消しゴム","tẩy","けしゴム"],["ペン","bút"],
+        ["トイレットペーパー","giấy vệ sinh"],["本","sách","ほん"],["油","dầu","あぶら"],["ケーキ","bánh ngọt"],["米","gạo","こめ"],["卵","trứng","たまご"],
+        ["パン","bánh mì"],["水","nước","みず"],["店員","người bán hàng","てんいん"],["～階","tầng ~","かい"],["～屋","cửa hàng ~","や"],["どこ","ở đâu"],
+        ["いらっしゃいませ","xin chào quý khách"],["（どうも）ありがとうございます","xin cảm ơn"],["これ","cái này"],["それ","cái đó"],["あれ","cái kia"],
+        ["この","này"],["その","đó"],["あの","kia"],["かばん","túi / cặp"],["ズボン","quần"],["Ｔシャツ","áo phông"],["時計","đồng hồ","とけい"],
+        ["～円","~ yên","えん"],["いくら","bao nhiêu tiền"],["じゃ","thế thì"],["魚","cá","さかな"],["肉","thịt","にく"],["牛肉","thịt bò","ぎゅうにく"],
+        ["鶏肉","thịt gà","とりにく"],["豚肉","thịt lợn","ぶたにく"],["野菜","rau","やさい"],["イチゴ","dâu tây"],["リンゴ","táo"],["料理","món ăn","りょうり"],
+        ["カレー","cà ri"],["スープ","súp"],["とんかつ","thịt heo chiên xù"],["ハンバーグ","thịt băm rán"],["ご飯","cơm","ごはん"],["ライス","cơm / rice"],
+        ["ジュース","nước hoa quả"],["コーヒー","cà phê"],["紅茶","trà đen","こうちゃ"],["（お）茶","trà xanh","ちゃ"],["ビール","bia"],["ワイン","rượu vang"],
+        ["インド","Ấn Độ"],["ドイツ","Đức"],["フランス","Pháp"],["財布","ví","さいふ"],["英語","tiếng Anh","えいご"],["～語","tiếng ~","ご"],["～つ","~ cái"],
+        ["誰","ai","だれ"],["注文をお願いします","cho tôi gọi món","ちゅうもんをおねがいします"],["どうぞ","xin mời"],["こちらへどうぞ","xin mời đến đây"],
+        ["メニュー","thực đơn"],["少々お待ちください","xin đợi một chút","しょうしょうおまちください"]
+      ],
+      3: [
+        ["週末","cuối tuần","しゅうまつ"],["今","bây giờ","いま"],["午前","buổi sáng","ごぜん"],["午後","buổi chiều","ごご"],["昼","buổi trưa","ひる"],
+        ["銀行","ngân hàng","ぎんこう"],["体育館","nhà thi đấu","たいいくかん"],["図書館","thư viện","としょかん"],["病院","bệnh viện","びょういん"],["郵便局","bưu điện","ゆうびんきょく"],
+        ["授業","giờ học","じゅぎょう"],["テスト","bài kiểm tra"],["休み","giờ nghỉ / nghỉ","やすみ"],["時間","thời gian","じかん"],["～時","~ giờ","じ"],
+        ["～分","~ phút","ふん・ぷん"],["～時半","~ giờ rưỡi","じはん"],["～曜日","thứ ~","ようび"],["スケジュール","lịch trình"],["アルバイト","việc làm thêm"],
+        ["スキー","trượt tuyết"],["パーティー","bữa tiệc"],["バーベキュー","tiệc thịt nướng"],["花火","pháo hoa","はなび"],["（お）花見","ngắm hoa","はなみ"],
+        ["ホームステイ","ở homestay"],["（お）祭り","lễ hội","まつり"],["海","biển","うみ"],["公園","công viên","こうえん"],["桜","hoa anh đào","さくら"],
+        ["（お）酒","rượu","さけ"],["（お）すし","sushi"],["バス","xe buýt"],["（お）弁当","cơm hộp","べんとう"],["留学生","lưu học sinh","りゅうがくせい"],
+        ["１年","năm thứ nhất","いちねん"],["春","mùa xuân","はる"],["夏","mùa hè","なつ"],["秋","mùa thu","あき"],["冬","mùa đông","ふゆ"],
+        ["ゴールデンウィーク","Tuần lễ vàng"],["何","gì","なに・なん"],["行きます","đi","いきます"],["帰ります","về","かえります"],["飲みます","uống","のみます"],
+        ["食べます","ăn","たべます"],["見ます","xem","みます"],["します","làm"],["いいですね","hay nhỉ / thích nhỉ"],["聞きます","nghe / hỏi","ききます"],
+        ["働きます","làm việc","はたらきます"],["読みます","đọc","よみます"],["起きます","thức dậy","おきます"],["寝ます","ngủ","ねます"],
+        ["勉強します","học","べんきょうします"],["来ます","đến","きます"]
+      ],
+      4: [
+        ["チョコレート","sô-cô-la"],["美術館","bảo tàng mỹ thuật","びじゅつかん"],["皆さん","các bạn / quý vị","みなさん"],["いろいろ（な）","nhiều / đa dạng"],
+        ["～から来ました","đến từ ~","からきました"],["ぜひ来てください","rất mong anh/chị đến","ぜひきてください"],["北","bắc","きた"],["南","nam","みなみ"],["東","đông","ひがし"],
+        ["西","tây","にし"],["真ん中","giữa","まんなか"],["車","xe ô tô","くるま"],["新幹線","tàu cao tốc","しんかんせん"],["電車","tàu điện","でんしゃ"],
+        ["飛行機","máy bay","ひこうき"],["駅","nhà ga","えき"],["町","thành phố / khu phố","まち"],["～時間","~ tiếng","じかん"],["～時間半","~ tiếng rưỡi","じかんはん"],
+        ["～分","~ phút","ふん・ぷん"],["歩いて","đi bộ","あるいて"],["～くらい","khoảng ~"],["どのくらい","khoảng bao nhiêu"],["温泉","suối nước nóng","おんせん"],
+        ["川","sông","かわ"],["山","núi","やま"],["教会","nhà thờ","きょうかい"],["（お）城","lâu đài","しろ"],["神社","đền thần đạo","じんじゃ"],["（お）寺","chùa","てら"],
+        ["ビル","tòa nhà"],["ところ","chỗ / nơi"],["人","người","ひと"],["緑","màu xanh lá","みどり"],["あります","có"],["新しい","mới","あたらしい"],["古い","cũ","ふるい"],
+        ["いい","tốt / được"],["（～が）多い","nhiều","おおい"],["（～が）少ない","ít","すくない"],["大きい","to","おおきい"],["小さい","nhỏ","ちいさい"],["高い","cao","たかい"],
+        ["低い","thấp","ひくい"],["きれい（な）","đẹp / sạch"],["静か（な）","yên tĩnh","しずか"],["にぎやか（な）","nhộn nhịp"],["有名（な）","nổi tiếng","ゆうめい"],["どんな","như thế nào"],
+        ["そして","và"],["雨","mưa","あめ"],["雪","tuyết","ゆき"],["日","ngày","ひ"],["メロン","dưa lưới"],["暖かい","ấm","あたたかい"],["涼しい","mát","すずしい"],["暑い","nóng","あつい"],
+        ["寒い","lạnh","さむい"],["天気がいい","trời đẹp","てんきがいい"],["天気が悪い","trời xấu","てんきがわるい"],["温かい","ấm","あたたかい"],["熱い","nóng","あつい"],["冷たい","lạnh","つめたい"],
+        ["おいしい","ngon"],["甘い","ngọt","あまい"],["辛い","cay","からい"],["苦い","đắng","にがい"],["すっぱい","chua"],["一年中","quanh năm","いちねんじゅう"],["あまり","không ~ lắm"],
+        ["少し","ít / hơi","すこし"],["とても","rất"],["どう","thế nào"],["そうですね","đúng thế / ừ nhỉ"],["たくさん","nhiều"]
+      ],
+      5: [
+        ["近く","gần","ちかく"],["１日","một ngày","いちにち"],["また","lại"],["今日","hôm nay","きょう"],["明日","ngày mai","あした"],["あさって","ngày kia"],
+        ["昨日","hôm qua","きのう"],["おととい","hôm kia"],["先週","tuần trước","せんしゅう"],["週末","cuối tuần","しゅうまつ"],["家","nhà","いえ"],["部屋","phòng","へや"],
+        ["デパート","bách hóa"],["美術館","bảo tàng mỹ thuật","びじゅつかん"],["ゲーム","trò chơi"],["家族","gia đình","かぞく"],["恋人","người yêu","こいびと"],["友達","bạn","ともだち"],
+        ["ルームメイト","bạn cùng phòng"],["どこか（へ）","đi đâu đó"],["会います","gặp","あいます"],["作ります","làm","つくります"],["買い物します","mua sắm","かいものします"],
+        ["食事します","ăn / dùng bữa","しょくじします"],["洗濯します","giặt","せんたくします"],["掃除します","dọn vệ sinh","そうじします"],["それから","sau đó"],["１人で","một mình","ひとりで"],
+        ["先月","tháng trước","せんげつ"],["去年","năm ngoái","きょねん"],["風邪","cảm cúm","かぜ"],["天気","thời tiết","てんき"],["晩ご飯","cơm tối","ばんごはん"],["服","quần áo","ふく"],
+        ["登ります","leo","のぼります"],["入ります","vào","はいります"],["忙しい","bận","いそがしい"],["おもしろい","thú vị"],["気持ちがいい","dễ chịu","きもちがいい"],["高い","đắt","たかい"],
+        ["安い","rẻ","やすい"],["楽しい","vui","たのしい"],["難しい","khó","むずかしい"],["簡単（な）","đơn giản","かんたん"],["大変（な）","vất vả","たいへん"],["暇（な）","nhàn rỗi","ひま"],
+        ["どうして","tại sao"],["今度","lần tới","こんど"],["今晩","tối nay","こんばん"],["今年","năm nay","ことし"],["来年","sang năm","らいねん"],["アニメ","anime"],["絵","bức tranh","え"],
+        ["景色","phong cảnh","けしき"],["自転車","xe đạp","じてんしゃ"],["写真","bức ảnh","しゃしん"],["撮ります","chụp","とります"],["借ります","mượn","かります"],["ほしい","muốn có"],
+        ["好き（な）","thích","すき"],["嫌い（な）","ghét","きらい"],["寮","ký túc xá","りょう"],["いろいろ（な）","nhiều / đa dạng"],["それはよかったですね","thế thì tốt nhỉ"]
+      ],
+      6: [
+        ["ソース","nước sốt"],["ピザ","pizza"],["皆さん","các bạn / quý vị","みなさん"],["今週","tuần này","こんしゅう"],["来週","tuần sau","らいしゅう"],["今月","tháng này","こんげつ"],
+        ["来月","tháng sau","らいげつ"],["カラオケ","karaoke"],["コンサート","buổi hòa nhạc"],["試合","trận đấu","しあい"],["セール","đợt giảm giá"],["チケット","vé"],["地図","bản đồ","ちず"],
+        ["ドライブ","lái ô tô đi chơi"],["水着","đồ bơi","みずぎ"],["野球","bóng chày","やきゅう"],["約束","lời hẹn","やくそく"],["用事","công chuyện","ようじ"],["映画館","rạp chiếu phim","えいがかん"],
+        ["地下鉄","tàu điện ngầm","ちかてつ"],["歌手","ca sĩ","かしゅ"],["季節","mùa","きせつ"],["コメディー","hài / comedy"],["ジャズ","nhạc jazz"],["ツアー","tour"],["どちら","bên nào / cái nào"],
+        ["どちらも","bên nào cũng được"],["近い","gần","ちかい"],["遠い","xa","とおい"],["早い","sớm / nhanh","はやい"],["広い","rộng","ひろい"],["いちばん","nhất"],["全部","toàn bộ","ぜんぶ"],
+        ["そうですねえ","ờm, đúng nhỉ"],["お好み焼き","okonomiyaki","おこのみやき"],["すき焼き","sukiyaki","すきやき"],["遊びます","chơi","あそびます"],["ぜひ","nhất định"],["まだ","chưa"],["もう","đã / rồi"],
+        ["そうしましょう","chúng ta làm thế nhé"],["わかりました","hiểu rồi"],["（お）店","cửa hàng","みせ"],["楽しみです","tôi mong đợi điều đó","たのしみです"],["よかった","tốt / may quá"]
+      ],
+      7: [
+        ["アパート","chung cư"],["改札","cổng soát vé","かいさつ"],["木","cây","き"],["交番","đồn cảnh sát","こうばん"],["自動販売機","máy bán hàng tự động","じどうはんばいき"],["バス停","điểm dừng xe buýt","バスてい"],
+        ["ポスト","hòm thư"],["花","hoa","はな"],["犬","chó","いぬ"],["間","ở giữa","あいだ"],["上","trên","うえ"],["下","dưới","した"],["近く","gần","ちかく"],["隣","bên cạnh","となり"],
+        ["中","trong","なか"],["外","ngoài","そと"],["前","trước","まえ"],["後ろ","sau","うしろ"],["横","bên cạnh","よこ"],["迎えに行きます","đi đón","むかえにいきます"],["います","ở / có (người, động vật)"],
+        ["もしもし","alo"],["いす","ghế"],["テーブル","bàn"],["電子レンジ","lò vi sóng","でんしレンジ"],["冷蔵庫","tủ lạnh","れいぞうこ"],["砂糖","đường","さとう"],["塩","muối","しお"],
+        ["しょうゆ","nước tương"],["コップ","cốc"],["（お）皿","đĩa","さら"],["スプーン","thìa"],["ナイフ","dao"],["フォーク","nĩa"],["はし","đũa"],["漢字","chữ Hán","かんじ"],
+        ["どれ","cái nào"],["どの","nào"],["洗います","rửa","あらいます"],["置きます","đặt / để","おきます"],["書きます","viết","かきます"],["貸します","cho mượn","かします"],["聞きます","hỏi / nghe","ききます"],
+        ["切ります","cắt","きります"],["使います","dùng","つかいます"],["手伝います","giúp","てつだいます"],["取ります","lấy","とります"],["持って行きます","mang đi","もっていきます"],["わかります","hiểu"],
+        ["出します","lấy ra","だします"],["入れます","cho vào","いれます"],["教えます","dạy / chỉ","おしえます"],["たくさん","nhiều"],["すみませんが","xin lỗi nhưng..."],["ああ","à / a"],["いいですよ","được chứ"],
+        ["歌","bài hát","うた"],["ギター","đàn guitar"],["台所","bếp","だいどころ"],["たばこ","thuốc lá"],["電話","điện thoại","でんわ"],["ピザ","pizza"],["窓","cửa sổ","まど"],
+        ["歌います","hát","うたいます"],["吸います","hút","すいます"],["話します","nói","はなします"],["弾きます","chơi đàn","ひきます"],["持ちます","cầm","もちます"],["開けます","mở","あけます"],
+        ["閉めます","đóng","しめます"],["かけます","gọi điện"],["持って来ます","mang đến","もってきます"],["お願いします","làm ơn / nhờ anh chị"]
+      ]
+    };
+
+    function applyFullVocabPatch() {
+      Object.entries(VOCAB_FULL).forEach(([lessonId, rows]) => {
+        const lesson = LESSONS.find(l => l.id === Number(lessonId));
+        if (!lesson) return;
+        lesson.vocab = rows.map(([jp, vi, reading = "", ex = ""]) => ({ jp, vi, reading, ex }));
+      });
+    }
+    applyFullVocabPatch();
+
+    const GRAMMAR_BANK = {
+      1: [
+        ["わたし___学生です。", ["は","を","で","に"], 0, "Chủ đề dùng は."],
+        ["ミンさん___ベトナム人ですか。", ["は","を","で","に"], 0, "Câu hỏi xác nhận dùng は."],
+        ["お名前___何ですか。", ["は","が","を","に"], 0, "Hỏi tên dùng は."],
+        ["わたし___誕生日は五月四日です。", ["の","は","を","と"], 0, "Sở hữu dùng の."],
+        ["趣味は音楽___旅行です。", ["も","と","の","が"], 1, "Liệt kê danh từ dùng と."],
+        ["田中さんは日本人です。わたし___日本人です。", ["は","が","も","の"], 2, "Cũng dùng も."],
+        ["お国は___ですか。", ["いつ","だれ","どちら","なに"], 2, "Hỏi nước dùng どちら."],
+        ["誕生日は___ですか。", ["なに","いつ","どこ","どう"], 1, "Hỏi sinh nhật dùng いつ."],
+        ["趣味は___ですか。", ["なに","だれ","どこ","どちら"], 0, "Hỏi sở thích dùng 何."],
+        ["あの人___先生です。", ["は","を","に","で"], 0, "Chủ đề dùng は."],
+        ["わたしは大学生___。", ["です","ます","でした","ません"], 0, "Khẳng định cơ bản dùng です."],
+        ["わたし___名前はミンです。", ["の","は","が","を"], 0, "わたしの名前."],
+        ["兄は大学生___。", ["です","ます","ですか","でしたか"], 0, "Khẳng định dùng です."],
+        ["わたしの趣味___料理です。", ["を","が","も","へ"], 2, "Danh từ trước も."],
+        ["はじめまして。どうぞよろしくお___します。", ["名前","国","願い","学生"], 2, "Cụm cố định là お願いします."]
+      ],
+      2: [
+        ["___は三千円です。", ["これ","どこ","だれ","なに"], 0, "Chỉ đồ vật gần người nói dùng これ."],
+        ["___Tシャツはいくらですか。", ["この","その","あの","どの"], 0, "Đồ gần người nói dùng この + N."],
+        ["トイレは___ですか。", ["いくら","どこ","だれ","なんの"], 1, "Hỏi chỗ dùng どこ."],
+        ["カレーを一つ___。", ["ください","です","ます","でした"], 0, "Gọi món dùng ください."],
+        ["これは___カレーですか。", ["どこ","だれ","なんの","いくら"], 2, "Hỏi loại dùng 何の."],
+        ["これは___の財布ですか。", ["どこ","だれ","なん","いつ"], 1, "Hỏi chủ sở hữu dùng 誰の."],
+        ["これは___ビールですか。", ["だれの","どこの","いつの","なんの"], 1, "Hỏi xuất xứ dùng どこの."],
+        ["レジは___です。", ["あちら","いくら","それ","なに"], 0, "Chỉ hướng lịch sự dùng あちら."],
+        ["そのかばん___三千円です。", ["は","を","で","に"], 0, "Chủ đề dùng は."],
+        ["メニューを___。", ["お願いします","どこですか","あります","いきます"], 0, "Xin thực đơn."],
+        ["これは___ですか。", ["どこ","だれ","いくら","なんの"], 2, "Hỏi giá dùng いくら."],
+        ["スーパーは___です。", ["そこ","だれ","なに","いくら"], 0, "Chỉ vị trí dùng そこ."],
+        ["あの時計___ください。", ["を","に","で","が"], 0, "N をください."],
+        ["それ___何ですか。", ["が","を","は","で"], 2, "Câu hỏi mẫu."],
+        ["魚の料理___一つください。", ["を","に","が","へ"], 0, "Tân ngữ trực tiếp dùng を."]
+      ],
+      3: [
+        ["六時___起きます。", ["へ","を","に","で"], 2, "Mốc thời gian dùng に."],
+        ["図書館___行きます。", ["へ","を","に","が"], 0, "Đi đến đâu dùng へ."],
+        ["日本語___勉強します。", ["へ","を","に","で"], 1, "Tân ngữ trực tiếp dùng を."],
+        ["北海道___スキーをします。", ["が","へ","で","を"], 2, "Nơi diễn ra hành động dùng で."],
+        ["九時___五時までです。", ["から","を","で","に"], 0, "Từ...đến... dùng から ... まで."],
+        ["郵便局は五時___です。", ["へ","まで","に","から"], 1, "Kết thúc mốc dùng まで."],
+        ["朝ご飯___食べます。", ["を","へ","で","に"], 0, "Tân ngữ dùng を."],
+        ["日曜日___公園へ行きます。", ["へ","に","を","で"], 1, "Ngày/giờ thường dùng に."],
+        ["学校___勉強します。", ["で","を","へ","が"], 0, "Nơi làm hành động dùng で."],
+        ["毎日、十一時に___。", ["寝ます","ください","います","どこ"], 0, "Mẫu sinh hoạt hằng ngày."],
+        ["八時___授業があります。", ["まで","から","を","で"], 1, "Bắt đầu dùng から."],
+        ["公園で写真___撮ります。", ["が","に","を","へ"], 2, "Tân ngữ dùng を."],
+        ["朝、パン___サラダなどを食べます。", ["と","や","も","の"], 1, "Liệt kê mở dùng や."],
+        ["バス___学校へ行きます。", ["を","に","で","が"], 2, "Phương tiện dùng で."],
+        ["午前九時___授業です。", ["まで","から","へ","が"], 1, "Bắt đầu từ 9 giờ dùng から."]
+      ],
+      4: [
+        ["わたしの町は___です。", ["きれい","きれいな","きれいで","きれいに"], 0, "ナA trước です không cần な."],
+        ["にぎやか___ところです。", ["の","な","に","で"], 1, "ナA + な + N."],
+        ["町___川があります。", ["へ","を","に","で"], 2, "Nơi tồn tại dùng に."],
+        ["沖縄は日本___南です。", ["と","の","で","に"], 1, "Vị trí tương đối dùng Nの南."],
+        ["ハノイから駅まで___ですか。", ["どこ","どのくらい","いくら","なに"], 1, "Hỏi khoảng cách/thời gian."],
+        ["飛行機___二時間くらいです。", ["に","で","を","が"], 1, "Phương tiện dùng で."],
+        ["この町はきれいです。___、にぎやかです。", ["でも","そして","から","まで"], 1, "Nối ý thêm dùng そして."],
+        ["この町は大きくない___、いいところです。", ["と","が","に","を"], 1, "Đối lập nhẹ dùng が."],
+        ["町に温泉___あります。", ["が","を","に","で"], 0, "Sự vật tồn tại dùng が + あります."],
+        ["富士山は___です。", ["高い","高く","高くない","高くて"], 0, "Tính từ đuôi い."],
+        ["静か___町です。", ["な","の","に","が"], 0, "ナA + な + N."],
+        ["きれい___川があります。", ["に","な","の","と"], 1, "きれいな川."],
+        ["わたしの国は日本___南です。", ["に","を","の","で"], 2, "Nの南."],
+        ["駅まで十分___です。", ["ぐらい","だけ","しか","など"], 0, "Khoảng chừng."],
+        ["アユタヤは___ところですか。", ["どこ","どんな","だれの","どうして"], 1, "Hỏi nơi chốn."]
+      ],
+      5: [
+        ["きのう、勉強___。", ["します","しました","したいです","です"], 1, "Quá khứ động từ dùng ました."],
+        ["おととい、公園へ___。", ["行きました","行きます","行きたい","行くです"], 0, "Quá khứ đi đâu."],
+        ["旅行はとても___です。", ["楽しい","楽しかった","楽しく","楽し"], 1, "Quá khứ tính từ い."],
+        ["テストは簡単___。", ["です","でした","なです","いです"], 1, "Quá khứ ナA."],
+        ["日本のアニメ___好きです。", ["を","に","が","へ"], 2, "好き đi với が."],
+        ["新しいパソコン___ほしいです。", ["を","で","が","へ"], 2, "ほしい đi với が."],
+        ["コーヒーを飲み___です。", ["たい","ます","です","ません"], 0, "Muốn làm gì dùng Vたい."],
+        ["渋谷へ買い物___行きます。", ["で","を","に","が"], 2, "Đi đâu để làm gì."],
+        ["きのう、___行きましたか。", ["どこかへ","どこを","どこで","どこにです"], 0, "Có đi đâu không."],
+        ["いいえ、どこへ___行きませんでした。", ["が","も","を","に"], 1, "Phủ định toàn phần."],
+        ["忙しかったです___、朝ご飯を食べませんでした。", ["から","そして","でも","まで"], 0, "Nêu lý do dùng から."],
+        ["映画を見ました。___、食事をしました。", ["まだ","それから","どうして","ぜひ"], 1, "Nối việc tiếp theo."],
+        ["友だち___遊びました。", ["へ","を","と","に"], 2, "Chơi với ai dùng と."],
+        ["雨___嫌いです。", ["が","を","に","で"], 0, "嫌い đi với が."],
+        ["旅行はおもしろ___です。", ["い","かった","く","な"], 1, "Quá khứ おもしろい."]
+      ],
+      6: [
+        ["一緒にご飯を食べに行き___か。", ["ます","ません","でした","たいです"], 1, "Rủ rê dùng Vませんか."],
+        ["いいですね。行き___。", ["ましょう","ません","ました","たいです"], 0, "Cùng làm dùng ましょう."],
+        ["明日、約束___あります。", ["を","に","が","へ"], 2, "Có lịch hẹn."],
+        ["チケットが二枚___。", ["います","あります","ですか","ください"], 1, "Vật vô tri dùng あります."],
+        ["スポーツで野球がいちばん___です。", ["おもしろい","おもしろかった","おもしろく","おもしろ"], 0, "So sánh nhất."],
+        ["夏は冬___暑いです。", ["のほうが","より","まで","しか"], 1, "So sánh hơn."],
+        ["夏と冬と___が好きですか。", ["どこ","どちら","だれ","なに"], 1, "So sánh 2 lựa chọn."],
+        ["夏___ほうが好きです。", ["の","に","を","で"], 0, "Nのほうが."],
+        ["もう見___か。", ["ました","ます","たい","ません"], 0, "Đã làm chưa."],
+        ["いいえ、まだ___。", ["あります","です","いました","ください"], 1, "Trả lời ngắn."],
+        ["五時___駅で会いましょう。", ["を","に","で","へ"], 1, "Mốc giờ dùng に."],
+        ["おすし___どうですか。", ["が","を","は","に"], 2, "Gợi ý dùng Nはどうですか."],
+        ["この映画はおもしろい___。", ["ね","よ","か","を"], 1, "Nhấn thông tin dùng よ."],
+        ["五時です___。", ["か","ね","を","まで"], 1, "Xác nhận nhẹ."],
+        ["横浜___試合があります。", ["に","へ","で","を"], 2, "Sự kiện diễn ra ở đâu dùng で."]
+      ],
+      7: [
+        ["わたしは本屋___います。", ["に","を","へ","で"], 0, "Người ở đâu dùng にいます."],
+        ["バス停はコンビニの前___あります。", ["に","を","へ","で"], 0, "Vật ở đâu dùng にあります."],
+        ["あそこ___パクさんがいます。", ["を","に","で","へ"], 1, "Ở đó có người dùng にいます."],
+        ["かばんを取っ___ください。", ["て","た","ます","ない"], 0, "Nhờ làm gì dùng Vてください."],
+        ["パクさんは電話をかけ___います。", ["て","た","に","を"], 0, "Đang làm gì dùng Vています."],
+        ["手伝い___しょうか。", ["ま","て","に","が"], 0, "Đề nghị giúp dùng ましょうか."],
+        ["作り方___教えてください。", ["を","が","に","へ"], 0, "Xin chỉ cách làm."],
+        ["サラダはまだ___か。", ["あります","います","ですか","しました"], 0, "Vật còn không."],
+        ["いいえ、もう___。", ["あります","です","ありません","いました"], 2, "Đã hết."],
+        ["___が作りましたか。", ["何","誰","どれ","どの"], 1, "Hỏi ai dùng 誰が."],
+        ["塩は___ですか。", ["どれ","だれ","どこ","なんの"], 0, "Chọn cái nào."],
+        ["はし___ご飯を食べます。", ["へ","を","で","が"], 2, "Công cụ dùng で."],
+        ["窓を開け___ください。", ["て","た","に","を"], 0, "Yêu cầu lịch sự."],
+        ["友だち___電話をかけます。", ["に","へ","で","を"], 0, "Gọi cho ai dùng に."],
+        ["冷蔵庫___ジュースを出します。", ["まで","へ","から","を"], 2, "Lấy ra từ đâu dùng から."]
+      ]
+    };
+
+    const ROADMAP = [
+      { day: 1, title: "Khởi động + Bài 1 phần 1", tasks: ["Ôn hiragana/katakana 20 phút.", "Bài 1: từ vựng nhóm tên, quốc tịch, nghề nghiệp.", "Làm quiz từ vựng bài 1.", "Đọc to 10 câu tự giới thiệu."] },
+      { day: 2, title: "Bài 1 phần 2", tasks: ["Ngữ pháp bài 1: は/です/ですか/の.", "Ghép 20 câu tên + quốc tịch + nghề nghiệp.", "Làm grammar quiz bài 1.", "Shadowing passage 5 phút."] },
+      { day: 3, title: "Bài 1 phần 3", tasks: ["Kanji bài 1.", "Làm kanji quiz.", "Nói 1 phút tự giới thiệu."] },
+      { day: 4, title: "Củng cố bài 1", tasks: ["Làm lại quiz bài 1.", "Thu âm speaking bài 1.", "Ôn vocab yếu."] },
+
+      { day: 5, title: "Bài 2 phần 1", tasks: ["Từ vựng chỉ chỗ và đồ vật.", "Quiz từ vựng bài 2.", "Luyện hỏi vị trí."] },
+      { day: 6, title: "Bài 2 phần 2", tasks: ["Ngữ pháp bài 2.", "Tạo 15 câu hỏi giá và vị trí.", "Grammar quiz bài 2."] },
+      { day: 7, title: "Bài 2 phần 3", tasks: ["Kanji bài 2.", "Kanji quiz bài 2.", "Roleplay gọi món."] },
+      { day: 8, title: "Củng cố bài 2", tasks: ["Đọc passage bài 2.", "Ôn bài 1-2."] },
+
+      { day: 9, title: "Bài 3 phần 1", tasks: ["Từ vựng giờ giấc, địa điểm.", "Quiz từ vựng bài 3.", "Luyện đọc giờ."] },
+      { day: 10, title: "Bài 3 phần 2", tasks: ["Ngữ pháp bài 3.", "Viết lịch 1 ngày của bạn.", "Grammar quiz bài 3."] },
+      { day: 11, title: "Bài 3 phần 3", tasks: ["Kanji bài 3.", "Kanji quiz.", "Nói daily routine 45 giây."] },
+      { day: 12, title: "Củng cố bài 3", tasks: ["Đọc passage bài 3.", "Q&A bài 3.", "Ôn bài 1-3."] },
+
+      { day: 13, title: "Bài 4 phần 1", tasks: ["Từ vựng quốc gia/thành phố/phương tiện.", "Quiz từ vựng bài 4.", "Luyện khoảng cách."] },
+      { day: 14, title: "Bài 4 phần 2", tasks: ["Ngữ pháp bài 4.", "Grammar quiz bài 4.", "Tả quê hương 6 câu."] },
+      { day: 15, title: "Bài 4 phần 3", tasks: ["Kanji bài 4.", "Kanji quiz.", "Thu âm 1 phút giới thiệu thành phố."] },
+      { day: 16, title: "Củng cố bài 4", tasks: ["Đọc passage bài 4.", "Speaking set bài 4.", "Ôn bài 1-4."] },
+
+      { day: 17, title: "Bài 5 phần 1", tasks: ["Từ vựng ngày nghỉ, cảm xúc.", "Quiz từ vựng bài 5.", "Luyện kể cuối tuần."] },
+      { day: 18, title: "Bài 5 phần 2", tasks: ["Ngữ pháp bài 5.", "Grammar quiz bài 5.", "Viết 10 câu về hôm qua."] },
+      { day: 19, title: "Bài 5 phần 3", tasks: ["Kanji bài 5.", "Kanji quiz.", "Nói 45 giây về cuối tuần trước."] },
+      { day: 20, title: "Củng cố bài 5", tasks: ["Đọc passage bài 5.", "Q&A bài 5.", "Ôn bài 1-5."] },
+
+      { day: 21, title: "Bài 6 phần 1", tasks: ["Từ vựng rủ rê, sự kiện, so sánh.", "Quiz từ vựng bài 6.", "Luyện câu mời + nhận lời + từ chối."] },
+      { day: 22, title: "Bài 6 phần 2", tasks: ["Ngữ pháp bài 6.", "Grammar quiz bài 6.", "Tự hỏi đáp 2 lựa chọn."] },
+      { day: 23, title: "Bài 6 phần 3", tasks: ["Kanji bài 6.", "Kanji quiz.", "Nói 1 phút về mùa bạn thích."] },
+      { day: 24, title: "Củng cố bài 6", tasks: ["Đọc passage bài 6.", "Roleplay hẹn bạn đi chơi.", "Ôn bài 1-6."] },
+
+      { day: 25, title: "Bài 7 phần 1", tasks: ["Từ vựng vị trí, đồ dùng.", "Quiz từ vựng bài 7.", "Luyện chỉ đường 10 câu."] },
+      { day: 26, title: "Bài 7 phần 2", tasks: ["Ngữ pháp bài 7.", "Grammar quiz bài 7.", "Mô tả tranh đang làm gì."] },
+      { day: 27, title: "Bài 7 phần 3", tasks: ["Kanji bài 7.", "Kanji quiz.", "Roleplay chuẩn bị party."] },
+      { day: 28, title: "Củng cố bài 7", tasks: ["Đọc passage bài 7.", "Q&A bài 7.", "Ôn full 7 bài."] },
+
+      { day: 29, title: "Mock day 1", tasks: ["Làm mock test.", "Qua speaking hub 10 phút.", "Ghi lại lỗi sai vocab/grammar/kanji."] },
+      { day: 30, title: "Mock day 2 + chốt thi", tasks: ["Làm mock test lần 2.", "Thu âm speaking trọng điểm.", "Ôn nhanh toàn bộ kanji lỗi."] }
+    ];
+
+    const SPEAKING_BANK = [
+      {
+        title: "Set speaking bài 4",
+        prompts: [
+          { q: "～から～までどのくらいですか。", a: "ハノイからホーチミンまで飛行機で二時間くらいです。" },
+          { q: "～はどんなところですか。", a: "きれいで、にぎやかなところです。" },
+          { q: "あなたの町に何がありますか。", a: "きれいな川や大きい公園があります。" }
+        ]
+      },
+      {
+        title: "Set speaking bài 5",
+        prompts: [
+          { q: "きのう、どこかへ行きましたか。", a: "はい、友だちと公園へ行きました。" },
+          { q: "休みはどうでしたか。", a: "とても楽しかったです。" },
+          { q: "何がほしいですか。", a: "新しいパソコンがほしいです。" }
+        ]
+      },
+      {
+        title: "Set speaking bài 6",
+        prompts: [
+          { q: "今晩、一緒にご飯を食べに行きませんか。", a: "いいですね。行きましょう。" },
+          { q: "夏と冬とどちらが好きですか。", a: "夏のほうが好きです。" },
+          { q: "もうその映画を見ましたか。", a: "いいえ、まだです。" }
+        ]
+      },
+      {
+        title: "Set speaking bài 7",
+        prompts: [
+          { q: "今どこにいますか。", a: "わたしは本屋の前にいます。" },
+          { q: "バス停はどこにありますか。", a: "コンビニの前にあります。" },
+          { q: "手伝いましょうか。", a: "はい、お願いします。" }
+        ]
+      }
+    ];
+
+    function loadState(){
+      try{
+        const raw = localStorage.getItem("jpd123_local_full");
+        return raw ? JSON.parse(raw) : { doneLessons: [], scores: {}, roadmapCheck: {} };
+      }catch(e){
+        return { doneLessons: [], scores: {}, roadmapCheck: {} };
+      }
+    }
+    const state = loadState();
+
+    function saveState(){
+      localStorage.setItem("jpd123_local_full", JSON.stringify(state));
+      renderProgress();
+    }
+
+    function shuffle(arr){
+      const a = [...arr];
+      for(let i=a.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [a[i],a[j]]=[a[j],a[i]];
+      }
+      return a;
+    }
+    function sample(arr,n){ return shuffle(arr).slice(0, Math.min(n, arr.length)); }
+
+    function uniqueChoices(correct, pool, count = 4) {
+      const filtered = [...new Set(pool.filter(x => x && x !== correct))];
+      return shuffle([correct, ...sample(filtered, count - 1)]);
+    }
+
+    function getVocabQuizCount(vocabLength) {
+      return Math.min(30, Math.max(20, Math.ceil(vocabLength * 0.45)));
+    }
+
+    function makeVocabQuestions(lesson) {
+      const vocab = lesson.vocab.filter(v => v.jp && v.vi);
+      const count = getVocabQuizCount(vocab.length);
+      const meaningPool = vocab.map(v => v.vi).filter(Boolean);
+      const jpPool = vocab.map(v => v.jp).filter(Boolean);
+      const readingPool = vocab.map(v => v.reading).filter(Boolean);
+      const questions = [];
+      const shuffled = shuffle(vocab);
+
+      for (let i = 0; i < count; i++) {
+        const item = shuffled[i % shuffled.length];
+        const type = i % 4;
+
+        if (type === 0) {
+          const choices = uniqueChoices(item.vi, meaningPool, 4);
+          questions.push({
+            q: `Nghĩa của từ "${item.jp}" là gì?`,
+            choices,
+            answer: choices.indexOf(item.vi),
+            explain: item.reading ? `Cách đọc: ${item.reading}` : ""
+          });
+          continue;
+        }
+        if (type === 1) {
+          const choices = uniqueChoices(item.jp, jpPool, 4);
+          questions.push({
+            q: `Từ tiếng Nhật nào có nghĩa "${item.vi}"?`,
+            choices,
+            answer: choices.indexOf(item.jp),
+            explain: item.reading ? `Cách đọc: ${item.reading}` : ""
+          });
+          continue;
+        }
+        if (type === 2 && item.reading) {
+          const choices = uniqueChoices(item.reading, readingPool, 4);
+          questions.push({
+            q: `Cách đọc của "${item.jp}" là gì?`,
+            choices,
+            answer: choices.indexOf(item.reading),
+            explain: `Nghĩa: ${item.vi}`
+          });
+          continue;
+        }
+        const choices = uniqueChoices(item.vi, meaningPool.filter(x => x !== item.vi), 4);
+        questions.push({
+          q: `Chọn nghĩa đúng nhất cho "${item.jp}"`,
+          choices,
+          answer: choices.indexOf(item.vi),
+          explain: item.reading ? `Cách đọc: ${item.reading}` : ""
+        });
+      }
+      return shuffle(questions);
+    }
+
+    function makeKanjiQuestions(lesson) {
+      const pool = lesson.kanji || [];
+      const selected = sample(pool, Math.min(10, pool.length));
+      return selected.map(k => {
+        const choices = uniqueChoices(k.meaning, pool.map(x => x.meaning), 4);
+        return {
+          q: `Nghĩa của "${k.word}" là gì?`,
+          choices,
+          answer: choices.indexOf(k.meaning),
+          explain: `Cách đọc: ${k.reading}`
+        };
+      });
+    }
+
+    function saveScore(key, score, total){
+      state.scores[key] = { score, total, at: new Date().toISOString() };
+      saveState();
+    }
+
+    function scoreLabel(key){
+      const s = state.scores[key];
+      if(!s) return `<span class="tiny">Chưa làm</span>`;
+      const pct = Math.round((s.score/s.total)*100);
+      return `<span class="tiny">Lần gần nhất: ${s.score}/${s.total} (${pct}%)</span>`;
+    }
+
+    function renderProgress(){
+      const totalUnits = LESSONS.length + ROADMAP.length;
+      const lessonDone = state.doneLessons.length;
+      const roadmapDone = Object.values(state.roadmapCheck).filter(Boolean).length;
+      const percent = Math.round(((lessonDone + roadmapDone) / totalUnits) * 100);
+      document.getElementById("progressFill").style.width = percent + "%";
+      document.getElementById("progressText").textContent = `${percent}% hoàn thành • ${lessonDone}/7 bài • ${roadmapDone}/30 ngày`;
+    }
+
+    function initNav(){
+      const lessonNav = document.getElementById("lessonNav");
+      lessonNav.innerHTML = LESSONS.map(l => `
+        <button class="nav-btn" data-view="lesson-${l.id}">
+          📘 ${l.title}
+          <div class="nav-sub">${l.vnTitle}</div>
+        </button>
+      `).join("");
+
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const view = btn.dataset.view;
+          if(view.startsWith("lesson-")){
+            renderLesson(Number(view.split("-")[1]));
+          }else{
+            renderView(view);
+          }
+        });
+      });
+    }
+
+    function setActiveNav(view){
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.view === view);
+      });
+    }
+
+    function buildMCQ(containerId, questions, scoreKey){
+      const wrap = document.getElementById(containerId);
+      wrap.innerHTML = `
+        <div class="section-head">
+          <h3 style="font-size:18px;margin:0">Bài tập thực hành</h3>
+          <button class="btn warn" id="${containerId}-submit">Nộp bài</button>
+        </div>
+        ${questions.map((q,qi)=>`
+          <div class="q-block">
+            <div><strong>Câu ${qi+1}.</strong> ${q.q}</div>
+            ${q.choices.map((choice,ci)=>`
+              <label class="choice">
+                <input type="radio" name="${containerId}-q${qi}" value="${ci}">
+                <span class="jp">${choice}</span>
+              </label>
+            `).join("")}
+          </div>
+        `).join("")}
+        <div id="${containerId}-result"></div>
+      `;
+
+      document.getElementById(`${containerId}-submit`).onclick = () => {
+        let score = 0;
+        const review = [];
+        questions.forEach((q,qi)=>{
+          const chosen = document.querySelector(`input[name="${containerId}-q${qi}"]:checked`);
+          const val = chosen ? Number(chosen.value) : -1;
+          if(val === q.answer) score++;
+          review.push(`
+            <div class="q-block">
+              <div><strong>Câu ${qi+1}:</strong> ${val === q.answer ? `<span class="ok">Đúng</span>` : `<span class="danger-text">Sai</span>`}</div>
+              <div class="tiny">Đáp án đúng: <span class="jp">${q.choices[q.answer]}</span></div>
+              <div class="tiny">${q.explain || ""}</div>
+            </div>
+          `);
+        });
+        saveScore(scoreKey, score, questions.length);
+        const pct = Math.round((score / questions.length) * 100);
+        document.getElementById(`${containerId}-result`).innerHTML = `
+          <div class="score-box ${pct < 60 ? 'bad' : ''}">
+            <strong>Kết quả: ${score}/${questions.length} (${pct}%)</strong>
+            <div class="tiny" style="margin-top:6px">
+              ${pct >= 80 ? "Đạt tốt." : pct >= 60 ? "Ổn, nhưng nên làm lại 1 vòng." : "Chưa ổn. Học lại phần này rồi quiz lại."}
+            </div>
+          </div>
+          <div style="margin-top:12px">${review.join("")}</div>
+        `;
+      };
+    }
+
+    function markLessonDone(id){
+      if(!state.doneLessons.includes(id)){
+        state.doneLessons.push(id);
+        saveState();
+      }
+      renderLesson(id);
+    }
+
+    function renderView(view){
+      if(view === "home") renderHome();
+      if(view === "roadmap") renderRoadmap();
+      if(view === "speaking") renderSpeaking();
+      if(view === "exam") renderExamHome();
+    }
+
+    function renderHome(){
+      setActiveNav("home");
+      const main = document.getElementById("main");
+      main.innerHTML = `
+        <div class="page">
+          <section class="hero">
+            <div class="card">
+              <div class="tag">JPD123 • 1 file local</div>
+              <h2>Web học trọn 7 bài theo hướng 8+ toàn môn và 8.5+ speaking</h2>
+              <p class="muted">
+                Cách đi nhanh nhất ở môn này là học theo chuỗi:
+                <strong>từ vựng → ngữ pháp gắn từ vựng → kanji → nói thành tiếng → quiz → ôn lặp</strong>.
+                Web này xếp bài theo đúng logic đó.
+              </p>
+              <div class="pill-row">
+                <span class="pill">7 bài</span>
+                <span class="pill">30 ngày</span>
+                <span class="pill">Quiz vocab động 20-30 câu</span>
+                <span class="pill">15 câu grammar mỗi bài</span>
+                <span class="pill">Kanji quiz</span>
+                <span class="pill">Mock test</span>
+              </div>
+              <div class="btn-row">
+                <button class="btn" id="goRoadmap">Bắt đầu theo lộ trình</button>
+                <button class="btn secondary" id="goLesson1">Mở ngay bài 1</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-top:0">Mục tiêu điểm</h3>
+              <div class="grid-2">
+                <div class="mini-stat">
+                  <div class="tiny">Toàn môn</div>
+                  <strong>8.0+</strong>
+                  <div class="tiny">Không bỏ vocab / grammar / kanji</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="tiny">Speaking</div>
+                  <strong>8.5+</strong>
+                  <div class="tiny">Trả lời ngắn, đúng mẫu, phản xạ nhanh</div>
+                </div>
+              </div>
+              <div class="callout" style="margin-top:16px">
+                1 bài = học từ → làm quiz từ → học ngữ pháp → làm quiz ngữ pháp → học kanji → làm quiz kanji → đọc passage → luyện 3 câu speaking.
+              </div>
+            </div>
+          </section>
+
+          <section class="grid-3">
+            <div class="card">
+              <div class="section-head"><h3>1. Mỗi ngày học bao lâu?</h3></div>
+              <p class="muted">Tối thiểu 2.5-3 giờ thật. Ngày bận vẫn nên làm ít nhất 1 quiz và 1 vòng speaking để không đứt mạch.</p>
+            </div>
+            <div class="card">
+              <div class="section-head"><h3>2. Newbie nên làm gì trước?</h3></div>
+              <p class="muted">10-20 phút ôn kana mỗi ngày trong tuần đầu. Không cần đợi giỏi kana mới vào bài; cứ vừa học kana vừa vào bài 1.</p>
+            </div>
+            <div class="card">
+              <div class="section-head"><h3>3. Speaking chấm thế nào?</h3></div>
+              <p class="muted">Quan trọng nhất là đúng mẫu, rõ phát âm, không đứng hình lâu. Trả lời ngắn mà chắc an toàn hơn nói dài mà sai.</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>Map 7 bài</h3></div>
+            <div class="grid-4">
+              ${LESSONS.map(lesson=>`
+                <div class="plan-day">
+                  <h4>${lesson.title}</h4>
+                  <div class="tiny">${lesson.vnTitle}</div>
+                  <div class="tiny" style="margin-top:8px">${lesson.days}</div>
+                  <div class="tiny" style="margin-top:8px">${lesson.vocab.length} từ vựng</div>
+                  <div class="btn-row"><button class="btn secondary open-lesson" data-id="${lesson.id}">Mở bài</button></div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+        </div>
+      `;
+      document.getElementById("goRoadmap").onclick = ()=> renderRoadmap();
+      document.getElementById("goLesson1").onclick = ()=> renderLesson(1);
+      document.querySelectorAll(".open-lesson").forEach(btn => {
+        btn.onclick = ()=> renderLesson(Number(btn.dataset.id));
+      });
+    }
+
+    function renderRoadmap(){
+      setActiveNav("roadmap");
+      const main = document.getElementById("main");
+      const doneCount = Object.values(state.roadmapCheck).filter(Boolean).length;
+      main.innerHTML = `
+        <div class="page">
+          <section class="card">
+            <div class="lesson-head">
+              <div>
+                <div class="tag">Lộ trình 30 ngày</div>
+                <h2>Học đúng thứ tự để không bị loạn</h2>
+                <p class="muted">4 ngày/bài × 7 bài + 2 ngày mock. Tick từng ngày để giữ mạch.</p>
+              </div>
+              <div class="mini-stat">
+                <div class="tiny">Đã hoàn thành</div>
+                <strong>${doneCount}/30</strong>
+                <div class="tiny">ngày học</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid-2">
+            ${ROADMAP.map(item=>`
+              <div class="plan-day">
+                <div class="section-head">
+                  <h4>Ngày ${item.day}: ${item.title}</h4>
+                  <button class="btn ${state.roadmapCheck[item.day] ? 'good' : 'secondary'} toggle-day" data-day="${item.day}">
+                    ${state.roadmapCheck[item.day] ? '✓ Đã xong' : 'Đánh dấu hoàn thành'}
+                  </button>
+                </div>
+                <ul>${item.tasks.map(t=>`<li>${t}</li>`).join("")}</ul>
+              </div>
+            `).join("")}
+          </section>
+        </div>
+      `;
+      document.querySelectorAll(".toggle-day").forEach(btn=>{
+        btn.onclick = ()=>{
+          const day = Number(btn.dataset.day);
+          state.roadmapCheck[day] = !state.roadmapCheck[day];
+          saveState();
+          renderRoadmap();
+        };
+      });
+    }
+
+    function renderLesson(id){
+      setActiveNav(`lesson-${id}`);
+      const lesson = LESSONS.find(x=>x.id===id);
+      const main = document.getElementById("main");
+      const grammarQuestions = (GRAMMAR_BANK[id] || []).map(([q, choices, answer, explain]) => ({ q, choices, answer, explain }));
+      const kanjiQuestions = makeKanjiQuestions(lesson);
+
+      main.innerHTML = `
+        <div class="page">
+          <section class="card">
+            <div class="lesson-head">
+              <div>
+                <div class="tag">${lesson.days}</div>
+                <h2>${lesson.title}</h2>
+                <p class="muted">${lesson.vnTitle}</p>
+                <p>${lesson.objective}</p>
+                <div class="chips">
+                  <span class="chip">Từ vựng full hơn</span>
+                  <span class="chip">Ngữ pháp gắn từ vựng</span>
+                  <span class="chip">Katakana</span>
+                  <span class="chip">Kanji + quiz</span>
+                  <span class="chip">Mini speaking</span>
+                </div>
+              </div>
+              <div class="mini-stat">
+                <div class="tiny">Trạng thái bài</div>
+                <strong>${state.doneLessons.includes(id) ? "✓ Done" : "Đang học"}</strong>
+                <div class="btn-row">
+                  <button class="btn good" id="doneLessonBtn">${state.doneLessons.includes(id) ? "Đã đánh dấu" : "Đánh dấu hoàn thành"}</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <h3>1) Từ vựng bài này</h3>
+              <div class="tiny">${lesson.vocab.length} từ • ${scoreLabel(`vocab-${id}`)}</div>
+            </div>
+            <table>
+              <thead><tr><th>Từ</th><th>Cách đọc</th><th>Nghĩa</th></tr></thead>
+              <tbody>
+                ${lesson.vocab.map(v=>`
+                  <tr>
+                    <td class="jp"><strong>${v.jp}</strong></td>
+                    <td class="jp">${v.reading || "—"}</td>
+                    <td>${v.vi}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+            <div class="quiz-wrap" id="vocabQuizWrap"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <h3>2) Ngữ pháp gắn từ vựng bài này</h3>
+              <div class="tiny">15 câu grammar • ${scoreLabel(`grammar-${id}`)}</div>
+            </div>
+            ${lesson.grammar.map(g=>`
+              <div class="grammar-card">
+                <div class="jp"><code>${g.pattern}</code></div>
+                <p><strong>Công dụng:</strong> ${g.use}</p>
+                <p class="jp"><strong>Ví dụ:</strong> ${g.example}</p>
+                <p class="muted"><strong>Gắn với từ vựng:</strong> ${g.vocabLink}</p>
+              </div>
+            `).join("")}
+            <div class="quiz-wrap" id="grammarQuizWrap"></div>
+          </section>
+
+          <section class="grid-2">
+            <div class="card">
+              <div class="section-head"><h3>3) Katakana cần giữ mắt quen</h3></div>
+              ${lesson.katakana.map(k=>`
+                <div class="grammar-card">
+                  <div class="jp" style="font-size:24px;font-weight:800">${k.word}</div>
+                  <div class="tiny">${k.note}</div>
+                </div>
+              `).join("")}
+              <div class="note">Đọc thành tiếng 3 vòng: chậm → vừa → nhanh. Đừng nuốt âm ngắt / trường âm.</div>
+            </div>
+
+            <div class="card">
+              <div class="section-head"><h3>4) Passage để đọc & shadowing</h3></div>
+              <div class="reading jp">${lesson.reading}</div>
+              <div class="tiny" style="margin-top:10px">
+                Cách luyện: đọc 5 vòng. Vòng 1 chậm, vòng 2-3 chuẩn, vòng 4-5 như thi thật.
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <h3>5) Kanji bài này</h3>
+              <div class="tiny">${lesson.kanji.length} mục • ${scoreLabel(`kanji-${id}`)}</div>
+            </div>
+            <div class="k-grid">
+              ${lesson.kanji.map(k=>`
+                <div class="kanji-item">
+                  <div class="kanji-word jp">${k.word}</div>
+                  <div class="tiny jp">${k.reading}</div>
+                  <div>${k.meaning}</div>
+                </div>
+              `).join("")}
+            </div>
+            <div class="quiz-wrap" id="kanjiQuizWrap"></div>
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>6) Mini speaking drill</h3></div>
+            ${lesson.speaking.map((s,i)=>`
+              <div class="speaking-box">
+                <div class="tiny">Câu ${i+1}</div>
+                <div class="jp" style="font-size:20px;font-weight:700">${s.q}</div>
+                <div class="muted" style="margin-top:8px">Mẫu trả lời:</div>
+                <div class="jp">${s.a}</div>
+              </div>
+            `).join("")}
+            <div class="callout">Mục tiêu: trả lời trong 3-6 giây, ưu tiên đúng mẫu trước rồi thêm 1 ý nhỏ nếu còn thời gian.</div>
+          </section>
+        </div>
+      `;
+
+      document.getElementById("doneLessonBtn").onclick = ()=> markLessonDone(id);
+      buildMCQ("vocabQuizWrap", makeVocabQuestions(lesson), `vocab-${id}`);
+      buildMCQ("grammarQuizWrap", grammarQuestions, `grammar-${id}`);
+      buildMCQ("kanjiQuizWrap", kanjiQuestions, `kanji-${id}`);
+    }
+
+    function renderSpeaking(){
+      setActiveNav("speaking");
+      const main = document.getElementById("main");
+      main.innerHTML = `
+        <div class="page">
+          <section class="card">
+            <div class="lesson-head">
+              <div>
+                <div class="tag">Speaking hub</div>
+                <h2>Đẩy lên 8.5+ speaking</h2>
+                <p class="muted">Công thức luyện: <strong>reading chuẩn → shadowing → Q&A ngắn đúng mẫu → mở rộng 1 ý</strong>.</p>
+              </div>
+              <div class="mini-stat">
+                <div class="tiny">Mỗi ngày</div>
+                <strong>20-30 phút</strong>
+                <div class="tiny">riêng cho speaking</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>Checklist speaking mỗi ngày</h3></div>
+            <div class="grid-4">
+              <div class="mini-stat"><strong>5'</strong><div class="tiny">đọc passage</div></div>
+              <div class="mini-stat"><strong>5'</strong><div class="tiny">shadowing</div></div>
+              <div class="mini-stat"><strong>10'</strong><div class="tiny">Q&A theo bài</div></div>
+              <div class="mini-stat"><strong>5'</strong><div class="tiny">thu âm + nghe lại</div></div>
+            </div>
+          </section>
+
+          <section class="grid-2">
+            ${SPEAKING_BANK.map(set=>`
+              <div class="card">
+                <div class="section-head"><h3>${set.title}</h3></div>
+                ${set.prompts.map((p,i)=>`
+                  <div class="speaking-box">
+                    <div class="tiny">Prompt ${i+1}</div>
+                    <div class="jp" style="font-size:19px;font-weight:800">${p.q}</div>
+                    <div class="muted" style="margin-top:8px">Gợi ý trả lời</div>
+                    <div class="jp">${p.a}</div>
+                  </div>
+                `).join("")}
+              </div>
+            `).join("")}
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>Reading bank</h3></div>
+            ${LESSONS.map(lesson=>`
+              <div class="speaking-box">
+                <div class="tiny">${lesson.title}</div>
+                <div class="reading jp">${lesson.reading}</div>
+              </div>
+            `).join("")}
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>Mẹo để dễ được điểm cao</h3></div>
+            <div class="note">
+              ① Trả lời đúng mẫu câu hỏi<br>
+              ② Phát âm rõ trợ từ は / が / を / に<br>
+              ③ Thêm 1 ý nhỏ bằng そして / でも / から<br>
+              ④ Nếu nghe chưa rõ, xin hỏi lại ngay thay vì im lâu
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function makeExamSet(){
+      const vocabQ = [];
+      const grammarQ = [];
+      const kanjiQ = [];
+
+      LESSONS.forEach(lesson=>{
+        sample(lesson.vocab, 3).forEach(item=>{
+          const meaningPool = LESSONS.flatMap(x=>x.vocab.map(v=>v.vi));
+          const choices = uniqueChoices(item.vi, meaningPool, 4);
+          vocabQ.push({
+            q:`Nghĩa của "${item.jp}" là gì?`,
+            choices,
+            answer: choices.indexOf(item.vi),
+            explain: item.reading ? `Cách đọc: ${item.reading}` : ""
+          });
+        });
+
+        const g = sample((GRAMMAR_BANK[lesson.id] || []), 2);
+        g.forEach(([q, choices, answer, explain])=>{
+          grammarQ.push({q, choices, answer, explain});
+        });
+
+        sample(lesson.kanji, 1).forEach(k=>{
+          const choices = uniqueChoices(k.meaning, LESSONS.flatMap(x=>x.kanji.map(y=>y.meaning)), 4);
+          kanjiQ.push({
+            q:`Nghĩa của "${k.word}" là gì?`,
+            choices,
+            answer: choices.indexOf(k.meaning),
+            explain:`Cách đọc: ${k.reading}`
+          });
+        });
+      });
+
+      return [...sample(vocabQ, 10), ...sample(grammarQ, 8), ...sample(kanjiQ, 7)];
+    }
+
+    let currentExam = null;
+    let examTimer = null;
+    let examTimeLeft = 20 * 60;
+
+    function renderExamHome(){
+      setActiveNav("exam");
+      const main = document.getElementById("main");
+      main.innerHTML = `
+        <div class="page">
+          <section class="card">
+            <div class="lesson-head">
+              <div>
+                <div class="tag">Mock test</div>
+                <h2>Tự test tổng hợp toàn bộ 7 bài</h2>
+                <p class="muted">Mock gồm câu hỏi trộn vocab + grammar + kanji. Làm xong thì qua speaking hub thêm 10 phút.</p>
+              </div>
+              <div class="mini-stat">
+                <div class="tiny">Thời gian gợi ý</div>
+                <strong>20 phút</strong>
+                <div class="tiny">sau đó 10 phút speaking</div>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn" id="startExamBtn">Bắt đầu mock</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="section-head"><h3>Ngưỡng đánh giá</h3></div>
+            <div class="grid-3">
+              <div class="mini-stat"><strong class="ok">80%+</strong><div class="tiny">đủ tốt để nhắm 8+ toàn môn</div></div>
+              <div class="mini-stat"><strong class="warn-text">65-79%</strong><div class="tiny">ổn nhưng còn lỗ hổng</div></div>
+              <div class="mini-stat"><strong class="danger-text">&lt;65%</strong><div class="tiny">cần quay lại bài yếu</div></div>
+            </div>
+          </section>
+        </div>
+      `;
+      document.getElementById("startExamBtn").onclick = startExam;
+    }
+
+    function startExam(){
+      currentExam = makeExamSet();
+      examTimeLeft = 20 * 60;
+      clearInterval(examTimer);
+
+      const main = document.getElementById("main");
+      main.innerHTML = `
+        <div class="page">
+          <section class="card" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+            <div>
+              <div class="tag">Đang làm mock</div>
+              <h2 style="margin-top:8px">Mock tổng hợp 25 câu</h2>
+            </div>
+            <div class="timer" id="examTimer">20:00</div>
+          </section>
+
+          <section class="card">
+            <div id="examWrap">
+              ${currentExam.map((q,qi)=>`
+                <div class="q-block">
+                  <div><strong>Câu ${qi+1}.</strong> ${q.q}</div>
+                  ${q.choices.map((choice,ci)=>`
+                    <label class="choice">
+                      <input type="radio" name="exam-q${qi}" value="${ci}">
+                      <span class="jp">${choice}</span>
+                    </label>
+                  `).join("")}
+                </div>
+              `).join("")}
+            </div>
+            <div class="btn-row">
+              <button class="btn warn" id="submitExamBtn">Nộp mock</button>
+              <button class="btn secondary" id="cancelExamBtn">Hủy mock</button>
+            </div>
+            <div id="examResult"></div>
+          </section>
+        </div>
+      `;
+
+      examTimer = setInterval(()=>{
+        examTimeLeft--;
+        const el = document.getElementById("examTimer");
+        if(el){
+          const m = String(Math.floor(examTimeLeft/60)).padStart(2,"0");
+          const s = String(examTimeLeft%60).padStart(2,"0");
+          el.textContent = `${m}:${s}`;
+        }
+        if(examTimeLeft <= 0){
+          clearInterval(examTimer);
+          submitExam();
+        }
+      },1000);
+
+      document.getElementById("submitExamBtn").onclick = submitExam;
+      document.getElementById("cancelExamBtn").onclick = ()=>{
+        clearInterval(examTimer);
+        renderExamHome();
+      };
+    }
+
+    function submitExam(){
+      clearInterval(examTimer);
+      if(!currentExam) return;
+      let score = 0;
+      currentExam.forEach((q,qi)=>{
+        const chosen = document.querySelector(`input[name="exam-q${qi}"]:checked`);
+        if(chosen && Number(chosen.value) === q.answer) score++;
+      });
+      const pct = Math.round((score / currentExam.length) * 100);
+      saveScore("mock-all", score, currentExam.length);
+
+      document.getElementById("examResult").innerHTML = `
+        <div class="score-box ${pct < 60 ? 'bad' : ''}">
+          <strong>Kết quả mock: ${score}/${currentExam.length} (${pct}%)</strong>
+          <div class="tiny" style="margin-top:6px">
+            ${pct >= 80 ? "Rất ổn. Qua Speaking hub thêm 10 phút." :
+              pct >= 65 ? "Bạn đang ở vùng có thể kéo lên 8+. Xem lại bài sai nhiều nhất." :
+              "Cần quay lại các bài yếu rồi làm lại mock."}
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn" id="retryExamBtn">Làm mock mới</button>
+          <button class="btn secondary" id="toSpeakingBtn">Qua Speaking hub</button>
+        </div>
+      `;
+      document.getElementById("retryExamBtn").onclick = startExam;
+      document.getElementById("toSpeakingBtn").onclick = renderSpeaking;
+    }
+
+    document.getElementById("resetProgressBtn").onclick = ()=>{
+      if(confirm("Reset toàn bộ tiến độ và điểm quiz?")){
+        localStorage.removeItem("jpd123_local_full");
+        location.reload();
+      }
+    };
+
+    initNav();
+    renderProgress();
+    renderHome();
+  </script>
+</body>
+</html>
