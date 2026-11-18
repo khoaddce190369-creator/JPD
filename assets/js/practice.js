@@ -35,10 +35,10 @@ function renderPracticeHub() {
               <span class="practice-title">${l.title}</span>
             </div>
             <div class="practice-scores">
-              <div class="score-row"><span>Vocab</span>${scoreLabel(`practice-vocab-${l.id}`)}</div>
-              <div class="score-row"><span>Grammar</span>${scoreLabel(`practice-grammar-${l.id}`)}</div>
-              <div class="score-row"><span>Core</span>${scoreLabel(`practice-core-${l.id}`)}</div>
-              <div class="score-row"><span>Kanji</span>${scoreLabel(`practice-kanji-${l.id}`)}</div>
+              <div class="score-row"><span>Từ vựng & Điền câu</span>${scoreLabel(`practice-vocab-${l.id}`)}</div>
+              <div class="score-row"><span>Ngữ pháp thực chiến</span>${scoreLabel(`practice-grammar-${l.id}`)}</div>
+              <div class="score-row"><span>Hán tự đề thi</span>${scoreLabel(`practice-kanji-${l.id}`)}</div>
+              <div class="score-row"><span>Small Test tổng hợp</span>${scoreLabel(`practice-core-${l.id}`)}</div>
             </div>
             <button class="btn btn-primary btn-block open-practice-lesson" data-id="${l.id}">Luyện tập</button>
           </div>`;
@@ -47,10 +47,47 @@ function renderPracticeHub() {
 
       <!-- Midterm -->
       <section class="card">
-        <div class="section-head">
-          <h3>Midterm — 10 đề</h3>
-          <span class="text-muted">15 câu • 4 vocab + 4 kanji + 7 grammar</span>
+        <div class="section-head" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;">
+          <div>
+            <h3>Midterm — 10 đề (Chuẩn Bài 4–5)</h3>
+            <span class="text-muted">15 câu/đề • 4 vocab + 4 kanji + 7 grammar • 150 câu không trùng lặp</span>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="toggleMidtermGuideBtn" type="button">
+            📖 Cẩm nang ôn thi Bài 4–5
+          </button>
         </div>
+
+        <!-- Collapsible Midterm Guide Box -->
+        <div id="midtermGuideBox" style="display:none; margin:16px 0; padding:18px; background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.25); border-radius:12px; font-size:0.9rem; line-height:1.65;">
+          <div style="font-weight:700; color:#38bdf8; font-size:1.05rem; margin-bottom:8px;">🎯 Trọng tâm ôn thi Midterm JPD123 (Bài 4 & 5 Dekiru Nihongo)</div>
+          
+          <div style="margin-bottom:12px;">
+            <strong style="color:#f8fafc;">1. Từ vựng cốt lõi:</strong>
+            <ul style="margin:4px 0 0 20px; color:#cbd5e1;">
+              <li><strong>Bài 4:</strong> Phương hướng (北, 南, 東, 西, 真ん中), Phương tiện (車, 新幹線, 電車, 飛行機, 駅, 歩いて), Tính từ (新しい, 古い, 大きい, 小さい, 高い, 低い, きれい, 静か, にぎやか, 有名), Thời tiết & Món ăn (雨, 雪, 暖かい, 涼しい, 暑い, 寒い, 甘い, 辛い, 苦い, すっぱい).</li>
+              <li><strong>Bài 5:</strong> Thời gian (今日, 明日, あさって, 昨日, おととい, 先週, 週末, 今朝, 先月, 去年), Nơi chốn & Hoạt động (家, 部屋, デパート, 美術館, ゲーム, 会います, 作ります, 買い物/食事/洗濯/掃除をします, 一人で, それから).</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <strong style="color:#f8fafc;">2. 21 chữ Hán tự (Kanji):</strong>
+            <ul style="margin:4px 0 0 20px; color:#cbd5e1;">
+              <li><strong>Bài 4 (9 chữ):</strong> 東 (東京), 京 (東京), 名 (名前), 前 (名前・午前・前日), 国 (外国・くに), 男 (男の人・男女), 女 (女の人・男女), 区 (~区), 市 (~市).</li>
+              <li><strong>Bài 5 (12 chữ):</strong> 先 (先生・先月・先週), 週 (先週・一週間・毎週), 毎 (毎日・毎週・毎月・毎年), 午 (午前・午後), 後 (午後・前後), 見 (見学・見ます), 食 (食事・食べ物), 飲 (飲食・飲み物・飲み水), 買 (買い物・買います), 物 (食べ物・飲み物・買い物・人物・見物), 行 (行きます), 休 (休日・休みの日・休みます).</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong style="color:#f8fafc;">3. 19 Mẫu ngữ pháp trọng điểm:</strong>
+            <ul style="margin:4px 0 0 20px; color:#cbd5e1;">
+              <li><strong>Tính từ & Tồn tại:</strong> Nは Aです / Aくないです / Aじゃありません; A+N / ナA+な+N; N(nơi)に N(vật)があります; N(xe)で; ~から~まで どのくらいですか; とても / あまり (phủ định).</li>
+              <li><strong>Quá khứ:</strong> Vました / Vませんでした; Tính từ い quá khứ: ~かったです / ~くなかったです; Tính từ な & Danh từ quá khứ: ~でした / ~じゃありませんでした.</li>
+              <li><strong>Mong muốn & Mục đích:</strong> Nが ほしいです (muốn có vật); Vたいです (muốn làm gì); N(nơi)へ V(bỏ ます)に行きます (đi đâu để làm gì).</li>
+              <li><strong>Hỏi đáp & Liên kết:</strong> どこかへ行きましたか -> いいえ、どこへも行きませんでした; どうして ~ですか -> ~ですから (chỉ lý do); それから (sau đó); Nと Vます (cùng ai).</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="midterm-grid">
           ${Array.from({ length: 10 }, (_, i) => {
             const setNo = i + 1;
@@ -75,6 +112,15 @@ function renderPracticeHub() {
   document.querySelectorAll(".open-practice-lesson").forEach(btn =>
     btn.onclick = () => renderPracticeLesson(Number(btn.dataset.id))
   );
+  const guideBtn = document.getElementById("toggleMidtermGuideBtn");
+  const guideBox = document.getElementById("midtermGuideBox");
+  if (guideBtn && guideBox) {
+    guideBtn.onclick = () => {
+      const isHidden = guideBox.style.display === "none";
+      guideBox.style.display = isHidden ? "block" : "none";
+      guideBtn.innerText = isHidden ? "✕ Đóng cẩm nang" : "📖 Cẩm nang ôn thi Bài 4–5";
+    };
+  }
   document.querySelectorAll(".open-midterm-practice").forEach(btn =>
     btn.onclick = () => startPracticeMidterm(Number(btn.dataset.set))
   );
@@ -118,7 +164,7 @@ function renderPracticeLesson(id) {
       <div class="grid-2">
         <div class="card">
           <div class="section-head">
-            <h3>Từ vựng toàn bài</h3>
+            <h3>1. Từ vựng & Ngữ cảnh (20 câu)</h3>
             ${scoreLabel(`practice-vocab-${id}`)}
           </div>
           <div class="quiz-wrap" id="practiceVocabWrap"></div>
@@ -126,7 +172,7 @@ function renderPracticeLesson(id) {
 
         <div class="card">
           <div class="section-head">
-            <h3>Ngữ pháp</h3>
+            <h3>2. Ngữ pháp thực chiến (20 câu)</h3>
             ${scoreLabel(`practice-grammar-${id}`)}
           </div>
           <div class="quiz-wrap" id="practiceGrammarWrap"></div>
@@ -134,18 +180,18 @@ function renderPracticeLesson(id) {
 
         <div class="card">
           <div class="section-head">
-            <h3>Core vocab</h3>
-            ${scoreLabel(`practice-core-${id}`)}
+            <h3>3. Hán tự Kanji đề thi (16–20 câu)</h3>
+            ${scoreLabel(`practice-kanji-${id}`)}
           </div>
-          <div class="quiz-wrap" id="practiceCoreWrap"></div>
+          <div class="quiz-wrap" id="practiceKanjiWrap"></div>
         </div>
 
         <div class="card">
           <div class="section-head">
-            <h3>Kanji</h3>
-            ${scoreLabel(`practice-kanji-${id}`)}
+            <h3>4. Small Test tổng hợp (15 câu / 15 phút)</h3>
+            ${scoreLabel(`practice-core-${id}`)}
           </div>
-          <div class="quiz-wrap" id="practiceKanjiWrap"></div>
+          <div class="quiz-wrap" id="practiceCoreWrap"></div>
         </div>
       </div>
     </div>
@@ -153,10 +199,24 @@ function renderPracticeLesson(id) {
 
   document.getElementById("backPracticeHubBtn").onclick = renderPracticeHub;
   document.getElementById("openOriginalLessonBtn").onclick = () => renderLesson(id);
-  buildMCQ("practiceVocabWrap", makePracticeVocab20(lesson), `practice-vocab-${id}`);
-  buildMCQ("practiceGrammarWrap", makePracticeGrammar20(lesson), `practice-grammar-${id}`);
-  buildMCQ("practiceCoreWrap", makePracticeCore20(lesson), `practice-core-${id}`);
-  buildMCQ("practiceKanjiWrap", makePracticeKanji20(lesson), `practice-kanji-${id}`);
+
+  function loadPVocab() {
+    buildMCQ("practiceVocabWrap", makePracticeVocab20(lesson), `practice-vocab-${id}`, loadPVocab);
+  }
+  function loadPGrammar() {
+    buildMCQ("practiceGrammarWrap", makePracticeGrammar20(lesson), `practice-grammar-${id}`, loadPGrammar);
+  }
+  function loadPKanji() {
+    buildMCQ("practiceKanjiWrap", makePracticeKanji20(lesson), `practice-kanji-${id}`, loadPKanji);
+  }
+  function loadPSmallTest() {
+    buildMCQ("practiceCoreWrap", makePracticeCore20(lesson), `practice-core-${id}`, loadPSmallTest);
+  }
+
+  loadPVocab();
+  loadPGrammar();
+  loadPKanji();
+  loadPSmallTest();
 }
 
 function startPracticeMidterm(setNo) {

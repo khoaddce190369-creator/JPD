@@ -144,9 +144,18 @@ function importStateBackup(jsonString) {
 }
 
 function renderProgress() {
-  const totalUnits = LESSONS.length + ROADMAP.length;
+  const isSprint = (typeof activeRoadmapMode !== "undefined" && activeRoadmapMode === "sprint");
+  const roadmapList = isSprint
+    ? (typeof ROADMAP_SPRINT !== "undefined" ? ROADMAP_SPRINT : [])
+    : (state.customRoadmap || (typeof ROADMAP !== "undefined" ? ROADMAP : []));
+  const totalUnits = (typeof LESSONS !== "undefined" ? LESSONS.length : 7) + (roadmapList.length || 21);
   const lessonDone = state.doneLessons.length;
-  const roadmapDone = Object.values(state.roadmapCheck).filter(Boolean).length;
+  let roadmapDone = 0;
+  if (isSprint) {
+    roadmapList.forEach(item => { if (state.roadmapCheck[`sprint-${item.day}`]) roadmapDone++; });
+  } else {
+    roadmapList.forEach(item => { if (state.roadmapCheck[item.day]) roadmapDone++; });
+  }
   const percent = Math.round(((lessonDone + roadmapDone) / totalUnits) * 100);
 
   const fill = document.getElementById("progressFill");
@@ -166,8 +175,9 @@ function renderProgress() {
   const hLessonDone = document.getElementById("hdr-lesson-done");
   const hRoadmapDone = document.getElementById("hdr-roadmap-done");
   const hPercent = document.getElementById("hdr-percent");
-  if (hLessonDone) hLessonDone.textContent = lessonDone + "/7";
-  if (hRoadmapDone) hRoadmapDone.textContent = roadmapDone + "/30";
+  const totalLessons = typeof LESSONS !== "undefined" ? LESSONS.length : 7;
+  if (hLessonDone) hLessonDone.textContent = `${lessonDone}/${totalLessons}`;
+  if (hRoadmapDone) hRoadmapDone.textContent = `${roadmapDone}/${roadmapList.length}`;
   if (hPercent) hPercent.textContent = percent + "%";
 }
 

@@ -2252,3 +2252,267 @@ table tbody tr:has(.vocab-check:checked) td:first-child {
     right: max(16px, env(safe-area-inset-right));
   }
 }
+
+/* ============================================================
+   UPGRADED STYLES: Speaking Hub, Roadmap Sprint & Exam Review
+   ============================================================ */
+
+/* Milestone Banner */
+.milestone-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.milestone-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.85));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.milestone-card.active-phase {
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+.milestone-card.active-phase::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+}
+.milestone-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.milestone-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 4px;
+}
+.milestone-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Speaking Hub Tabs */
+.spk-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.spk-tab-btn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.spk-tab-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+.spk-tab-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
+/* Speaking Cards */
+.spk-reading-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.spk-reading-card:hover {
+  border-color: #bae6fd;
+}
+.spk-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.spk-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.spk-japanese-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.85;
+  color: #0f172a;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #0284c7;
+  word-break: break-word;
+}
+.spk-audio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.spk-extra-box {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* Talking & Picture cards */
+.spk-qa-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.spk-qa-q {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.spk-qa-hint {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  margin-left: 28px;
+}
+.spk-details {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 8px;
+}
+.spk-details summary {
+  font-weight: 600;
+  color: #15803d;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+.spk-details-content {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #14532d;
+  line-height: 1.6;
+}
+
+/* Picture set */
+.spk-pic-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Roadmap Phase Header */
+.roadmap-phase-header {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.12), rgba(99, 102, 241, 0.08));
+  border-left: 4px solid #0284c7;
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 24px 0 14px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.roadmap-phase-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0284c7;
+}
+.roadmap-phase-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Exam Review Box */
+.q-block.q-correct {
+  border-left: 4px solid #16a34a;
+  background: #f0fdf4;
+}
+.q-block.q-incorrect {
+  border-left: 4px solid #dc2626;
+  background: #fef2f2;
+}
+.exam-review-explain {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+/* Extra Small Button for Quiz Filter Tabs */
+.btn-xs {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  border-radius: 6px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.btn-xs:hover {
+  transform: translateY(-1px);
+}
+
+.quiz-control-bar {
+  transition: all 0.2s ease;
+}
+.quiz-control-bar .btn-primary {
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+}
+

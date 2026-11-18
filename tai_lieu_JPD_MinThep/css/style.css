@@ -1,0 +1,864 @@
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+body {
+    overflow-x: hidden;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 1.1px;
+}
+
+body,
+html {
+    /* background: #1c1d22; */
+    /* height: 300vh; */
+    height:auto;
+    /* Set tam thoi, id: tamthoi */
+    font-family: "Varela Round", sans-serif;
+    transition: all .75s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+    max-width: 720px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.menu li {
+    width: 125px;
+    height: 50px;
+    transition: background-position-x 0.9s linear;
+    text-align: center;
+    padding-top: 10px;
+
+    a {
+        font-size: 1.25em;
+        color: #e7e7e7;
+        text-decoration: none;
+        transition: all 0.45s;
+    }
+
+    &:hover {
+        background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEi%0D%0AIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhs%0D%0AaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0%0D%0AaD0iMzkwcHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDM5MCA1MCIgZW5hYmxlLWJhY2tn%0D%0Acm91bmQ9Im5ldyAwIDAgMzkwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZmlsbD0i%0D%0Abm9uZSIgc3Ryb2tlPSIjZDk0ZjVjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGlt%0D%0AaXQ9IjEwIiBkPSJNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMAoJYzEzLjc1LDAsMjguNzQtMzgu%0D%0ANzc4LDQ2LjE2OC0xOS40MTZDMTkyLjY2OSw0Ni41LDI0My42MDMsNDcuNTg1LDI2MCw0Ny41ODVj%0D%0AMzEuODIxLDAsMTMwLDAsMTMwLDAiLz4KPC9zdmc+Cg==");
+        animation: line 1s;
+    }
+
+    &:hover a {
+        color: #d94f5c;
+    }
+
+    &:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+
+.menu a.dropdown-arrow:after {
+    content: "\25BE";
+    margin-left: 5px;
+}
+
+.menu ul.sub-menus {
+    margin-top: 10px;
+    height: auto;
+    overflow: hidden;
+    width: 200px;
+    background: #343A40;
+    position: absolute;
+    z-index: 99;
+    display: none;
+}
+
+.menu ul.sub-menus a {
+    margin-left: 10px;
+    color: white;
+}
+
+.menu ul.sub-menus li {
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+.menu li:hover ul.sub-menus {
+    display: block
+}
+
+.menu ul.sub-menus a:hover {
+    color: #d94f5c;
+}
+
+@keyframes line {
+    0% {
+        background-position-x: 390px;
+    }
+}
+
+.search button {
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+.btn-search {
+    color: #d94f5c;
+    border-color: #d94f5c;
+
+    &:hover {
+        color: white;
+        background-color: #d94f5c;
+        border-color: #d94f5c;
+    }
+}
+
+.profile-img {
+    width: 100%;
+    text-align: center;
+}
+
+/* filter: grayscale(100%);: Chuyển hình ảnh thành ảnh đen trắng.
+filter: sepia(100%);: Chuyển hình ảnh thành hiệu ứng sepia.
+filter: brightness(150%);: Tăng độ sáng của hình ảnh.
+filter: contrast(200%);: Tăng độ tương phản của hình ảnh.
+filter: saturate(200%);: Tăng độ bão hòa màu sắc của hình ảnh.
+filter: hue-rotate(90deg);: Xoay màu sắc của hình ảnh (90 độ). */
+.profile-img img {
+    border: 3px solid #00000099;
+    margin-top: 50px;
+    width: 550px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    filter: grayscale(0%) brightness(95%) contrast(130%) sepia(5%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease-in-out;
+}
+
+.profile-img.show-japanese ::after {
+    content: var(--after-content-japanese);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    color: rgb(255, 255, 255);
+    font-size: 1.25em;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    line-height: 2.75;
+    white-space: pre-line;
+    pointer-events: none;
+}
+
+.profile-img img:hover {
+    transform: scale(1.15);
+    filter: grayscale(0%) brightness(50%) contrast(110%);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-img :hover::after {
+    opacity: 1;
+}
+
+.row {
+    margin: 0;
+}
+
+/* =============== About scroll bar =============== */
+
+:root {
+    --primary-color: rgb(163, 163, 163);
+    /* Màu gốc của bạn */
+    --scroll-thumb-color: #d94f5c;
+    /* Màu của thanh kéo */
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+/* Track là phần nền của thanh cuộn */
+::-webkit-scrollbar-track {
+    background-color: var(white);
+    /* Sử dụng màu gốc */
+}
+
+/* Thumb là thanh kéo mà bạn kéo để di chuyển thanh cuộn */
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
+    /* Sử dụng màu của thanh kéo */
+    border-radius: 5px;
+}
+
+/* Hover Thumb là màu khi di chuột qua thanh cuộn */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #d43040;
+    /* Màu khi hover */
+}
+
+.scroll-top-icon {
+    visibility: hidden;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    font-size: var(3rem);
+    color: var(--scroll-thumb-color);
+    /* Sử dụng màu của thanh kéo */
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.show-scroll {
+    visibility: visible;
+}
+
+/* =============== Text Section 1 =============== */
+.about-me {
+    margin-top: 25px;
+    text-align: justify;
+    padding-right: 50px;
+}
+
+/* About me section */
+
+
+.anime-svg svg {
+    text-align: center;
+    font-family: "Russo One", sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+.anime-svg svg text {
+    animation: stroke 5.5s;
+    stroke-width: 1;
+    stroke: #D94F5C;
+    font-size: 55px;
+    fill: #D94F5C;
+}
+
+@keyframes stroke {
+    0% {
+        fill: rgba(212, 48, 64, 0);
+        stroke: rgba(217, 79, 92, 1);
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 50%;
+        stroke-width: 3;
+    }
+
+    60% {
+        fill: rgba(212, 48, 64, 0);
+        stroke: rgba(217, 79, 92, 1);
+    }
+
+    80% {
+        fill: rgba(212, 48, 64, 0);
+        stroke: rgba(217, 79, 92, 1);
+        stroke-width: 3;
+    }
+
+    100% {
+        fill: rgba(212, 48, 64, 1);
+        stroke: rgba(217, 79, 92, 0);
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 50% 0;
+        stroke-width: 5;
+    }
+}
+
+
+
+/* About me button */
+
+#contract-here {
+    margin-top: 20px;
+    background-color: #d94f5dec;
+    border-color: #d94f5c;
+    border-radius: 20px;
+    padding: 15px 15px;
+    animation: button-contract 3s ease-in 3s infinite;
+}
+
+#contract-here:hover {
+    background-color: #d94f5c;
+    border-color: #d94f5c;
+}
+
+
+@keyframes button-contract {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateY(-30px) rotate(-6deg);
+    }
+
+    30% {
+        transform: translateY(15px) rotate(6deg);
+    }
+
+    45% {
+        transform: translateY(-15px) rotate(-3.6deg);
+    }
+
+    60% {
+        transform: translateY(9px) rotate(2.4deg);
+    }
+
+    75% {
+        transform: translateY(-6px) rotate(-1.2deg);
+    }
+}
+
+
+
+
+#error-404 {
+    margin-top: 300px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .search {
+        width: 100%;
+    }
+}
+
+/* =============== Set cursor =============== */
+
+
+
+
+
+@keyframes cursor {
+    0% {
+        transform: scale(1) ;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* =============== Text Section 2 =============== */
+#home{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.blog{
+    margin-top: 100px;
+    display: block;
+    width: 100%;
+}
+
+
+.bakery{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+/* =============== End Text Section 2 =============== */
+/* =============== Wonyoung =============== */
+
+#wonyoung-background {
+    background-image: url("../img/wonyoung.jpg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover; /* hoặc 'contain' */
+    transition: background-size 0.5s ease;
+    position: relative;
+    height: 1000pX;
+    margin-top: 200px;
+}
+
+/* =============== BLOG 1 =============== */
+
+.blog1-right {
+    padding: 50px;
+    margin-top: 50px;
+    text-align: justify;
+    font-size: 1.25em;
+}   
+.section-2 {
+    margin-top: 100px;
+    text-align: justify;
+}
+
+/* =============== BLOG 2 =============== */
+/* =============== BLOG 3 =============== */
+/* =============== BLOG 4 =============== */
+/* =============== BLOG TEXT TESTING =============== */
+
+/* Set height for blog*/
+.set-height{
+    height: 1000px;
+}
+.modal-content {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+/* Tăng kích thước của nút đóng */
+
+/* Tùy chỉnh nền của modal */
+.modal-content {
+    background-color: #343a4084; /* Thay đổi màu nền */
+    border-radius: 10px; /* Làm tròn góc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Thêm bóng */
+}
+.modal-content label{
+    color: white;
+}
+/* Tùy chỉnh tiêu đề modal */
+.modal-title {
+    color: #d94f5c; /* Thay đổi màu chữ */
+    font-size: 1.5em; /* Tăng kích thước chữ */
+}
+.btn-close {
+    background-color: #f44336; /* Màu nền của nút */
+    color: white; /* Màu của chữ 'X' */
+    font-size: 18px; /* Kích thước của chữ 'X' */
+    line-height: 1; /* Điều chỉnh vị trí chữ 'X' theo chiều dọc */
+    border: none; /* Loại bỏ viền */
+    display: inline-block; /* Để nút có thể điều chỉnh kích thước */
+    width: 30px; /* Chiều rộng của nút */
+    height: 30px; /* Chiều cao của nút */
+    text-align: center; /* Căn chữ 'X' theo chiều ngang */
+    border-radius: 50%; /* Làm tròn nút */
+    transition: background-color 0.3s; /* Thêm hiệu ứng khi thay đổi màu nền */
+}
+
+.btn-close:hover {
+    background-color: #d32f2f; /* Thay đổi màu nền khi di chuột qua nút */
+}
+
+@media screen and (max-width: 1200px) {
+    #home iframe{
+        height: 150vh !important;
+    }
+}
+@media screen and (max-width: 1090px) {
+    .container{
+        width: 100% !important;
+    }
+    *{
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    #search-check {
+        display: none !important;
+    }
+    #home{
+        margin-top: 50px;
+    }
+    .menu {
+        margin-bottom: 25px;
+    }
+
+    .author {
+        margin: 0 !important;
+        text-align: center !important;
+    }
+    p {
+        text-align: justify ;
+    }
+    .list-group-item a {
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+    #profile-img{
+
+            max-width: 80%;
+            height: auto;
+        
+    }
+    .anime-svg svg text{
+        font-size: 30px;
+    }
+
+    #wonyoung-background{
+        display:none !important;
+    }
+    li {
+        font-size: 10px !important;
+    }
+
+    #home iframe{
+        height: 150vh !important;
+    }
+    .profile-img.show-japanese ::after{
+        font-size: 0.9em !important;
+    }
+    .anime-svg svg text{
+        font-size: 20px !important;
+    }
+    .about-me, .blog1-right, .section-2{
+        padding: 0 !important;
+    }
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các thẻ xuống dòng khi không đủ chỗ */
+    justify-content: center; /* Căn giữa các thẻ trên trục chính */
+    gap: 10px; /* Khoảng cách giữa các thẻ */
+  }
+  
+
+  
+  .card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.8s; /* Thêm hiệu ứng chuyển động */
+  }
+  
+  .card-front {
+    background-color: #f0f0f0;
+  }
+  
+  .card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg); /* Lật mặt sau ban đầu */
+  }
+  
+  .card.flipped .card-front {
+    transform: rotateY(-180deg); /* Lật mặt trước khi click */
+  }
+  
+  .card.flipped .card-back {
+    transform: rotateY(0deg); /* Hiển thị mặt sau khi click */
+  }
+
+  .grammar-point {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+.grammar-point h3 {
+    color: #007bff;
+}
+.grammar-point ul {
+    list-style: none;
+    padding-left: 0;
+}
+.example {
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 5px solid #ffc107; 
+    background-color: #fff; 
+    margin-bottom: 10px;
+}
+
+.grammar-point table {
+    background-color: #fff !important; 
+    border: 1px solid #ddd !important; 
+}
+
+#shuffleButton{
+    margin-top: 10px;
+}
+p {
+    text-align: justify;
+}
+/* Skills Section */
+.skill-item img {
+    width: 50px; /* hoặc kích thước phù hợp với thiết kế của bạn */
+    height: auto;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.skill-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item i {
+    color: #d94f5c;
+}
+
+.skill-item h3 {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+.skill-item p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+.skill-item i.fa-html5 { color: #E34F26; }
+.skill-item i.fa-css3-alt { color: #1572B6; }
+.skill-item i.fa-js-square { color: #F7DF1E; }
+.skill-item i.fa-react { color: #61DAFB; }
+.skill-item i.fa-node-js { color: #339933; }
+.skill-item i.fa-git-alt { color: #F05032; }
+.skill-item i.fa-server { color: #FF6C37; } /* Màu cho RESTful API */
+.skill-item i.fa-bolt { color: #646CFF; } /* Màu cho Vite */
+.skill-item i.fa-typescript { color: #007ACC; }
+.skill-item i.fa-java { color: #007396; }
+.skill-item i.fa-database:nth-of-type(1) { color: #47A248; } /* MongoDB */
+.skill-item i.fa-database:nth-of-type(2) { color: #CC2927; } /* SQL Server */
+.skill-item h3 {
+    color: #333; /* hoặc màu bạn muốn cho văn bản */
+}
+.skill-item:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #d94f5c;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+
+  .timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #d94f5c;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .timeline-item:nth-child(odd) {
+    left: 0;
+  }
+  
+  .timeline-item:nth-child(even) {
+    left: 50%;
+  }
+  
+  .timeline-item:nth-child(even)::after {
+    left: -16px;
+  }
+  
+  .timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+.timeline-date {
+    color: #666;
+    font-style: italic;
+}
+
+@media screen and (max-width: 600px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0%;
+    }
+    
+    .timeline-content::after {
+        left: -15px;
+    }
+}
+/* Education Section */
+#education {
+    background-color: #f8f9fa;
+}
+
+#education .timeline-item {
+    margin-bottom: 30px;
+}
+
+#education .timeline-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#education h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+#education .timeline-date {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    #education .timeline-item {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+#back-to-top:hover {
+    background-color: #0056b3;
+}
+
+#back-to-top.show {
+    display: block;
+}
+#table-of-contents {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+#table-of-contents h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#table-of-contents ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#table-of-contents ul ul {
+    padding-left: 20px;
+}
+
+#table-of-contents li {
+    margin-bottom: 10px;
+}
+
+#table-of-contents a {
+    text-decoration: none;
+    color: #495057;
+    transition: color 0.3s ease;
+}
+
+#table-of-contents a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Cấp độ 1 */
+#table-of-contents > ul > li > a {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+/* Cấp độ 2 */
+#table-of-contents > ul > li > ul > li > a {
+    font-weight: normal;
+    color: #007bff;
+}
+
+.accordion .card-header {
+    background-color: #f8f9fa;
+    border-bottom: none;
+    }
+    .accordion .btn-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    }
+    .accordion .btn-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+    }
+    .accordion .card-body {
+    background-color: #ffffff;
+    border-top: 1px solid rgba(0,0,0,.125);
+    }
+    .accordion .card-body ul {
+    padding-left: 20px;
+    }
+    .accordion .card-body p {
+    margin-bottom: 10px;
+    }
+    li {
+    font-size: 16px;
+    }
+
+

@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="vi" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Luyện thi nói tiếng Nhật JPD113 &amp; JPD123: Reading, Talking và Tips — Min Thep</title>
+  <meta name="description" content="Bộ luyện thi Speaking JPD113 và JPD123: cấu trúc đề thi, bài đọc có audio, gần 250 mẫu hội thoại kèm gợi ý, đáp án mẫu và romaji.">
+  <meta name="author" content="Min Thep">
+  <link rel="canonical" href="https://thepkz.github.io/minthep-portfolio/blog/Speaking.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Min Thep">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Luyện thi nói tiếng Nhật JPD113 &amp; JPD123">
+  <meta property="og:description" content="Bộ luyện thi Speaking JPD113 và JPD123: cấu trúc đề thi, bài đọc có audio, gần 250 mẫu hội thoại kèm gợi ý, đáp án mẫu và romaji.">
+  <meta property="og:url" content="https://thepkz.github.io/minthep-portfolio/blog/Speaking.html">
+  <meta property="og:image" content="https://thepkz.github.io/minthep-portfolio/blog/Speaking/jpd.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luyện thi nói tiếng Nhật JPD113 &amp; JPD123">
+  <meta name="twitter:description" content="Bộ luyện thi Speaking JPD113 và JPD123: cấu trúc đề thi, bài đọc có audio, gần 250 mẫu hội thoại kèm gợi ý, đáp án mẫu và romaji.">
+  <meta name="twitter:image" content="https://thepkz.github.io/minthep-portfolio/blog/Speaking/jpd.jpg">
+
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../img/favicon-32.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="../img/logo.png">
+  <meta name="theme-color" content="#040C18">
+
+  <link rel="preload" href="../fonts/newsreader-vf-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/newsreader-vf-vietnamese.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/surface-b.css">
+
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.remove('no-js');
+      d.classList.add('js');
+      try {
+        var m = localStorage.getItem('minthep:reading');
+        if (m === 'paper' || m === 'dark') d.setAttribute('data-reading', m);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- ==========================================================================
+       Page-scoped chrome for the drill cards. This is the ONE page on the site
+       with a component the design system does not have — a question card with a
+       speech control and two native disclosures — and css/surface-b.css is owned
+       by another task, so it cannot grow an .sp-* section right now.
+
+       Rules this block keeps so it stays a design-system citizen and not a fork:
+         · every colour is a --b-* token from surface-b.css §0, so paper mode,
+           forced-colors mode and print all keep working with no extra rules;
+         · every length is an --s-* / --fs-* / --r-* / --bw-* token;
+         · zero literals, zero !important, zero element selectors outside .sp-*;
+         · nothing here is required for legibility — strip the whole block and
+           the page is still a readable document.
+       If surface-b.css later adopts these, delete this block, not the markup.
+
+       Every var() carries a second-choice fallback to the equivalent
+       tokens.css name. That is not belt-and-braces: as of this build, the
+       :root block in css/surface-b.css is being swallowed by the CSS parser,
+       because the comment above it contains the sequence "--ink-*/--accent-*"
+       and the "*/" inside "--ink-*/" terminates the comment early. The stray
+       "*/" that follows then triggers error recovery that eats the whole
+       :root rule, so EVERY --b-* token is undefined on EVERY Surface B page.
+       The fallbacks below mean this page renders correctly either way, and
+       automatically upgrades to the --b-* roles the moment that file is fixed.
+       ====================================================================== -->
+  <style>
+    .sp-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2) var(--s-5);
+      margin-block: var(--s-5);
+      padding: 0;
+      list-style: none;
+      font-size: var(--fs-caption);
+      color: var(--b-muted, var(--text-muted));
+    }
+
+    .sp-list { margin-block: var(--s-6); }
+
+    .sp-card {
+      margin-block: var(--s-5);
+      padding: var(--s-5);
+      border: var(--bw-hair) solid var(--b-rule-color, var(--rule));
+      border-inline-start: var(--bw-slab) solid var(--b-fill, var(--accent-500));
+      border-radius: var(--r-sm);
+      background: var(--b-well, var(--surface));
+    }
+
+    .sp-card__kicker {
+      margin: 0 0 var(--s-3);
+      font-family: var(--font-mono);
+      font-size: var(--fs-micro);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--b-muted, var(--text-muted));
+    }
+
+    .sp-jp {
+      margin: 0 0 var(--s-3);
+      font-size: var(--fs-body-lg);
+      line-height: var(--lh-article);
+      color: var(--b-heading, var(--text));
+      /* Japanese wraps between any two characters; let it. */
+      word-break: normal;
+      overflow-wrap: anywhere;
+      line-break: strict;
+    }
+
+    .sp-hint { margin: 0 0 var(--s-3); color: var(--b-body, var(--text-2)); }
+    .sp-vi { margin: 0; color: var(--b-body, var(--text-2)); }
+
+    .sp-romaji {
+      margin: 0 0 var(--s-3);
+      font-family: var(--font-mono);
+      font-size: var(--fs-body-sm);
+      color: var(--b-muted, var(--text-muted));
+    }
+
+    .sp-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--s-3);
+      margin-block: var(--s-3);
+    }
+
+    .sp-audio { width: 100%; max-width: calc(var(--s-14) * 2); }
+    .sp-src { margin: 0; font-size: var(--fs-caption); color: var(--b-muted, var(--text-muted)); }
+
+    .sp-say {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-2) var(--s-4);
+      font: inherit;
+      font-size: var(--fs-body-sm);
+      color: var(--b-heading, var(--text));
+      background: var(--b-well-2, var(--surface-2));
+      border: var(--bw-hair) solid var(--b-rule-color, var(--rule));
+      border-radius: var(--r-pill);
+      cursor: pointer;
+    }
+
+    .sp-say:hover { border-color: var(--b-fill, var(--accent-500)); color: var(--b-link-hover, var(--text)); }
+    .sp-say[data-speaking='true'] { border-color: var(--b-fill, var(--accent-500)); color: var(--b-fill, var(--accent-500)); }
+
+    .sp-fold { margin-block: var(--s-3); }
+    .sp-fold > summary {
+      cursor: pointer;
+      font-size: var(--fs-body-sm);
+      color: var(--b-link, var(--link));
+    }
+    .sp-fold > summary:hover { color: var(--b-link-hover, var(--text)); }
+    .sp-fold[open] > summary { margin-block-end: var(--s-3); color: var(--b-muted, var(--text-muted)); }
+
+    .sp-group {
+      margin-block: var(--s-7);
+      padding-block-start: var(--s-5);
+      border-block-start: var(--bw-hair) solid var(--b-rule-color, var(--rule));
+    }
+
+    .sp-figure { margin: 0 0 var(--s-4); }
+    .sp-figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--r-sm);
+      background: var(--b-well-2, var(--surface-2));
+    }
+
+    .sp-status {
+      margin-block: var(--s-4);
+      font-size: var(--fs-body-sm);
+      color: var(--b-muted, var(--text-muted));
+    }
+    .sp-status[data-state='error'] { color: var(--b-key-warn, var(--warning)); }
+
+    .sp-speech label {
+      display: block;
+      margin-block-end: var(--s-2);
+      font-size: var(--fs-caption);
+      color: var(--b-muted, var(--text-muted));
+    }
+    .sp-speech select,
+    .sp-speech input[type='range'] { width: 100%; }
+    .sp-speech select {
+      padding: var(--s-2);
+      font: inherit;
+      font-size: var(--fs-body-sm);
+      color: var(--b-heading, var(--text));
+      background: var(--b-well, var(--surface));
+      border: var(--bw-hair) solid var(--b-rule-color, var(--rule));
+      border-radius: var(--r-xs);
+    }
+    .sp-speech p { margin-block: var(--s-3); }
+
+    @media print {
+      .sp-say, .sp-audio, .sp-speech, .sp-status { display: none; }
+      .sp-fold > summary { display: none; }
+      .sp-fold > *:not(summary) { display: revert; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Luyện thi nói tiếng Nhật JPD113 & JPD123",
+    "description": "Bộ luyện thi Speaking JPD113 và JPD123: cấu trúc đề thi, bài đọc có audio, gần 250 mẫu hội thoại kèm gợi ý, đáp án mẫu và romaji.",
+    "inLanguage": "vi",
+    "teaches": "Tiếng Nhật sơ cấp — kỹ năng nói",
+    "educationalLevel": "Sơ cấp (N5)",
+    "learningResourceType": "Bộ đề luyện tập",
+    "isAccessibleForFree": true,
+    "author": { "@type": "Person", "name": "Min Thep" },
+    "mainEntityOfPage": "https://thepkz.github.io/minthep-portfolio/blog/Speaking.html",
+    "image": "https://thepkz.github.io/minthep-portfolio/blog/Speaking/jpd.jpg"
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+  <header class="site-header" data-nav>
+    <div data-nav-bar>
+      <a class="wordmark" href="../index.html">MINTHEP</a>
+      <nav aria-label="Điều hướng chính">
+        <ul role="list">
+          <li><a data-nav-link href="../index.html">Trang chủ</a></li>
+          <li><a data-nav-link href="../index.html#projects">Dự án</a></li>
+          <li><a data-nav-link href="myblog.html" aria-current="page">Blog</a></li>
+          <li><a data-nav-link href="../index.html#about">Giới thiệu</a></li>
+        </ul>
+      </nav>
+      <button type="button" data-nav-toggle aria-expanded="false" aria-controls="site-drawer" aria-label="Mở menu">
+        <svg data-icon="menu" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#menu"></use></svg>
+        <svg data-icon="close" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#close"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="site-drawer" data-drawer tabindex="-1">
+    <nav aria-label="Điều hướng di động">
+      <ul role="list">
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../index.html#projects">Dự án</a></li>
+        <li><a href="myblog.html">Blog</a></li>
+        <li><a href="../index.html#about">Giới thiệu</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="b-progress" data-progress aria-hidden="true">
+    <span class="b-progress__bar"></span>
+  </div>
+
+  <main id="main" class="grid-b">
+    <aside class="b-toc" data-toc aria-labelledby="b-toc-title">
+      <p class="b-toc__title" id="b-toc-title">Mục lục</p>
+      <nav aria-label="Mục lục bài viết">
+        <ol class="b-toc__list" role="list">
+          <li><a href="#tong-quan" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">01</span>
+            <span class="b-toc__label">Tổng quan hai kỳ thi</span></a></li>
+          <li><a href="#jpd113" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">02</span>
+            <span class="b-toc__label">JPD113 — cấu trúc</span></a></li>
+          <li><a href="#jpd123" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">03</span>
+            <span class="b-toc__label">JPD123 — cấu trúc</span></a></li>
+          <li><a href="#cham-diem" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">04</span>
+            <span class="b-toc__label">Thang điểm</span></a></li>
+          <li><a href="#chuan-bi" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">05</span>
+            <span class="b-toc__label">Lộ trình 4 tuần</span></a></li>
+          <li><a href="#giong-doc" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">06</span>
+            <span class="b-toc__label">Giọng đọc máy</span></a></li>
+          <li><a href="#reading" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">07</span>
+            <span class="b-toc__label">Bài đọc</span></a></li>
+          <li><a href="#khong-tranh" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">08</span>
+            <span class="b-toc__label">Câu hỏi không tranh</span></a></li>
+          <li><a href="#co-tranh" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">09</span>
+            <span class="b-toc__label">Câu hỏi có tranh</span></a></li>
+          <li><a href="#tips" data-toc-link>
+            <span class="b-toc__num" aria-hidden="true">10</span>
+            <span class="b-toc__label">Mẹo phòng thi</span></a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <article class="b-article">
+      <header class="b-head">
+        <p data-eyebrow>Tiếng Nhật · Luyện nói</p>
+        <h1>Luyện Thi Nói Tiếng Nhật JPD113 &amp; JPD123</h1>
+        <p class="b-lead">Toàn bộ cấu trúc đề, thang điểm, 48 bài đọc và 247 câu hỏi hội thoại kèm gợi ý, đáp án mẫu và romaji — mở ra là học được ngay, không cần đăng nhập, không cần cài gì.</p>
+        <dl class="b-meta">
+          <dt>Chuyên mục</dt><dd>Tiếng Nhật</dd>
+          <dt>Trình độ</dt><dd>Sơ cấp — N5</dd>
+          <dt>Nội dung</dt><dd>295 bài luyện</dd>
+          <dt>Cập nhật</dt><dd><time datetime="2024-03-30">30/03/2024</time></dd>
+        </dl>
+        <button type="button" class="b-modetoggle js-only" data-reading-toggle aria-pressed="false">
+          <svg data-icon="sun" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#sun"></use></svg>
+          <span class="b-modetoggle__on">Chế độ giấy</span>
+          <span class="b-modetoggle__off">Chế độ tối</span>
+        </button>
+      </header>
+
+      <h2 id="tong-quan">Tổng quan hai kỳ thi nói</h2>
+
+      <p>JPD113 và JPD123 là hai học phần tiếng Nhật sơ cấp đầu tiên, và với phần lớn sinh viên thì bài thi <strong>nói</strong> của hai môn này là bài thi đầu tiên trong đời phải mở miệng nói tiếng Nhật trước một người thật. Đề không khó. Cái khó là bạn chỉ có một lượt, không được xoá đi làm lại, và thời gian chuẩn bị tính bằng giây chứ không phải bằng phút.</p>
+
+      <p>Bài thi diễn ra trực tiếp một–một với giám thị, kéo dài khoảng năm tới bảy phút, thang điểm 100. Cả hai môn đều chia thành hai phần lớn giống nhau về tinh thần: một phần <em>đọc</em> để đo phát âm và độ trôi chảy, một phần <em>hỏi đáp</em> để đo khả năng phản xạ. Điểm tác phong được chấm riêng và cộng dồn — đây là phần dễ ăn điểm nhất mà lại bị bỏ quên nhiều nhất.</p>
+
+      <p>Trang này gom lại toàn bộ ngân hàng đề mà mình đã luyện và đã đi thi: <strong>48 bài đọc</strong> (13 bài của JPD113 và 35 bài của JPD123), <strong>85 câu hỏi không tranh</strong>, và <strong>68 bộ câu hỏi có tranh với tổng cộng 162 câu</strong>. Mỗi câu đều có ba lớp: câu tiếng Nhật, gợi ý nghĩa tiếng Việt, và một câu trả lời mẫu kèm romaji. Phần romaji và đáp án mặc định được gấp lại — bạn nên tự trả lời trước rồi mới mở ra đối chiếu, vì nhìn đáp án trước thì bài luyện biến thành bài đọc chép.</p>
+
+      <p>Cách dùng trang hiệu quả nhất không phải là đọc từ trên xuống dưới. Hãy nhảy thẳng tới phần tương ứng với môn bạn sắp thi, đọc kỹ mục cấu trúc và thang điểm để biết mình bị chấm cái gì, rồi mới xuống phần luyện. Toàn bộ nội dung nằm sẵn trong trang, không cần bấm nút nào để tải, và vẫn đọc được đầy đủ khi mất mạng nếu trình duyệt đã lưu bộ nhớ đệm.</p>
+
+      <h2 id="jpd113">JPD113 — cấu trúc đề thi</h2>
+
+      <p>JPD113 nằm ở giai đoạn nhập môn: bảng chữ cái đã xong, ngữ pháp mới dừng ở mức giới thiệu bản thân, số đếm, ngày tháng, nghề nghiệp và quốc tịch. Đề thi vì thế cũng bám sát chừng đó, và phần lớn điểm mất đi không đến từ ngữ pháp sai mà đến từ việc đọc vấp hoặc im lặng quá lâu.</p>
+
+      <ul role="list">
+        <li>Đề thi gồm 02 phần:
+          <ul role="list">
+            <li>1. READING: Đọc câu văn
+              <ul role="list">
+                <li>Yêu cầu: chỉ cần đọc chính xác, không cần trả lời câu hỏi (30/100 điểm)</li>
+              </ul>
+            </li>
+            <li>2. TALKING: Trả lời 04 câu hỏi của giám thị (60/100 điểm)</li>
+            <li>(*) PRESENTING: Đánh giá tác phong, thái độ, phát âm (10/100 điểm)</li>
+          </ul>
+        </li>
+        <li>Các bước tiến hành:
+          <ul role="list">
+            <li>Phần READING:
+              <ul role="list">
+                <li>1. Giám thị chọn bài đọc</li>
+                <li>2. Sinh viên chuẩn bị bài đọc trong 30 giây</li>
+                <li>3. Sinh viên đọc bài</li>
+              </ul>
+            </li>
+            <li>Phần TALKING:
+              <ul role="list">
+                <li>1. QUESTION WITHOUT PICTURES (Câu hỏi không tranh):
+                  <ul role="list">
+                    <li>Giám thị chọn 1 trong 4 câu hỏi cho sẵn để hỏi sinh viên</li>
+                  </ul>
+                </li>
+                <li>2. QUESTIONS WITH PICTURES (Câu hỏi có tranh):
+                  <ul role="list">
+                    <li>Giám thị chọn 1 tranh và hỏi 03 câu hỏi liên quan để sinh viên trả lời dựa vào gợi ý</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <aside class="b-callout" data-callout="warn">
+        <p class="b-callout__label">
+          <svg data-icon="alert-circle" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#alert-circle"></use></svg>
+          Đọc kỹ chỗ này
+        </p>
+        <p>Phần READING của JPD113 <strong>không yêu cầu bạn trả lời gì cả</strong> — chỉ đọc đúng. Rất nhiều bạn mất điểm oan vì tưởng phải hiểu và diễn giải bài đọc, nên vừa đọc vừa dịch trong đầu rồi vấp. Nhiệm vụ duy nhất là phát âm chuẩn và ngắt câu đúng chỗ.</p>
+      </aside>
+
+      <p>Ba mươi giây chuẩn bị nghe thì ngắn nhưng dùng đúng cách là đủ. Trong ba mươi giây đó, đừng cố dịch cả bài. Hãy quét nhanh tìm ba thứ: các con số (tuổi, giờ, ngày), các từ katakana (thường là tên riêng hoặc từ mượn, rất dễ đọc sai), và vị trí các trợ từ <span lang="ja">は</span>, <span lang="ja">の</span>, <span lang="ja">を</span> để biết trước mình sẽ ngắt hơi ở đâu.</p>
+
+      <h2 id="jpd123">JPD123 — cấu trúc đề thi</h2>
+
+      <p>JPD123 nặng hơn hẳn. Bài đọc dài hơn, chuyển từ mấy câu giới thiệu rời rạc sang một đoạn văn có mạch, và trọng số điểm của phần đọc tăng từ 30 lên 45. Phần hỏi đáp cũng gộp cả câu có tranh lẫn câu không tranh vào chung một lượt bốc thăm, nên bạn không biết trước mình sẽ gặp dạng nào.</p>
+
+      <ul role="list">
+        <li>Đề thi gồm 02 phần:
+          <ul role="list">
+            <li>1. READING: Đọc trôi chảy một đoạn văn (45/100 điểm)</li>
+            <li>2. Q&amp;A: Trả lời 3 câu hỏi của giám thị (gồm câu hỏi có tranh &amp; không tranh) (45/100 điểm)</li>
+            <li>(*) PRESENTING: Chào hỏi, tác phong, độ trôi chảy, phát âm (10/100 điểm)</li>
+          </ul>
+        </li>
+        <li>Các bước tiến hành:
+          <ul role="list">
+            <li>SV BẮT BUỘC mang theo giấy tờ tuỳ thân có ảnh (CCCD, thẻ SV…) khi đi thi</li>
+            <li>SV vào phòng thi theo thứ tự gọi tên từ giám thị, đưa giấy tờ để giám thị kiểm tra</li>
+            <li>SV bốc thăm ngẫu nhiên mã đề đọc (A-1, A-2…). Chuẩn bị 20s sau đó đọc bài</li>
+            <li>Trả lời 3 câu hỏi ngẫu nhiên từ mã đề Q&amp;A (B-1, B-2,…)</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Điểm khác biệt về mặt thủ tục cần nhớ: JPD123 <strong>bắt buộc mang giấy tờ tuỳ thân có ảnh</strong> và <strong>bốc thăm mã đề</strong>, còn thời gian chuẩn bị bài đọc rút xuống chỉ còn hai mươi giây. Hai mươi giây với một đoạn văn dài gấp đôi nghĩa là bạn gần như không có thời gian để hiểu — bạn chỉ có thời gian để nhận diện mặt chữ. Đó là lý do vì sao luyện đọc to thành tiếng trước ngày thi quan trọng hơn nhiều so với việc học thuộc nghĩa.</p>
+
+      <h2 id="cham-diem">Thang điểm và những lỗi bị trừ</h2>
+
+      <p>Biết mình bị chấm cái gì thì luyện mới đúng chỗ. Đây là cách 100 điểm được chia ở hai môn:</p>
+
+      <div data-table role="region" aria-label="So sánh thang điểm JPD113 và JPD123" tabindex="0">
+        <table>
+          <caption>Phân bổ điểm giữa hai học phần</caption>
+          <thead>
+            <tr>
+              <th scope="col">Phần thi</th>
+              <th scope="col">JPD113</th>
+              <th scope="col">JPD123</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Đọc (READING)</th><td>30 điểm</td><td>45 điểm</td></tr>
+            <tr><th scope="row">Hỏi đáp (TALKING / Q&amp;A)</th><td>60 điểm — 4 câu</td><td>45 điểm — 3 câu</td></tr>
+            <tr><th scope="row">Tác phong (PRESENTING)</th><td>10 điểm</td><td>10 điểm</td></tr>
+            <tr><th scope="row">Thời gian chuẩn bị bài đọc</th><td>30 giây</td><td>20 giây</td></tr>
+            <tr><th scope="row">Bốc thăm mã đề</th><td>Không</td><td>Có</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Mười điểm tác phong là mười điểm cho không. Chào khi vào phòng, ngồi thẳng, nhìn vào giám thị chứ không nhìn xuống bàn, và cảm ơn khi ra — chừng đó là đủ lấy trọn. Ngược lại, những lỗi bị trừ nhiều nhất trong phần hỏi đáp lại rất đời thường: im lặng quá năm giây, trả lời cụt lủn bằng một từ thay vì một câu hoàn chỉnh có <span lang="ja">です</span>/<span lang="ja">ます</span>, và trả lời bằng tiếng Anh khi bí.</p>
+
+      <p>Một chi tiết nhỏ nhưng ăn điểm: khi bị hỏi mà chưa nghĩ ra, đừng im. Hãy kéo dài một âm <span lang="ja">えーと</span> hoặc <span lang="ja">ええと</span>. Giám thị nghe thấy bạn đang xử lý bằng tiếng Nhật chứ không phải đang đứng hình, và bạn mua thêm được vài giây hợp lệ.</p>
+
+      <h2 id="chuan-bi">Lộ trình luyện bốn tuần</h2>
+
+      <p>Bốn tuần là khoảng thời gian thực tế nếu bạn học đều mỗi ngày ba mươi phút. Ít hơn thì vẫn kịp, nhưng phải cắt bớt phần mở rộng và tập trung vào các dạng câu chắc chắn ra.</p>
+
+      <ol>
+        <li><strong>Tuần 1 — đọc trôi trước, hiểu sau.</strong> Mỗi ngày đọc to hai bài đọc, không tra từ, không dịch. Mục tiêu duy nhất là mắt nhìn tới đâu miệng phát ra tới đó. Ghi âm lại buổi đầu và buổi cuối tuần để tự so sánh.</li>
+        <li><strong>Tuần 2 — trợ từ và ngắt hơi.</strong> Đọc lại chính những bài tuần 1, lần này gạch chân mọi trợ từ và cố tình ngắt một nhịp rất ngắn sau mỗi trợ từ. Đây là thứ khiến một bài đọc nghe có vẻ thành thạo dù vốn từ chưa nhiều.</li>
+        <li><strong>Tuần 3 — phản xạ hỏi đáp.</strong> Chuyển sang phần câu hỏi. Đọc câu hỏi, gấp đáp án lại, tự trả lời thành tiếng trong vòng năm giây, rồi mới mở đáp án mẫu ra đối chiếu. Sai không sao, chậm mới là vấn đề.</li>
+        <li><strong>Tuần 4 — chạy thử toàn phần.</strong> Nhờ một người bạn bốc ngẫu nhiên một bài đọc và ba tới bốn câu hỏi, bấm giờ đúng như thi thật. Làm ba lượt như vậy là đủ để cơ thể quen với áp lực.</li>
+      </ol>
+
+      <p>Nguyên tắc xuyên suốt: <strong>luôn luyện thành tiếng</strong>. Đọc thầm trong đầu tạo ra ảo giác đã thuộc, nhưng cơ miệng không được huấn luyện thì tới phòng thi vẫn líu lưỡi. Và hãy ghi âm — nghe lại giọng của chính mình là cách phát hiện lỗi phát âm nhanh nhất, dù ba mươi giây đầu nghe sẽ hơi khó chịu.</p>
+
+      <h2 id="giong-doc">Giọng đọc máy: nó là gì và không là gì</h2>
+
+      <p>Đây là phần cần nói thẳng. Trong 48 bài đọc trên trang này, chỉ có <strong>23 bài có bản thu thật</strong> (13 bài JPD113 và 10 bài JPD123). Toàn bộ phần còn lại — mọi câu hỏi, mọi câu trả lời mẫu, và 25 bài đọc — <strong>không có file âm thanh nào cả</strong>, và chưa từng có.</p>
+
+      <p>Thay vào đó, mỗi câu tiếng Nhật đều có một nút “Nghe” dùng <strong>bộ tổng hợp giọng nói sẵn có của trình duyệt</strong> (Web Speech API). Đây là đường phát âm thanh chính của trang, không phải phương án dự phòng. Nó hoàn toàn miễn phí, chạy ngay trên máy bạn, không gửi gì lên máy chủ nào, và không cần tải thêm một megabyte âm thanh nào.</p>
+
+      <aside class="b-callout" data-callout="warn">
+        <p class="b-callout__label">
+          <svg data-icon="alert-circle" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#alert-circle"></use></svg>
+          Giọng máy không phải giọng người bản xứ
+        </p>
+        <p>Giọng tổng hợp đọc đúng chữ, nhưng <strong>trọng âm cao thấp</strong> (<span lang="ja">アクセント</span>) thì thường sai, ngữ điệu cuối câu hỏi hay bị phẳng, và tên riêng katakana đôi khi bị đọc lệch. Hãy dùng nó để kiểm tra <em>bạn ngắt câu ở đâu</em> và <em>tốc độ bao nhiêu là vừa</em> — đừng bắt chước y hệt ngữ điệu của nó. Muốn chuẩn ngữ điệu, hãy nghe 23 bản thu thật ở phần Bài đọc, hoặc nghe chính giáo viên đọc trên lớp.</p>
+      </aside>
+
+      <p>Nút “Nghe” chỉ kêu khi máy bạn đã cài sẵn một giọng tiếng Nhật. Windows 10 và 11 có sẵn giọng Nayu/Ichiro nếu bạn thêm gói ngôn ngữ <span lang="ja">日本語</span> trong <em>Cài đặt → Thời gian và ngôn ngữ → Ngôn ngữ</em>. macOS và iOS có giọng Kyoko, bật trong <em>Cài đặt → Trợ năng → Nội dung nói → Giọng nói</em>. Android tải giọng qua Google Text-to-Speech. Nếu máy chưa có giọng nào phù hợp, ô điều khiển ở cột bên phải sẽ nói rõ tình trạng thay vì để bạn bấm nút câm lặng mà không hiểu tại sao.</p>
+
+      <p>Ở cột bên phải bạn cũng chỉnh được <strong>giọng đọc</strong> và <strong>tốc độ</strong>. Mặc định để 0,9× vì tốc độ gốc thường nhanh hơn nhịp một bài thi sơ cấp. Khi mới luyện hãy hạ xuống 0,7×, tới tuần cuối thì đẩy lên 1,0× cho gần với nhịp nói thật của giám thị.</p>
+
+      <h2 id="reading">Bài đọc — READING</h2>
+
+      <p>Phần đọc chiếm 30 điểm ở JPD113 và 45 điểm ở JPD123. Dưới đây là các bài đọc trong ngân hàng đề, kèm romaji và bản dịch tiếng Việt để bạn tự kiểm tra sau khi đã đọc xong — <strong>hãy đọc bản tiếng Nhật trước, mở romaji sau</strong>, vì quen nhìn romaji sẽ khiến mắt bạn lười nhận diện kana trong phòng thi.</p>
+
+      <ul class="sp-legend" role="list">
+        <li>Bản thu thật: 23/48 bài</li>
+        <li>Còn lại: giọng đọc máy</li>
+        <li>Romaji và bản dịch: gấp sẵn, tự bấm mở</li>
+      </ul>
+
+      <h3>JPD113 — 13 bài đọc</h3>
+      <p>Các bài của JPD113 đều ngắn, xoay quanh giới thiệu bản thân và giới thiệu người khác. Cả 13 bài đều có bản thu thật.</p>
+      <p class="sp-status js-only" data-hydrate-status="jpd113" data-state="idle" role="status">Đang chuẩn bị tải toàn bộ bài luyện JPD113…</p>
+      <div class="sp-list" data-drills="jpd113:reading" data-static="2">
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD113 · Bài đọc 1 (Dễ)</p>
+          <p class="sp-jp" lang="ja">はじめまして、私はアンナです。オーストラリア人です。さくら日本語学校の学生です。ことし、二十歳です。私のしゅみはおんがくとどくしょです。よろしくおねがいします。</p>
+          <div class="sp-tools">
+            <audio class="sp-audio" controls preload="none" src="Speaking/jpd113/reading_1.mp3"></audio>
+            <p class="sp-src">Bản thu thật của giáo viên.</p>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji</summary>
+            <p class="sp-romaji">Hajimemashite, watashi wa Anna desu. Oosutoraria-jin desu. Sakura nihongo gakkou no gakusei desu. Kotoshi, hatachi desu. Watashi no shumi wa ongaku to dokusho desu. Yoroshiku onegaishimasu.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện bản dịch tiếng Việt</summary>
+            <p class="sp-vi">Xin chào, tôi là Anna. Tôi là người Úc. Tôi là học sinh trường Nhật ngữ Sakura. Năm nay tôi 20 tuổi. Sở thích của tôi là âm nhạc và đọc sách. Rất vui được gặp bạn.</p>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD113 · Bài đọc 2 (Dễ)</p>
+          <p class="sp-jp" lang="ja">みなさん、おはようございます。こちらはキムさんです。キムさんはかんこく人です。キムさんのしゅみはすいえいとテニスです。いま、なごやたんきだいがくのがくせいです。学校で日本語をべんきょうしています。</p>
+          <div class="sp-tools">
+            <audio class="sp-audio" controls preload="none" src="Speaking/jpd113/reading_2.mp3"></audio>
+            <p class="sp-src">Bản thu thật của giáo viên.</p>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji</summary>
+            <p class="sp-romaji">Minasan, ohayou gozaimasu. Kochira wa Kimu-san desu. Kimu-san wa kankoku-jin desu. Kimu-san no shumi wa suiei to tenisu desu. Ima, Nagoya tanki daigaku no gakusei desu. Gakkou de nihongo wo benkyou shiteimasu.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện bản dịch tiếng Việt</summary>
+            <p class="sp-vi">Chào mọi người. Đây là anh/chị Kim. Kim là người Hàn Quốc. Sở thích của Kim là bơi lội và tennis. Hiện tại, Kim là sinh viên trường cao đẳng Nagoya. Kim đang học tiếng Nhật ở trường.</p>
+          </details>
+        </article>
+      </div>
+
+      <h3>JPD123 — 35 bài đọc</h3>
+      <p>Các bài của JPD123 dài hơn và có mạch câu chuyện. 10 bài đầu có bản thu thật; 25 bài còn lại dùng giọng đọc máy.</p>
+      <p class="sp-status js-only" data-hydrate-status="jpd123" data-state="idle" role="status">Đang chuẩn bị tải toàn bộ bài luyện JPD123…</p>
+      <div class="sp-list" data-drills="jpd123:reading" data-static="2">
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD123 · Bài 1 (Cực kì dễ)</p>
+          <p class="sp-jp" lang="ja">こんにちは！私はさとうです。おおさか大学のせんせいです。私のたんじょうびは4がつ5日です。しゅみはサッカーです。まいにちサッカーをします。ときどきこうえんにいって、ともだちといっしょにサッカーをします。しごとはいそがしいですが、たのしいです。</p>
+          <div class="sp-tools">
+            <audio class="sp-audio" controls preload="none" src="Speaking/jpd123/reading_1.mp3"></audio>
+            <p class="sp-src">Bản thu thật của giáo viên.</p>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji</summary>
+            <p class="sp-romaji">Konnichiwa! Watashi wa Satou desu. Oosaka daigaku no sensei desu. Watashi no tanjoubi wa shigatsu itsuka desu. Shumi wa sakkaa desu. Mainichi sakkaa o shimasu. Tokidoki kouen ni itte, tomodachi to issho ni sakkaa o shimasu. Shigoto wa isogashii desu ga, tanoshii desu.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện bản dịch tiếng Việt</summary>
+            <p class="sp-vi">Xin chào! Tôi là Sato. Tôi là giáo viên trường đại học Osaka. Sinh nhật của tôi là ngày 5 tháng 4. Vì sở thích của tôi là bóng đá nên tôi chơi bóng đá mỗi ngày. Thỉnh thoảng tôi đi công viên và cùng chơi bóng đá với bạn. Công việc bận rộn nhưng vui.</p>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD123 · Bài 2 (Cực kì dễ)</p>
+          <p class="sp-jp" lang="ja">おはようございます！こちらはリーさんです。リーさんはちゅうごく人です。かれのしゅみはおんがくです。 今、京都たんき大学の学生です。学校で日本語をべんきょうしています。ひまなときにはともだちとカラオケにいきます。</p>
+          <div class="sp-tools">
+            <audio class="sp-audio" controls preload="none" src="Speaking/jpd123/reading_2.mp3"></audio>
+            <p class="sp-src">Bản thu thật của giáo viên.</p>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji</summary>
+            <p class="sp-romaji">Ohayou gozaimasu! Kochira wa Rii-san desu. Rii-san wa Chuugoku-jin desu. Kare no shumi wa ongaku desu. Ima, Kyouto tanki daigaku no gakusei desu. Gakkou de Nihongo o benkyou shite imasu. Hima na toki ni wa tomodachi to karaoke ni ikimasu.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện bản dịch tiếng Việt</summary>
+            <p class="sp-vi">Xin chào! Đây là anh Lý. Anh Lý là người Trung Quốc. Sở thích của anh ấy là âm nhạc. Hiện tại, anh ấy là sinh viên trường đại học ngắn hạn Kyoto. Anh ấy học tiếng Nhật ở trường, và khi rảnh rỗi thì đi karaoke với bạn.</p>
+          </details>
+        </article>
+      </div>
+
+      <h2 id="khong-tranh">Câu hỏi không tranh</h2>
+
+      <p>Đây là dạng câu hỏi giám thị hỏi trực tiếp về bản thân bạn: tên, quốc tịch, tuổi, nghề nghiệp, sở thích, gia đình, thời gian biểu. Vì hỏi về chính bạn nên đáp án mẫu chỉ là khung — chỗ <span lang="ja">________</span> là chỗ bạn điền thông tin thật của mình. Hãy chuẩn bị sẵn câu trả lời của riêng bạn cho từng câu, đừng đợi tới phòng thi mới nghĩ.</p>
+
+      <h3>JPD113 — 22 câu</h3>
+      <div class="sp-list" data-drills="jpd113:without" data-static="3">
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD113 · Câu hỏi không tranh 1</p>
+          <p class="sp-jp" lang="ja">おなまえは？</p>
+          <p class="sp-hint">Tên bạn là gì?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="おなまえは？" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Onamae wa?</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">わたしのなまえは________です。</p>
+            <p class="sp-romaji">Watashi no namae wa ________ desu.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="わたしのなまえは________です。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD113 · Câu hỏi không tranh 2</p>
+          <p class="sp-jp" lang="ja">おくには どちらですか。</p>
+          <p class="sp-hint">Bạn đến từ nước nào?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="おくには どちらですか。" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Okuni wa dochira desu ka.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">ベトナムです。</p>
+            <p class="sp-romaji">Betonamu desu.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="ベトナムです。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD113 · Câu hỏi không tranh 3</p>
+          <p class="sp-jp" lang="ja">おしごとは？</p>
+          <p class="sp-hint">Công việc của bạn là gì?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="おしごとは？" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Oshigoto wa?</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">わたしのしごとは________です。</p>
+            <p class="sp-romaji">Watashi no shigoto wa ________ desu.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="わたしのしごとは________です。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+      </div>
+
+      <h3>JPD123 — 63 câu</h3>
+      <div class="sp-list" data-drills="jpd123:without" data-static="3">
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD123 · Câu hỏi không tranh 1</p>
+          <p class="sp-jp" lang="ja">あなたの まちは どんな ところですか。</p>
+          <p class="sp-hint">Thành phố của bạn là nơi như thế nào?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="あなたの まちは どんな ところですか。" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Anata no machi wa donna tokoro desu ka.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">わたしの まちは にぎやかです。デパートや レストランが たくさん あります。そして、きれいな かわも あります。</p>
+            <p class="sp-romaji">Watashi no machi wa nigiyaka desu. Depaato ya resutoran ga takusan arimasu. Soshite, kirei na kawa mo arimasu.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="わたしの まちは にぎやかです。デパートや レストランが たくさん あります。そして、きれいな かわも あります。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD123 · Câu hỏi không tranh 2</p>
+          <p class="sp-jp" lang="ja">休みの日に なにを しますか。</p>
+          <p class="sp-hint">Ngày nghỉ bạn làm gì?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="休みの日に なにを しますか。" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Yasumi no hi ni nani o shimasu ka.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">休みの日に ともだちと えいがを みます。それから、いっしょに レストランで ごはんを たべます。</p>
+            <p class="sp-romaji">Yasumi no hi ni tomodachi to eiga wo mimasu. Sorekara, issho ni resutoran de gohan wo tabemasu.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="休みの日に ともだちと えいがを みます。それから、いっしょに レストランで ごはんを たべます。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="sp-card">
+          <p class="sp-card__kicker">JPD123 · Câu hỏi không tranh 3</p>
+          <p class="sp-jp" lang="ja">日本の たべもので なにが いちばん すきですか。どうしてですか。</p>
+          <p class="sp-hint">Trong các món ăn Nhật Bản bạn thích nhất món gì? Tại sao?</p>
+          <div class="sp-tools">
+            <button type="button" class="sp-say js-only" data-say="日本の たべもので なにが いちばん すきですか。どうしてですか。" data-say-lang="ja" data-speaking="false">
+              <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+              <span>Nghe câu hỏi</span>
+            </button>
+          </div>
+          <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+            <p class="sp-romaji">Nihon no tabemono de nani ga ichiban suki desu ka. Doushite desu ka.</p>
+          </details>
+          <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+            <p class="sp-jp" lang="ja">すしが いちばん すきです。とても おいしいですから。</p>
+            <p class="sp-romaji">Sushi ga ichiban suki desu. Totemo oishii desu kara.</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="すしが いちばん すきです。とても おいしいですから。" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu trả lời</span>
+              </button>
+            </div>
+          </details>
+        </article>
+      </div>
+
+      <h2 id="co-tranh">Câu hỏi có tranh</h2>
+
+      <p>Giám thị đưa ra một tấm tranh rồi hỏi quanh nó. Số câu không cố định: trong bộ đề dưới đây, 30 bộ chỉ có <strong>một</strong> câu, phần còn lại hai đến bốn câu, và vài bộ lẻ lên tới bảy hoặc mười một câu. Đừng học theo kiểu "trả ba câu là xong" — cứ chuẩn bị để bị hỏi tiếp. Khác với dạng trên, ở đây bạn <strong>không được bịa</strong> — mọi thông tin phải lấy từ tranh. Cái bẫy lớn nhất là trả lời bằng một từ: khi được hỏi <span lang="ja">この人のなまえは？</span> thì đáp án đủ điểm là một câu hoàn chỉnh có <span lang="ja">です</span>, không phải mỗi cái tên trống không.</p>
+
+      <p>Dưới đây là 68 bộ tranh, tổng cộng 162 câu hỏi. 67 bộ có kèm ảnh gốc của đề (một bộ JPD123 mình không còn ảnh), tải chậm dần khi bạn cuộn tới để không làm nặng trang.</p>
+
+      <h3>JPD113 — 6 bộ tranh</h3>
+      <div class="sp-list" data-drills="jpd113:pictures" data-static="1">
+        <section class="sp-group">
+          <h4>JPD113 · Bộ câu hỏi có tranh 1</h4>
+          <figure class="sp-figure">
+            <picture>
+              <source srcset="Speaking/jpd113/image_1.avif" type="image/avif">
+              <source srcset="Speaking/jpd113/image_1.webp" type="image/webp">
+              <img src="Speaking/jpd113/image_1.png" width="472" height="259" alt="Tranh gợi ý JPD113 — bộ câu hỏi 1: Tên của người này là gì?" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 1</p>
+            <p class="sp-jp" lang="ja">この人のなまえは？</p>
+            <p class="sp-hint">Tên của người này là gì?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="この人のなまえは？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Kono hito no namae wa?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">マリヤムさんです。</p>
+              <p class="sp-romaji">Mariamu-san desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="マリヤムさんです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 2</p>
+            <p class="sp-jp" lang="ja">マリヤムさんはなんさいですか？</p>
+            <p class="sp-hint">Mariamu-san bao nhiêu tuổi?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="マリヤムさんはなんさいですか？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Mariamu-san wa nansai desu ka?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">マリヤムさんは26さいです。</p>
+              <p class="sp-romaji">Mariamu-san wa 26-sai desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="マリヤムさんは26さいです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 3</p>
+            <p class="sp-jp" lang="ja">マリヤムさんの おしごとはなんですか？</p>
+            <p class="sp-hint">Mariamu-san nghề nghiệp là gì?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="マリヤムさんの おしごとはなんですか？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Mariamu-san no oshigoto wa nan desu ka?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">マリヤムさんの おしごとはがくせいです。</p>
+              <p class="sp-romaji">Mariamu-san no oshigoto wa gakusei desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="マリヤムさんの おしごとはがくせいです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 4</p>
+            <p class="sp-jp" lang="ja">マリヤムさんは学生ですか？</p>
+            <p class="sp-hint">Mariamu-san có phải là sinh viên không?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="マリヤムさんは学生ですか？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Mariamu-san wa gakusei desu ka?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">はい、マリヤムさんは学生です。</p>
+              <p class="sp-romaji">Hai, Mariamu-san wa gakusei desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="はい、マリヤムさんは学生です。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 5</p>
+            <p class="sp-jp" lang="ja">マリヤムさんの お国はどちらですか？</p>
+            <p class="sp-hint">Mariamu-san đến từ nước nào?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="マリヤムさんの お国はどちらですか？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Mariamu-san no okuni wa dochira desu ka?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">マリヤムさんの お国はイタリアです。</p>
+              <p class="sp-romaji">Mariamu-san no okuni wa Itaria desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="マリヤムさんの お国はイタリアです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD113 · Tranh 1 · Câu 6</p>
+            <p class="sp-jp" lang="ja">マリヤムさんはイタリアじんですか？</p>
+            <p class="sp-hint">Mariamu-san có phải là người Ý không?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="マリヤムさんはイタリアじんですか？" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Mariamu-san wa Itaria-jin desu ka?</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">はい、マリヤムさんはイタリアじんです。</p>
+              <p class="sp-romaji">Hai, Mariamu-san wa Itaria-jin desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="はい、マリヤムさんはイタリアじんです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+        </section>
+      </div>
+
+      <h3>JPD123 — 62 bộ tranh</h3>
+      <div class="sp-list" data-drills="jpd123:pictures" data-static="1">
+        <section class="sp-group">
+          <h4>JPD123 · Bộ câu hỏi có tranh 1</h4>
+          <figure class="sp-figure">
+            <picture>
+              <source srcset="Speaking/jpd123/image_1_1.avif" type="image/avif">
+              <source srcset="Speaking/jpd123/image_1_1.webp" type="image/webp">
+              <img src="Speaking/jpd123/image_1_1.png" width="524" height="302" alt="Tranh gợi ý JPD123 — bộ câu hỏi 1: Peking ở đâu của Trung Quốc?" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <article class="sp-card">
+            <p class="sp-card__kicker">JPD123 · Tranh 1 · Câu 1</p>
+            <p class="sp-jp" lang="ja">ペキンはちゅうごくのどこですか</p>
+            <p class="sp-hint">Peking ở đâu của Trung Quốc?</p>
+            <div class="sp-tools">
+              <button type="button" class="sp-say js-only" data-say="ペキンはちゅうごくのどこですか" data-say-lang="ja" data-speaking="false">
+                <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                <span>Nghe câu hỏi</span>
+              </button>
+            </div>
+            <details class="sp-fold"><summary>Hiện romaji câu hỏi</summary>
+              <p class="sp-romaji">Pekin wa chuugoku no doko desu ka</p>
+            </details>
+            <details class="sp-fold"><summary>Hiện câu trả lời mẫu</summary>
+              <p class="sp-jp" lang="ja">ペキンは ちゅうごくの きたです。</p>
+              <p class="sp-romaji">Pekin wa chuugoku no kita desu.</p>
+              <div class="sp-tools">
+                <button type="button" class="sp-say js-only" data-say="ペキンは ちゅうごくの きたです。" data-say-lang="ja" data-speaking="false">
+                  <svg data-icon="volume-up" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#volume-up"></use></svg>
+                  <span>Nghe câu trả lời</span>
+                </button>
+              </div>
+            </details>
+          </article>
+        </section>
+      </div>
+
+      <h2 id="tips">Mẹo phòng thi</h2>
+
+      <h3>Cho JPD113</h3>
+      <ul role="list">
+        <li>Đọc to và rõ ràng, không cần đọc nhanh</li>
+        <li>Khi ngập ngừng thì dùng <span lang="ja">えーと</span> hoặc <span lang="ja">あのう</span>, đừng "ờ ờ" tiếng Việt. Kéo dài một chữ <em>e</em> thành "eeeeee" cũng không phải tiếng Nhật — <span lang="ja">えーと</span> là hai âm có hình, nghe ra là bạn đang nghĩ bằng tiếng Nhật.</li>
+        <li>Ngắt hơi ở cuối cụm, không ngắt sau mọi trợ từ: <span lang="ja">わたしは</span>… <span lang="ja">FPTのしゃいんです</span>. Ngắt giữa <span lang="ja">の</span> và từ đứng sau nó là tách đôi một cụm, nghe rời rạc hơn là chậm rãi.</li>
+        <li>Tiếng Nhật không có dấu như tiếng Việt, nên đừng gán dấu sắc hay dấu huyền cho từng chữ. Cái thật sự cần để ý là <strong>cao độ theo cả từ</strong> (lên rồi giữ, hoặc cao rồi xuống) và ngữ điệu cuối câu: câu hỏi <span lang="ja">〜か</span> thì lên giọng, câu kể thì hạ xuống. Trợ từ <span lang="ja">は</span> không phải chỗ để nhấn.</li>
+        <li>Ghi âm và nghe lại giọng của mình để cải thiện</li>
+        <li>Chuẩn bị bài đọc trong 30 giây trước khi bắt đầu</li>
+        <li>Ôn kĩ phần Ngày Tháng Giờ Phút vì nó sẽ ra rất nhiều, đặc biệt là Ngày rất là khó</li>
+      </ul>
+
+      <h3>Cho JPD123</h3>
+      <ul role="list">
+        <li>Dạng ra nhiều nhất là <span lang="ja">どこ</span> — 33 trong 62 bộ tranh. Câu trả lời đi với <span lang="ja">〜に あります／います</span>: <span lang="ja">に</span> chỉ chỗ một vật <em>ở</em>, còn <span lang="ja">で</span> chỉ chỗ một hành động <em>diễn ra</em>. <span lang="ja">よこはまで なにが ありますか</span> là sai, phải là <span lang="ja">よこはまに</span>.</li>
+        <li>20 bộ hỏi ở thể quá khứ <span lang="ja">〜ましたか</span>, và câu trả lời phải quá khứ theo: <span lang="ja">食べました</span>, <span lang="ja">きれいでした</span>. Tính từ <span lang="ja">-い</span> là <span lang="ja">たのしかったです</span>, không phải <span lang="ja">たのしいでした</span> — đây là lỗi bị trừ nhiều nhất.</li>
+        <li>12 bộ theo mẫu <span lang="ja">AからBまで〜で どのくらいですか</span>. Đáp án cần đủ ba phần: số + <span lang="ja">じかん／ふん</span> + <span lang="ja">ぐらい かかります</span>. Thiếu <span lang="ja">かかります</span> là câu chưa xong.</li>
+        <li>16 bộ cuối đều là thể <span lang="ja">〜ています</span>, nên chia thể <span lang="ja">て</span> phải thuộc trước khi vào phòng thi. Sai thể <span lang="ja">て</span> thì mất điểm ngay từ câu đầu và không cứu lại được.</li>
+        <li>Trong nhóm đó để ý trợ từ: hỏi <span lang="ja">なにを していますか</span> thì đáp <span lang="ja">〜さんは …ています</span>; chỉ khi bị hỏi <span lang="ja">だれが していますか</span> (5 bộ) mới dùng <span lang="ja">が</span>. Đảo hai cái này là bạn đang trả lời một câu hỏi khác.</li>
+        <li>Đề dùng rất nhiều tên người và địa danh nước ngoài (<span lang="ja">ナタポン</span>, <span lang="ja">カルロス</span>, <span lang="ja">フィレンツェ</span>). Đọc theo katakana và giữ đúng độ dài âm — kéo dài sai một âm là thành một từ khác.</li>
+      </ul>
+
+      <h3>Áp dụng cho cả hai môn</h3>
+      <ul role="list">
+        <li>Vào phòng thi hãy chào trước: <span lang="ja">しつれいします</span> khi vào, <span lang="ja">ありがとうございました</span> khi ra. Đây là điểm tác phong, và nó gần như tự động.</li>
+        <li>Nói to hơn mức bạn nghĩ là đủ. Trong phòng thi ai cũng tự động hạ giọng, và giám thị không chấm cao được cái mình phải căng tai ra nghe.</li>
+        <li>Nếu đọc sai một từ, đừng quay lại sửa nhiều lần. Đọc lại đúng một lần rồi đi tiếp — dừng lại sửa tới sửa lui tốn điểm trôi chảy hơn là bản thân lỗi sai.</li>
+        <li>Trả lời trọn câu. <span lang="ja">がくせいです</span> được điểm, chỉ nói <span lang="ja">がくせい</span> thì không.</li>
+        <li>Không hiểu câu hỏi thì hỏi lại bằng tiếng Nhật: <span lang="ja">すみません、もういちどおねがいします</span>. Hỏi lại bằng tiếng Nhật không bị trừ điểm; im lặng thì có.</li>
+      </ul>
+
+      <aside class="b-callout" data-callout="tip">
+        <p class="b-callout__label">
+          <svg data-icon="lightbulb" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#lightbulb"></use></svg>
+          Gợi ý cuối
+        </p>
+        <p>Đề thi nói sơ cấp không kiểm tra bạn biết bao nhiêu từ. Nó kiểm tra bạn có dám mở miệng và nói hết câu hay không. Một câu đơn giản nói dứt khoát luôn được điểm cao hơn một câu phức tạp nói lắp bắp giữa chừng.</p>
+      </aside>
+
+      <p><a href="myblog.html">← Quay lại danh sách bài viết</a></p>
+    </article>
+
+    <aside class="b-rail" data-rail aria-label="Ghi chú bên lề">
+      <div class="b-note">
+        <p class="b-note__title">Giọng đọc máy</p>
+        <form class="sp-speech js-only" data-speech data-speech-state="init">
+          <p data-speech-status role="status">Đang dò giọng đọc tiếng Nhật có sẵn trong trình duyệt…</p>
+          <p>
+            <label for="sp-voice">Giọng tiếng Nhật</label>
+            <select id="sp-voice" data-speech-voice disabled>
+              <option>Đang dò…</option>
+            </select>
+          </p>
+          <p>
+            <label for="sp-rate">Tốc độ đọc — <output data-speech-rate-out for="sp-rate">0,9</output>×</label>
+            <input id="sp-rate" type="range" min="0.5" max="1.5" step="0.1" value="0.9" data-speech-rate>
+          </p>
+          <p>
+            <button type="button" class="sp-say" data-speech-stop>
+              <svg data-icon="pause" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#pause"></use></svg>
+              <span>Dừng đọc</span>
+            </button>
+          </p>
+        </form>
+        <p class="no-js-only">Nút nghe cần JavaScript. Không có JavaScript thì 23 bản thu thật vẫn phát được bằng trình phát sẵn có của trình duyệt, và toàn bộ câu hỏi, gợi ý, đáp án mẫu, romaji vẫn hiện đầy đủ.</p>
+      </div>
+      <div class="b-note">
+        <p class="b-note__title">Thứ tự học</p>
+        <p>Chưa thuộc bảng chữ thì học <a href="textblog-0.html">Hiragana và Katakana</a> trước đã. Ngữ pháp JPD113 nằm ở <a href="textblog-1.html">bài này</a>, JPD123 ở <a href="textblog-2.html">bài này</a>.</p>
+      </div>
+      <div class="b-note">
+        <p class="b-note__title">Nguồn dữ liệu</p>
+        <p>Ngân hàng đề nằm ở hai tệp JSON mở: <a href="data/jpd113.json">jpd113.json</a> và <a href="data/jpd123.json">jpd123.json</a>. Bạn tải về dùng offline hoặc đưa vào Anki đều được.</p>
+      </div>
+    </aside>
+  </main>
+
+  <nav class="b-twins" aria-label="Bài trước và bài sau">
+    <a class="b-twins__item" data-dir="prev" href="textblog-2.html">
+      <span class="b-twins__kicker">Bài trước</span>
+      <span class="b-twins__title">JPD123: tính từ, thể て và so sánh</span>
+    </a>
+    <a class="b-twins__item" data-dir="next" href="myblog.html">
+      <span class="b-twins__kicker">Danh sách bài viết</span>
+      <span class="b-twins__title">Blog của Min Thep</span>
+    </a>
+  </nav>
+
+  <footer data-footer>
+    <p data-footer-mark aria-hidden="true">MINTHEP</p>
+    <div data-footer-grid>
+      <nav aria-label="Liên kết chân trang">
+        <ul role="list">
+          <li><a href="../index.html">Trang chủ</a></li>
+          <li><a href="myblog.html">Blog</a></li>
+          <li><a href="../index.html#projects">Dự án</a></li>
+          <li><a href="../index.html#about">Giới thiệu</a></li>
+        </ul>
+      </nav>
+      <ul data-social role="list">
+        <li><a href="https://github.com/thepKz" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg data-icon="github" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#github"></use></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/thepmaitan26" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg data-icon="linkedin" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#linkedin"></use></svg></a></li>
+        <li><a href="https://www.youtube.com/@minthep2611" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg data-icon="youtube" aria-hidden="true" focusable="false"><use href="../img/sprite.svg#youtube"></use></svg></a></li>
+      </ul>
+      <p data-colophon>© 2026 Min Thep · Static HTML · GitHub Pages · Hà Nội</p>
+    </div>
+  </footer>
+
+  <!-- surface-b.js imports core.js and calls boot() itself; loading core.js
+       here as well would double-bind the nav drawer. speaking.js imports
+       core.js for onIdle() only and deliberately never calls boot(). -->
+  <script type="module" src="../js/surface-b.js"></script>
+  <script type="module" src="../js/speaking.js"></script>
+</body>
+
+</html>
