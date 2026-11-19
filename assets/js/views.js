@@ -24,7 +24,7 @@ function playJapaneseSpeech(text) {
 
 function markLessonDone(id) {
   toggleLessonDone(id);
-  renderLesson(id);
+  renderLesson(id, true);
 }
 
 /* ============================================================
@@ -42,26 +42,6 @@ function renderHome() {
 
   main.innerHTML = `
     <div class="page">
-
-      <!-- Strategic Exam Milestones Banner -->
-      <div class="milestone-container">
-        <div class="milestone-card active-phase">
-          <div class="milestone-date">📅 30/11/2026 — KHỞI ĐỘNG</div>
-          <div class="milestone-title">Bắt đầu học JPD123 trên lớp</div>
-          <div class="milestone-desc">Bắt đầu học chính thức. Quét ngay Bài 4 & 5 để đón đầu Midterm sau 10 ngày.</div>
-        </div>
-        <div class="milestone-card active-phase">
-          <div class="milestone-date">🎯 ~09/12/2026 — MIDTERM</div>
-          <div class="milestone-title">Thi Giữa Kỳ (Bài 4 & 5)</div>
-          <div class="milestone-desc">Đúng 10 ngày ôn tập! Cày nát 10 đề Midterm (150 câu không lặp) nhắm 9.0+ Midterm.</div>
-        </div>
-        <div class="milestone-card active-phase">
-          <div class="milestone-date">🏆 19–20/12/2026 — FINAL EXAM</div>
-          <div class="milestone-title">Thi Cuối Kỳ (Speaking + FE)</div>
-          <div class="milestone-desc">35 bài đọc + 62 bộ tranh thi nói + Mock Test FE 25 câu. Cán đích 8+ toàn môn!</div>
-        </div>
-      </div>
-
       <!-- Stats row -->
       <div class="stat-row">
         <div class="stat-card stat-blue">
@@ -84,10 +64,10 @@ function renderHome() {
 
       <!-- Quick actions -->
       <div class="quick-actions" style="margin-bottom:24px;">
-        <button class="btn btn-primary btn-lg" id="goRoadmap">🎯 Lộ trình 21 ngày thi 8+</button>
-        <button class="btn btn-secondary btn-lg" id="goPractice">⚡ 10 Đề Midterm</button>
-        <button class="btn btn-secondary btn-lg" id="goSpeaking">🎙️ Speaking Hub</button>
-        <button class="btn btn-secondary btn-lg" id="goExam">📝 Mock Test FE</button>
+        <button class="btn btn-primary btn-lg" id="goRoadmap">Lộ trình 21 ngày thi 8+</button>
+        <button class="btn btn-secondary btn-lg" id="goPractice">10 Đề Midterm</button>
+        <button class="btn btn-secondary btn-lg" id="goSpeaking">Speaking Hub</button>
+        <button class="btn btn-secondary btn-lg" id="goExam">Mock Test FE</button>
       </div>
 
       <!-- Lessons overview list -->
@@ -168,7 +148,7 @@ function renderRoadmap() {
         <!-- Toggle Mode Buttons -->
         <div class="btn-row">
           <button class="btn btn-sm ${isSprint ? 'btn-primary' : 'btn-secondary'}" id="toggleSprintMode">
-            🎯 Chiến dịch 21 ngày thi 8+ (30/11 – 20/12)
+            Chiến dịch 21 ngày thi 8+ (30/11 – 20/12)
           </button>
           <button class="btn btn-sm ${!isSprint ? 'btn-primary' : 'btn-secondary'}" id="toggleStandardMode">
             Lộ trình 30 ngày cơ bản
@@ -194,20 +174,47 @@ function renderRoadmap() {
 
   // Bind toggle day checkmarks
   document.querySelectorAll(".toggle-sprint-day").forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
       const day = Number(btn.dataset.day);
       const key = `sprint-${day}`;
       state.roadmapCheck[key] = !state.roadmapCheck[key];
       saveState();
-      renderRoadmap();
+      const isDone = !!state.roadmapCheck[key];
+      const planDay = btn.closest(".plan-day");
+      if (planDay) {
+        if (isDone) planDay.classList.add("plan-done");
+        else planDay.classList.remove("plan-done");
+      }
+      btn.className = `status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-sprint-day`;
+      btn.textContent = isDone ? '✓ Đã xong' : '○ Chưa xong';
+      const countEl = document.querySelector(".page-header .text-muted");
+      if (countEl) {
+        const doneCount = ROADMAP_SPRINT.filter(item => !!state.roadmapCheck[`sprint-${item.day}`]).length;
+        countEl.textContent = `${doneCount}/${ROADMAP_SPRINT.length} mục tiêu đã hoàn thành`;
+      }
     };
   });
 
   document.querySelectorAll(".toggle-standard-day").forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
       const day = Number(btn.dataset.day);
       toggleRoadmapDay(day);
-      renderRoadmap();
+      const isDone = isRoadmapDayDone(day);
+      const planDay = btn.closest(".plan-day");
+      if (planDay) {
+        if (isDone) planDay.classList.add("plan-done");
+        else planDay.classList.remove("plan-done");
+      }
+      btn.className = `status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-standard-day`;
+      btn.textContent = isDone ? '✓ Hoàn thành' : '○ Chưa xong';
+      const countEl = document.querySelector(".page-header .text-muted");
+      if (countEl) {
+        const stdData = state.customRoadmap || ROADMAP;
+        const doneCount = stdData.filter(item => isRoadmapDayDone(item.day)).length;
+        countEl.textContent = `${doneCount}/${stdData.length} mục tiêu đã hoàn thành`;
+      }
     };
   });
 }
@@ -278,8 +285,10 @@ function renderRoadmapEdit() {
 }
 
 
-function renderLesson(id) {
-  window.scrollTo({ top: 0, behavior: "instant" });
+function renderLesson(id, preserveScroll = false) {
+  if (!preserveScroll) {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
   setActiveNav(`lesson-${id}`);
   const lesson = LESSONS.find(x => x.id === id);
   const main = document.getElementById("main");
@@ -351,7 +360,7 @@ function renderLesson(id) {
         <!-- Vocab Practice Toolbar -->
         <div class="quiz-control-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:20px; margin-bottom:10px; padding:10px 14px; background:rgba(56,189,248,0.05); border:1px solid rgba(56,189,248,0.2); border-radius:10px;">
           <div style="font-weight:600; font-size:0.92rem; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-            <span>📝 Luyện tập Từ vựng</span>
+            <span>Luyện tập Từ vựng</span>
             <span class="badge badge-info" style="font-size:0.75rem;">Đa dạng câu hỏi</span>
           </div>
           <div class="btn-row" style="gap:6px;">
@@ -387,7 +396,7 @@ function renderLesson(id) {
         <!-- Grammar Practice Toolbar -->
         <div class="quiz-control-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:20px; margin-bottom:10px; padding:10px 14px; background:rgba(168,85,247,0.05); border:1px solid rgba(168,85,247,0.2); border-radius:10px;">
           <div style="font-weight:600; font-size:0.92rem; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-            <span>📝 Luyện tập Ngữ pháp</span>
+            <span>Luyện tập Ngữ pháp</span>
             <span class="badge badge-info" style="font-size:0.75rem;">${gTotal} câu ngân hàng</span>
           </div>
           <div class="btn-row" style="gap:6px;">
@@ -453,7 +462,7 @@ function renderLesson(id) {
         <!-- Kanji Practice Toolbar -->
         <div class="quiz-control-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:20px; margin-bottom:10px; padding:10px 14px; background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.2); border-radius:10px;">
           <div style="font-weight:600; font-size:0.92rem; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
-            <span>📝 Luyện tập Hán tự Kanji</span>
+            <span>Luyện tập Hán tự Kanji</span>
             <span class="badge badge-info" style="font-size:0.75rem;">${kTotal} câu dạng đề thi</span>
           </div>
           <div class="btn-row" style="gap:6px;">
@@ -504,14 +513,23 @@ function renderLesson(id) {
     </div>
   `;
 
-  document.getElementById("doneLessonBtn").onclick = () => {
-    toggleLessonDone(id);
-    renderLesson(id);
-  };
+  const doneBtn = document.getElementById("doneLessonBtn");
+  if (doneBtn) {
+    doneBtn.onclick = (e) => {
+      e.preventDefault();
+      const isDone = toggleLessonDone(id);
+      doneBtn.className = `btn ${isDone ? 'btn-done' : 'btn-secondary'} btn-toggle-lesson`;
+      doneBtn.title = isDone ? 'Bấm để chuyển về Chưa hoàn thành' : 'Bấm để đánh dấu Hoàn thành';
+      doneBtn.textContent = isDone ? '✓ Đã hoàn thành (Bấm để hủy)' : '○ Đánh dấu hoàn thành';
+    };
+  }
   document.querySelectorAll(".toggle-section-btn").forEach(btn => {
-    btn.onclick = () => {
-      toggleSectionDone(btn.dataset.key);
-      renderLesson(id);
+    btn.onclick = (e) => {
+      e.preventDefault();
+      const key = btn.dataset.key;
+      const isDone = toggleSectionDone(key);
+      btn.className = `status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-section-btn`;
+      btn.textContent = isDone ? '✓ Đã xong' : '○ Chưa xong';
     };
   });
 
@@ -627,16 +645,16 @@ function renderSpeaking() {
       <!-- Speaking Tabs -->
       <div class="spk-tabs">
         <button class="spk-tab-btn ${activeSpeakingTab === 'reading' ? 'active' : ''}" data-tab="reading">
-          📖 35 Bài đọc (Reading)
+          35 Bài đọc (Reading)
         </button>
         <button class="spk-tab-btn ${activeSpeakingTab === 'talking' ? 'active' : ''}" data-tab="talking">
-          💬 63 Câu hỏi phản xạ (Talking)
+          63 Câu hỏi phản xạ (Talking)
         </button>
         <button class="spk-tab-btn ${activeSpeakingTab === 'pictures' ? 'active' : ''}" data-tab="pictures">
-          🖼️ 62 Bộ tranh thi nói (Pictures)
+          62 Bộ tranh thi nói (Pictures)
         </button>
         <button class="spk-tab-btn ${activeSpeakingTab === 'tips' ? 'active' : ''}" data-tab="tips">
-          💡 Bí kíp Speaking 8.5+ & Thang điểm
+          Bí kíp Speaking 8.5+ & Thang điểm
         </button>
       </div>
 
@@ -683,7 +701,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
     return `
       <div>
         <div style="margin-bottom:16px; padding:12px; background:rgba(56,189,248,0.06); border-radius:8px; border:1px solid rgba(56,189,248,0.2); font-size:13.5px; color:#334155;">
-          <strong>🎯 Mục tiêu phần Reading (4 điểm thi FE):</strong> Đọc to, phát âm tròn vành rõ chữ, ngắt nghỉ đúng dấu phẩy (、) và dấu chấm (。). Bấm nút <strong>🔊 Đọc giọng máy (TTS)</strong> hoặc bật <strong>Audio người thật</strong> để luyện shadowing.
+          <strong>Mục tiêu phần Reading (4 điểm thi FE):</strong> Đọc to, phát âm tròn vành rõ chữ, ngắt nghỉ đúng dấu phẩy (、) và dấu chấm (。). Bấm nút <strong>Đọc giọng máy (TTS)</strong> hoặc bật <strong>Audio người thật</strong> để luyện shadowing.
         </div>
         ${readings.map(r => `
           <div class="spk-reading-card">
@@ -691,7 +709,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
               <span class="spk-badge">Bài đọc ${r.no} • ${r.hint || 'JPD123'}</span>
               <div class="btn-row">
                 <button class="btn btn-sm btn-primary play-tts-btn" data-text="${r.text.replace(/"/g, '&quot;')}">
-                  🔊 Đọc giọng máy (TTS)
+                  Đọc giọng máy (TTS)
                 </button>
                 <button class="btn btn-sm btn-secondary toggle-extra-btn" data-target="reading-extra-${r.no}">
                   Hiện Romaji & Dịch
@@ -703,7 +721,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
 
             ${r.audio ? `
               <div class="spk-audio-row">
-                <span style="font-size:12.5px; font-weight:600; color:#0369a1;">🎧 Bản thu âm giọng thật:</span>
+                <span style="font-size:12.5px; font-weight:600; color:#0369a1;">Bản thu âm giọng thật:</span>
                 <audio controls preload="none" src="${r.audio}" style="height:32px; max-width:280px;"></audio>
               </div>
             ` : ''}
@@ -722,7 +740,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
     return `
       <div>
         <div style="margin-bottom:16px; padding:12px; background:rgba(16,185,129,0.06); border-radius:8px; border:1px solid rgba(16,185,129,0.2); font-size:13.5px; color:#334155;">
-          <strong>🎯 Mục tiêu phần Talking (6 điểm thi FE):</strong> Tự nhìn câu hỏi tiếng Nhật, trả lời to thành tiếng trước khi bấm xem câu trả lời mẫu. Hãy luôn nói tối thiểu 2 câu (kèm 1 câu giải thích lý do) để đạt 8.5+.
+          <strong>Mục tiêu phần Talking (6 điểm thi FE):</strong> Tự nhìn câu hỏi tiếng Nhật, trả lời to thành tiếng trước khi bấm xem câu trả lời mẫu. Hãy luôn nói tối thiểu 2 câu (kèm 1 câu giải thích lý do) để đạt 8.5+.
         </div>
         ${talkings.map(t => `
           <div class="spk-qa-box">
@@ -730,18 +748,18 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
               <span class="spk-badge" style="background:#e2e8f0; color:#334155;">#${t.no}</span>
               <span class="jp">${t.question}</span>
               <button class="btn btn-sm btn-secondary play-tts-btn" style="padding:2px 8px; font-size:11px; margin-left:auto;" data-text="${t.question.replace(/"/g, '&quot;')}">
-                🔊 Nghe câu hỏi
+                Nghe câu hỏi
               </button>
             </div>
             <div class="spk-qa-hint">Ý nghĩa: ${t.hint}</div>
 
             <details class="spk-details">
-              <summary>💡 Bấm xem câu trả lời mẫu 8.5+</summary>
+              <summary>Bấm xem câu trả lời mẫu 8.5+</summary>
               <div class="spk-details-content">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                   <strong class="jp" style="font-size:15px; color:#15803d;">${t.example}</strong>
                   <button class="btn btn-sm btn-secondary play-tts-btn" style="padding:2px 8px; font-size:11px;" data-text="${t.example.replace(/"/g, '&quot;')}">
-                    🔊 Nghe câu trả lời
+                    Nghe câu trả lời
                   </button>
                 </div>
                 ${t.romaji ? `
@@ -759,7 +777,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
     return `
       <div>
         <div style="margin-bottom:16px; padding:12px; background:rgba(99,102,241,0.06); border-radius:8px; border:1px solid rgba(99,102,241,0.2); font-size:13.5px; color:#334155;">
-          <strong>🎯 Phần thi nói theo tranh:</strong> Giám khảo sẽ chỉ vào tranh và hỏi bạn câu hỏi liên quan. Hãy quan sát tranh và luyện trả lời trôi chảy.
+          <strong>Phần thi nói theo tranh:</strong> Giám khảo sẽ chỉ vào tranh và hỏi bạn câu hỏi liên quan. Hãy quan sát tranh và luyện trả lời trôi chảy.
         </div>
         ${pictures.map(p => `
           <div class="spk-qa-box" style="margin-bottom:20px;">
@@ -779,7 +797,7 @@ function renderSpeakingTabContent(tab, readings, talkings, pictures, tips) {
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                     <strong class="jp" style="font-size:15px; color:#0f172a;">Q${qi + 1}: ${q.question}</strong>
                     <button class="btn btn-sm btn-secondary play-tts-btn" style="padding:2px 8px; font-size:11px;" data-text="${q.question.replace(/"/g, '&quot;')}">
-                      🔊 Nghe
+                      Nghe
                     </button>
                   </div>
                   <div style="font-size:12.5px; color:#64748b; margin-bottom:8px;">${q.hint || ''}</div>
@@ -982,7 +1000,7 @@ function submitExam() {
       explainBox.style.display = "block";
       explainBox.innerHTML = `
         <strong>${isCorrect ? '✓ Đúng!' : '✗ Sai!'}</strong> Đáp án đúng là: <strong>${q.choices[q.answer]}</strong>.
-        ${q.explain ? `<div>💡 <em>${q.explain}</em></div>` : ''}
+        ${q.explain ? `<div><em>${q.explain}</em></div>` : ''}
       `;
     }
   });
@@ -995,9 +1013,9 @@ function submitExam() {
     <div class="quiz-result ${cls}" style="margin-top:20px; padding:18px;">
       <strong style="font-size:22px;">Điểm số: ${score}/${currentExam.length} — ${pct}%</strong>
       <div class="result-msg" style="margin-top:6px; font-size:14px;">
-        ${pct >= 80 ? "🎉 Rất xuất sắc! Kiến thức của bạn đã sẵn sàng cho mục tiêu 8+ JPD123." :
-          pct >= 65 ? "⚠️ Khá tốt nhưng còn một số câu sai. Hãy cuộn lên xem kỹ phần giải thích chi tiết." :
-          "❌ Cần rà soát lại các bài yếu rồi thử lại nhé!"}
+        ${pct >= 80 ? "Rất xuất sắc! Kiến thức của bạn đã sẵn sàng cho mục tiêu 8+ JPD123." :
+          pct >= 65 ? "Khá tốt nhưng còn một số câu sai. Hãy cuộn lên xem kỹ phần giải thích chi tiết." :
+          "Cần rà soát lại các bài yếu rồi thử lại nhé!"}
       </div>
     </div>
     <div class="btn-row" style="margin-top:16px">

@@ -5570,7 +5570,7 @@ const ROADMAP_SPRINT = [
     "day": 10,
     "phase": "Chặng 1: Tốc chiến Midterm (Bài 4 & 5)",
     "date": "09/12",
-    "title": "Ngày 10: 🎯 NGÀY THI MIDTERM — TỰ TIN 9+",
+    "title": "Ngày 10: NGÀY THI MIDTERM — TỰ TIN 9+",
     "tag": "Midterm",
     "tasks": [
       "Bình tĩnh làm bài thi Midterm trên lớp.",
@@ -5694,7 +5694,7 @@ const ROADMAP_SPRINT = [
     "day": 20,
     "phase": "Chặng 3: Về đích Final Exam & Speaking",
     "date": "19/12",
-    "title": "Ngày 20: 🎯 THI THỰC HÀNH NÓI (SPEAKING FE)",
+    "title": "Ngày 20: THI THỰC HÀNH NÓI (SPEAKING FE)",
     "tag": "Final Exam",
     "tasks": [
       "Tự tin bước vào phòng thi Speaking.",
@@ -5707,7 +5707,7 @@ const ROADMAP_SPRINT = [
     "day": 21,
     "phase": "Chặng 3: Về đích Final Exam & Speaking",
     "date": "20/12",
-    "title": "Ngày 21: 🎯 THI TRẮC NGHIỆM FINAL EXAM — CÁN ĐÍCH 8+",
+    "title": "Ngày 21: THI TRẮC NGHIỆM FINAL EXAM — CÁN ĐÍCH 8+",
     "tag": "Final Exam",
     "tasks": [
       "Làm bài thi trắc nghiệm Final Exam.",

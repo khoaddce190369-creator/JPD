@@ -43,7 +43,7 @@ function toggleLessonDone(id) {
   const willBeDone = idx === -1;
   if (willBeDone) {
     state.doneLessons.push(numId);
-    showToast(`Bài ${numId}: Đã hoàn thành! 🎉`, "success");
+    showToast(`Bài ${numId}: Đã hoàn thành!`, "success");
   } else {
     state.doneLessons.splice(idx, 1);
     showToast(`Bài ${numId}: Đã chuyển sang Chưa hoàn thành`, "info");

@@ -294,7 +294,7 @@ function buildMCQ(containerId, questions, scoreKey, onResetCallback = null) {
         <strong>Kết quả: ${score}/${questions.length} (${pct}%)</strong>
         <div class="result-msg">
           ${pct >= 80
-            ? "Xuất sắc! Bạn đã nắm rất vững kiến thức phần này. 🎉"
+            ? "Xuất sắc! Bạn đã nắm rất vững kiến thức phần này."
             : pct >= 60
               ? "Khá tốt! Hãy đọc lại các câu giải thích ở dưới để đạt điểm tối đa."
               : "Chưa đạt mục tiêu 8+. Hãy xem kỹ đáp án và làm lại thêm 1 lần nhé!"}

@@ -420,7 +420,7 @@ function renderStudyDone(body) {
 
   body.innerHTML = `
     <div class="study-done">
-      <div class="study-done-icon">${pct >= 80 ? "🎉" : pct >= 60 ? "💪" : "📖"}</div>
+      <div class="study-done-icon">✓</div>
       <div class="study-done-title">Hoàn thành!</div>
       <div class="quiz-result ${cls}" style="margin-top:12px;text-align:center">
         <strong>${known}/${total} từ (${pct}%)</strong>

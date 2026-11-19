@@ -53,13 +53,13 @@ function renderPracticeHub() {
             <span class="text-muted">15 câu/đề • 4 vocab + 4 kanji + 7 grammar • 150 câu không trùng lặp</span>
           </div>
           <button class="btn btn-secondary btn-sm" id="toggleMidtermGuideBtn" type="button">
-            📖 Cẩm nang ôn thi Bài 4–5
+            Cẩm nang ôn thi Bài 4–5
           </button>
         </div>
 
         <!-- Collapsible Midterm Guide Box -->
         <div id="midtermGuideBox" style="display:none; margin:16px 0; padding:18px; background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.25); border-radius:12px; font-size:0.9rem; line-height:1.65;">
-          <div style="font-weight:700; color:#38bdf8; font-size:1.05rem; margin-bottom:8px;">🎯 Trọng tâm ôn thi Midterm JPD123 (Bài 4 & 5 Dekiru Nihongo)</div>
+          <div style="font-weight:700; color:#38bdf8; font-size:1.05rem; margin-bottom:8px;">Trọng tâm ôn thi Midterm JPD123 (Bài 4 & 5 Dekiru Nihongo)</div>
           
           <div style="margin-bottom:12px;">
             <strong style="color:#f8fafc;">1. Từ vựng cốt lõi:</strong>
@@ -118,7 +118,7 @@ function renderPracticeHub() {
     guideBtn.onclick = () => {
       const isHidden = guideBox.style.display === "none";
       guideBox.style.display = isHidden ? "block" : "none";
-      guideBtn.innerText = isHidden ? "✕ Đóng cẩm nang" : "📖 Cẩm nang ôn thi Bài 4–5";
+      guideBtn.innerText = isHidden ? "✕ Đóng cẩm nang" : "Cẩm nang ôn thi Bài 4–5";
     };
   }
   document.querySelectorAll(".open-midterm-practice").forEach(btn =>
@@ -127,15 +127,31 @@ function renderPracticeHub() {
   document.querySelectorAll(".toggle-practice-lesson").forEach(btn => {
     btn.onclick = e => {
       e.stopPropagation();
-      togglePracticeLesson(Number(btn.dataset.id));
-      renderPracticeHub();
+      const id = Number(btn.dataset.id);
+      togglePracticeLesson(id);
+      const isDone = isPracticeLessonDone(id);
+      const card = btn.closest(".practice-card");
+      if (card) {
+        if (isDone) card.classList.add("practice-done");
+        else card.classList.remove("practice-done");
+      }
+      btn.className = `status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-practice-lesson`;
+      btn.textContent = isDone ? '✓ Hoàn thành' : '○ Chưa xong';
     };
   });
   document.querySelectorAll(".toggle-midterm-done").forEach(btn => {
     btn.onclick = e => {
       e.stopPropagation();
-      toggleMidtermDone(Number(btn.dataset.set));
-      renderPracticeHub();
+      const setNo = Number(btn.dataset.set);
+      toggleMidtermDone(setNo);
+      const isDone = isMidtermDone(setNo);
+      const item = btn.closest(".midterm-item");
+      if (item) {
+        if (isDone) item.classList.add("midterm-done");
+        else item.classList.remove("midterm-done");
+      }
+      btn.className = `status-toggle-btn ${isDone ? 'status-done' : 'status-undone'} toggle-midterm-done`;
+      btn.textContent = isDone ? '✓ Xong' : '○ Chưa';
     };
   });
 }
