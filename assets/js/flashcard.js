@@ -209,15 +209,24 @@ function renderFlashcardMode(body) {
   const remaining = _studyShuffled.length;
 
   const speakSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+  const copySvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+
   const speakBtnHtml = `<button type="button" class="speak-btn flashcard-speak" data-jp="${escAttr(card.jp)}" data-reading="${escAttr(card.reading)}" title="Nghe phát âm">${speakSvg}</button>`;
+  const copyBtnHtml = (txt) => `<button type="button" class="fc-copy-btn flashcard-copy" data-copy="${escAttr(txt)}" title="Sao chép từ này">${copySvg}</button>`;
 
   const isViMode = _studyMode === "flashcard-vi";
 
   const frontHtml = isViMode ? `
-    <div class="fc-word" style="font-size:24px; font-weight:700;">${card.vi}</div>
+    <div class="fc-word" style="font-size:24px; font-weight:700;">
+      <span>${card.vi}</span>
+      <span style="display:inline-flex; gap:6px; margin-left:6px; vertical-align:middle;">${copyBtnHtml(card.vi)}</span>
+    </div>
     <div class="fc-hint">Nhấn để lật</div>
   ` : `
-    <div class="fc-word jp">${card.jp} ${speakBtnHtml}</div>
+    <div class="fc-word jp">
+      <span>${card.jp}</span>
+      <span style="display:inline-flex; gap:6px; margin-left:6px; vertical-align:middle;">${speakBtnHtml}${copyBtnHtml(card.jp)}</span>
+    </div>
     ${card.reading ? `<div class="fc-reading jp">${card.reading}</div>` : ""}
     <div class="fc-hint">Nhấn để lật</div>
   `;
@@ -238,9 +247,15 @@ function renderFlashcardMode(body) {
         ${frontHtml}
       </div>
       <div class="fc-back">
-        <div class="fc-word jp">${card.jp} ${speakBtnHtml}</div>
+        <div class="fc-word jp">
+          <span>${card.jp}</span>
+          <span style="display:inline-flex; gap:6px; margin-left:6px; vertical-align:middle;">${speakBtnHtml}${copyBtnHtml(card.jp)}</span>
+        </div>
         ${card.reading ? `<div class="fc-reading jp">${card.reading}</div>` : ""}
-        <div class="fc-meaning">${card.vi}</div>
+        <div class="fc-meaning">
+          <span>${card.vi}</span>
+          <span style="display:inline-flex; gap:6px; margin-left:6px; vertical-align:middle;">${copyBtnHtml(card.vi)}</span>
+        </div>
       </div>
     </div>
 
@@ -249,10 +264,17 @@ function renderFlashcardMode(body) {
       <button class="btn btn-fc-known" id="fcKnown">✓ Đã nhớ</button>
     </div>
 
-    ${!_studyFlipped ? `<div class="fc-flip-hint">Nhấn vào thẻ để xem đáp án</div>` : ""}
+    ${!_studyFlipped ? `<div class="fc-flip-hint">Nhấn vào thẻ để xem đáp án (Có thể bôi đen chữ để copy)</div>` : ""}
   `;
 
-  document.getElementById("theFlashcard").addEventListener("click", () => {
+  document.getElementById("theFlashcard").addEventListener("click", (e) => {
+    // If click was on speaker or copy button, do not flip
+    if (e.target.closest(".speak-btn, .flashcard-speak, .fc-copy-btn, .flashcard-copy")) return;
+
+    // If user is selecting/highlighting text, DO NOT flip!
+    const sel = window.getSelection ? window.getSelection().toString() : "";
+    if (sel && sel.trim().length > 0) return;
+
     _studyFlipped = !_studyFlipped;
     renderFlashcardMode(body);
   });
@@ -265,6 +287,44 @@ function renderFlashcardMode(body) {
       }
     });
   });
+
+  document.querySelectorAll(".flashcard-copy").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      const txt = btn.dataset.copy || "";
+      if (!txt) return;
+
+      const finishCopy = () => {
+        btn.classList.add("copied");
+        if (typeof showToast === "function") showToast(`Đã sao chép: "${txt}"`, "success");
+        setTimeout(() => btn.classList.remove("copied"), 1500);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(finishCopy).catch(() => fallbackCopy(txt, btn));
+      } else {
+        fallbackCopy(txt, btn);
+      }
+    });
+  });
+
+  function fallbackCopy(text, btn) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+      btn.classList.add("copied");
+      if (typeof showToast === "function") showToast(`Đã sao chép: "${text}"`, "success");
+      setTimeout(() => btn.classList.remove("copied"), 1500);
+    } catch (_) {
+      if (typeof showToast === "function") showToast("Không thể sao chép.", "error");
+    }
+    document.body.removeChild(ta);
+  }
 
   if (_studyFlipped) {
     document.getElementById("fcKnown").addEventListener("click", () => {
