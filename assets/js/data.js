@@ -156,7 +156,7 @@ const LESSONS = [
       {
         "jp": "どうぞよろしくお願いします",
         "vi": "rất mong được giúp đỡ",
-        "reading": "よろしくおねがいします"
+        "reading": "どうぞよろしくおねがいします"
       },
       {
         "jp": "こちらこそ",
@@ -803,7 +803,7 @@ const LESSONS = [
       {
         "jp": "お茶",
         "vi": "trà xanh",
-        "reading": "ちゃ"
+        "reading": "おちゃ"
       },
       {
         "jp": "ビール",
@@ -1211,7 +1211,7 @@ const LESSONS = [
       {
         "jp": "お花見",
         "vi": "ngắm hoa",
-        "reading": "はなみ"
+        "reading": "おはなみ"
       },
       {
         "jp": "ホームステイ",
@@ -1221,7 +1221,7 @@ const LESSONS = [
       {
         "jp": "お祭り",
         "vi": "lễ hội",
-        "reading": "まつり"
+        "reading": "おまつり"
       },
       {
         "jp": "海",
@@ -1241,7 +1241,7 @@ const LESSONS = [
       {
         "jp": "お酒",
         "vi": "rượu",
-        "reading": "さけ"
+        "reading": "おさけ"
       },
       {
         "jp": "おすし",
@@ -1256,7 +1256,7 @@ const LESSONS = [
       {
         "jp": "お弁当",
         "vi": "cơm hộp",
-        "reading": "べんとう"
+        "reading": "おべんとう"
       },
       {
         "jp": "留学生",
@@ -1719,7 +1719,7 @@ const LESSONS = [
       {
         "jp": "お城",
         "vi": "lâu đài",
-        "reading": "しろ"
+        "reading": "おしろ"
       },
       {
         "jp": "神社",
@@ -1729,7 +1729,7 @@ const LESSONS = [
       {
         "jp": "お寺",
         "vi": "chùa",
-        "reading": "てら"
+        "reading": "おてら"
       },
       {
         "jp": "ビル",
@@ -2203,7 +2203,7 @@ const LESSONS = [
       {
         "jp": "おみやげ",
         "vi": "quà lưu niệm",
-        "reading": "（お）みやげ"
+        "reading": "おみやげ"
       },
       {
         "jp": "写真",
