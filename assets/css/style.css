@@ -994,7 +994,17 @@ tr:hover td { background: #fafafe; }
 }
 
 .speak-btn:hover { background: #eff6ff; border-color: #93c5fd; color: var(--accent); }
-.speak-btn.playing { background: #eff6ff; border-color: #93c5fd; color: var(--accent); box-shadow: var(--shadow-input); }
+@keyframes audioPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 5px rgba(56, 189, 248, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+.speak-btn.playing, .play-tts-btn.playing, .flashcard-speak.playing {
+  background: rgba(56, 189, 248, 0.15) !important;
+  border-color: #38bdf8 !important;
+  color: #0284c7 !important;
+  animation: audioPulse 1.2s infinite ease-in-out;
+}
 
 /* ===== TOAST ===== */
 #toastContainer {

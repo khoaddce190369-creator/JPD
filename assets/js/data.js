@@ -39,12 +39,12 @@ const LESSONS = [
         "reading": "わたし"
       },
       {
-        "jp": "（お）名前",
+        "jp": "名前",
         "vi": "tên",
         "reading": "なまえ"
       },
       {
-        "jp": "（お）国",
+        "jp": "国",
         "vi": "nước",
         "reading": "くに"
       },
@@ -104,7 +104,7 @@ const LESSONS = [
         "reading": "にほんごがっこう"
       },
       {
-        "jp": "（お）仕事",
+        "jp": "仕事",
         "vi": "công việc",
         "reading": "しごと"
       },
@@ -134,12 +134,12 @@ const LESSONS = [
         "reading": "しゃいん"
       },
       {
-        "jp": "～さん",
+        "jp": "〜さん",
         "vi": "anh/chị ~",
-        "reading": "～さん"
+        "reading": "さん"
       },
       {
-        "jp": "～人",
+        "jp": "〜人",
         "vi": "người ~",
         "reading": "じん"
       },
@@ -154,7 +154,7 @@ const LESSONS = [
         "reading": "はじめまして"
       },
       {
-        "jp": "（どうぞ）よろしくお願いします",
+        "jp": "どうぞよろしくお願いします",
         "vi": "rất mong được giúp đỡ",
         "reading": "よろしくおねがいします"
       },
@@ -199,17 +199,17 @@ const LESSONS = [
         "reading": "ブラジル"
       },
       {
-        "jp": "～月",
+        "jp": "〜月",
         "vi": "tháng ~",
         "reading": "がつ"
       },
       {
-        "jp": "～日",
+        "jp": "〜日",
         "vi": "ngày ~",
         "reading": "にち"
       },
       {
-        "jp": "～歳",
+        "jp": "〜歳",
         "vi": "~ tuổi",
         "reading": "さい"
       },
@@ -271,12 +271,12 @@ const LESSONS = [
       {
         "jp": "何",
         "vi": "gì / cái gì",
-        "reading": "なに・なん"
+        "reading": "なに / なん"
       },
       {
         "jp": "あ（っ）",
         "vi": "a / à",
-        "reading": "あ（っ）"
+        "reading": "あっ"
       },
       {
         "jp": "わあ",
@@ -289,44 +289,39 @@ const LESSONS = [
         "reading": "おなじですね"
       },
       {
-        "jp": "国",
-        "reading": "くに",
-        "vi": "Đất nước"
-      },
-      {
         "jp": "大学生",
-        "reading": "だいがくせい",
-        "vi": "Sinh viên đại học"
+        "vi": "Sinh viên đại học",
+        "reading": "だいがくせい"
       },
       {
         "jp": "日本人",
-        "reading": "にほんじん",
-        "vi": "Người Nhật"
+        "vi": "Người Nhật",
+        "reading": "にほんじん"
       },
       {
         "jp": "初めまして",
-        "reading": "はじめまして",
-        "vi": "Rất vui được làm quen"
+        "vi": "Rất vui được làm quen",
+        "reading": "はじめまして"
       },
       {
         "jp": "どうぞよろしく",
-        "reading": "どうぞよろしく",
-        "vi": "Mong được giúp đỡ"
+        "vi": "Mong được giúp đỡ",
+        "reading": "どうぞよろしく"
       },
       {
         "jp": "お名前",
-        "reading": "おなまえ",
-        "vi": "Tên (lịch sự)"
+        "vi": "Tên (lịch sự)",
+        "reading": "おなまえ"
       },
       {
         "jp": "お国",
-        "reading": "おくに",
-        "vi": "Đất nước (lịch sự)"
+        "vi": "Đất nước (lịch sự)",
+        "reading": "おくに"
       },
       {
         "jp": "年齢",
-        "reading": "ねんれい",
-        "vi": "Tuổi"
+        "vi": "Tuổi",
+        "reading": "ねんれい"
       }
     ],
     "grammar": [
@@ -491,14 +486,14 @@ const LESSONS = [
         "reading": "インフォメーション"
       },
       {
-        "jp": "ＡＴＭ",
+        "jp": "ATM",
         "vi": "máy rút tiền",
         "reading": "ＡＴＭ"
       },
       {
         "jp": "エスカレーター",
         "vi": "cầu thang cuốn",
-        "reading": "カレー"
+        "reading": "エスカレーター"
       },
       {
         "jp": "エレベーター",
@@ -626,12 +621,12 @@ const LESSONS = [
         "reading": "てんいん"
       },
       {
-        "jp": "～階",
+        "jp": "〜階",
         "vi": "tầng ~",
         "reading": "かい"
       },
       {
-        "jp": "～屋",
+        "jp": "〜屋",
         "vi": "cửa hàng ~",
         "reading": "や"
       },
@@ -646,9 +641,9 @@ const LESSONS = [
         "reading": "いらっしゃいませ"
       },
       {
-        "jp": "（どうも）ありがとうございます",
+        "jp": "どうもありがとうございます",
         "vi": "xin cảm ơn",
-        "reading": "（どうも）ありがとうございます"
+        "reading": "どうもありがとうございます"
       },
       {
         "jp": "これ",
@@ -691,7 +686,7 @@ const LESSONS = [
         "reading": "ズボン"
       },
       {
-        "jp": "Ｔシャツ",
+        "jp": "Tシャツ",
         "vi": "áo phông",
         "reading": "Ｔシャツ"
       },
@@ -701,7 +696,7 @@ const LESSONS = [
         "reading": "とけい"
       },
       {
-        "jp": "～円",
+        "jp": "〜円",
         "vi": "~ yên",
         "reading": "えん"
       },
@@ -806,7 +801,7 @@ const LESSONS = [
         "reading": "こうちゃ"
       },
       {
-        "jp": "（お）茶",
+        "jp": "お茶",
         "vi": "trà xanh",
         "reading": "ちゃ"
       },
@@ -846,14 +841,14 @@ const LESSONS = [
         "reading": "えいご"
       },
       {
-        "jp": "～語",
+        "jp": "〜語",
         "vi": "tiếng ~",
         "reading": "ご"
       },
       {
-        "jp": "～つ",
+        "jp": "〜つ",
         "vi": "~ cái",
-        "reading": "～つ"
+        "reading": "つ"
       },
       {
         "jp": "誰",
@@ -886,69 +881,54 @@ const LESSONS = [
         "reading": "しょうしょうおまちください"
       },
       {
-        "jp": "ATM",
-        "reading": "エーティーエム",
-        "vi": "Máy ATM"
-      },
-      {
         "jp": "ショッピングビル",
-        "reading": "ショッピングビル",
-        "vi": "Tòa nhà mua sắm"
+        "vi": "Tòa nhà mua sắm",
+        "reading": "ショッピングビル"
       },
       {
         "jp": "案内所",
-        "reading": "あんないじょ",
-        "vi": "Quầy hướng dẫn"
+        "vi": "Quầy hướng dẫn",
+        "reading": "あんないじょ"
       },
       {
         "jp": "売り場",
-        "reading": "うりば",
-        "vi": "Quầy bán hàng"
+        "vi": "Quầy bán hàng",
+        "reading": "うりば"
       },
       {
         "jp": "場所",
-        "reading": "ばしょ",
-        "vi": "Địa điểm"
+        "vi": "Địa điểm",
+        "reading": "ばしょ"
       },
       {
         "jp": "値段",
-        "reading": "ねだん",
-        "vi": "Giá cả"
+        "vi": "Giá cả",
+        "reading": "ねだん"
       },
       {
         "jp": "店",
-        "reading": "みせ",
-        "vi": "Cửa hàng"
-      },
-      {
-        "jp": "Tシャツ",
-        "reading": "ティーシャツ",
-        "vi": "Áo thun"
+        "vi": "Cửa hàng",
+        "reading": "みせ"
       },
       {
         "jp": "誰の",
-        "reading": "だれの",
-        "vi": "Của ai"
+        "vi": "Của ai",
+        "reading": "だれの"
       },
       {
         "jp": "何の",
-        "reading": "なんの",
-        "vi": "Loại gì, của gì"
+        "vi": "Loại gì, của gì",
+        "reading": "なんの"
       },
       {
         "jp": "どこの",
-        "reading": "どこの",
-        "vi": "Của nước nào, ở đâu"
-      },
-      {
-        "jp": "お茶",
-        "reading": "おちゃ",
-        "vi": "Trà xanh"
+        "vi": "Của nước nào, ở đâu",
+        "reading": "どこの"
       },
       {
         "jp": "お金",
-        "reading": "おかね",
-        "vi": "Tiền"
+        "vi": "Tiền",
+        "reading": "おかね"
       }
     ],
     "grammar": [
@@ -1179,22 +1159,22 @@ const LESSONS = [
         "reading": "じかん"
       },
       {
-        "jp": "～時",
+        "jp": "〜時",
         "vi": "~ giờ",
         "reading": "じ"
       },
       {
-        "jp": "～分",
+        "jp": "〜分",
         "vi": "~ phút",
-        "reading": "ふん・ぷん"
+        "reading": "ふん / ぷん"
       },
       {
-        "jp": "～時半",
+        "jp": "〜時半",
         "vi": "~ giờ rưỡi",
         "reading": "じはん"
       },
       {
-        "jp": "～曜日",
+        "jp": "〜曜日",
         "vi": "thứ ~",
         "reading": "ようび"
       },
@@ -1229,7 +1209,7 @@ const LESSONS = [
         "reading": "はなび"
       },
       {
-        "jp": "（お）花見",
+        "jp": "お花見",
         "vi": "ngắm hoa",
         "reading": "はなみ"
       },
@@ -1239,7 +1219,7 @@ const LESSONS = [
         "reading": "ホームステイ"
       },
       {
-        "jp": "（お）祭り",
+        "jp": "お祭り",
         "vi": "lễ hội",
         "reading": "まつり"
       },
@@ -1259,14 +1239,14 @@ const LESSONS = [
         "reading": "さくら"
       },
       {
-        "jp": "（お）酒",
+        "jp": "お酒",
         "vi": "rượu",
         "reading": "さけ"
       },
       {
-        "jp": "（お）すし",
+        "jp": "おすし",
         "vi": "sushi",
-        "reading": "（お）すし"
+        "reading": "おすし"
       },
       {
         "jp": "バス",
@@ -1274,7 +1254,7 @@ const LESSONS = [
         "reading": "バス"
       },
       {
-        "jp": "（お）弁当",
+        "jp": "お弁当",
         "vi": "cơm hộp",
         "reading": "べんとう"
       },
@@ -1316,7 +1296,7 @@ const LESSONS = [
       {
         "jp": "何",
         "vi": "gì",
-        "reading": "なに・なん"
+        "reading": "なに / なん"
       },
       {
         "jp": "行きます",
@@ -1390,58 +1370,58 @@ const LESSONS = [
       },
       {
         "jp": "朝",
-        "reading": "あさ",
-        "vi": "Buổi sáng"
+        "vi": "Buổi sáng",
+        "reading": "あさ"
       },
       {
         "jp": "夜",
-        "reading": "よる",
-        "vi": "Buổi tối"
+        "vi": "Buổi tối",
+        "reading": "よる"
       },
       {
         "jp": "毎日",
-        "reading": "まいにち",
-        "vi": "Hằng ngày"
+        "vi": "Hằng ngày",
+        "reading": "まいにち"
       },
       {
         "jp": "毎朝",
-        "reading": "まいあさ",
-        "vi": "Mỗi sáng"
+        "vi": "Mỗi sáng",
+        "reading": "まいあさ"
       },
       {
         "jp": "毎晩",
-        "reading": "まいばん",
-        "vi": "Mỗi tối"
+        "vi": "Mỗi tối",
+        "reading": "まいばん"
       },
       {
         "jp": "朝ご飯",
-        "reading": "あさごはん",
-        "vi": "Bữa sáng"
+        "vi": "Bữa sáng",
+        "reading": "あさごはん"
       },
       {
         "jp": "昼ご飯",
-        "reading": "ひるごはん",
-        "vi": "Bữa trưa"
+        "vi": "Bữa trưa",
+        "reading": "ひるごはん"
       },
       {
         "jp": "学校",
-        "reading": "がっこう",
-        "vi": "Trường học"
+        "vi": "Trường học",
+        "reading": "がっこう"
       },
       {
         "jp": "会社",
-        "reading": "かいしゃ",
-        "vi": "Công ty"
+        "vi": "Công ty",
+        "reading": "かいしゃ"
       },
       {
         "jp": "コンビニ",
-        "reading": "コンビニ",
-        "vi": "Cửa hàng tiện lợi"
+        "vi": "Cửa hàng tiện lợi",
+        "reading": "コンビニ"
       },
       {
         "jp": "買います",
-        "reading": "かいます",
-        "vi": "Mua"
+        "vi": "Mua",
+        "reading": "かいます"
       }
     ],
     "grammar": [
@@ -1619,10 +1599,10 @@ const LESSONS = [
       {
         "jp": "いろいろ（な）",
         "vi": "nhiều / đa dạng",
-        "reading": "いろいろ（な）"
+        "reading": "いろいろ"
       },
       {
-        "jp": "～から来ました",
+        "jp": "〜から来ました",
         "vi": "đến từ ~",
         "reading": "からきました"
       },
@@ -1687,19 +1667,19 @@ const LESSONS = [
         "reading": "まち"
       },
       {
-        "jp": "～時間",
+        "jp": "〜時間",
         "vi": "~ tiếng",
         "reading": "じかん"
       },
       {
-        "jp": "～時間半",
+        "jp": "〜時間半",
         "vi": "~ tiếng rưỡi",
         "reading": "じかんはん"
       },
       {
-        "jp": "～分",
+        "jp": "〜分",
         "vi": "~ phút",
-        "reading": "ふん・ぷん"
+        "reading": "ふん / ぷん"
       },
       {
         "jp": "歩いて",
@@ -1707,9 +1687,9 @@ const LESSONS = [
         "reading": "あるいて"
       },
       {
-        "jp": "～くらい",
+        "jp": "〜くらい",
         "vi": "khoảng ~",
-        "reading": "～くらい"
+        "reading": "くらい"
       },
       {
         "jp": "どのくらい",
@@ -1737,7 +1717,7 @@ const LESSONS = [
         "reading": "きょうかい"
       },
       {
-        "jp": "（お）城",
+        "jp": "お城",
         "vi": "lâu đài",
         "reading": "しろ"
       },
@@ -1747,7 +1727,7 @@ const LESSONS = [
         "reading": "じんじゃ"
       },
       {
-        "jp": "（お）寺",
+        "jp": "お寺",
         "vi": "chùa",
         "reading": "てら"
       },
@@ -1824,7 +1804,7 @@ const LESSONS = [
       {
         "jp": "きれい（な）",
         "vi": "đẹp / sạch",
-        "reading": "きれい（な）"
+        "reading": "きれい"
       },
       {
         "jp": "静か（な）",
@@ -1834,7 +1814,7 @@ const LESSONS = [
       {
         "jp": "にぎやか（な）",
         "vi": "nhộn nhịp",
-        "reading": "にぎやか（な）"
+        "reading": "にぎやか"
       },
       {
         "jp": "有名（な）",
@@ -1975,16 +1955,6 @@ const LESSONS = [
         "jp": "たくさん",
         "vi": "nhiều",
         "reading": "たくさん"
-      },
-      {
-        "jp": "お城",
-        "reading": "おしろ",
-        "vi": "Lâu đài"
-      },
-      {
-        "jp": "お寺",
-        "reading": "おてら",
-        "vi": "Chùa"
       }
     ],
     "grammar": [
@@ -2231,7 +2201,7 @@ const LESSONS = [
         "reading": "やすみ"
       },
       {
-        "jp": "（お）みやげ",
+        "jp": "おみやげ",
         "vi": "quà lưu niệm",
         "reading": "（お）みやげ"
       },
@@ -2456,114 +2426,114 @@ const LESSONS = [
         "reading": "ほしい"
       },
       {
-        "jp": "Vたい",
+        "jp": "〜たい",
         "vi": "muốn làm",
-        "reading": "Vたい"
+        "reading": "たい"
       },
       {
         "jp": "今日",
-        "reading": "きょう",
-        "vi": "Hôm nay"
+        "vi": "Hôm nay",
+        "reading": "きょう"
       },
       {
         "jp": "明日",
-        "reading": "あした",
-        "vi": "Ngày mai"
+        "vi": "Ngày mai",
+        "reading": "あした"
       },
       {
         "jp": "あさって",
-        "reading": "あさって",
-        "vi": "Ngày kia"
+        "vi": "Ngày kia",
+        "reading": "あさって"
       },
       {
         "jp": "おととい",
-        "reading": "おととい",
-        "vi": "Hôm kia"
+        "vi": "Hôm kia",
+        "reading": "おととい"
       },
       {
         "jp": "週末",
-        "reading": "しゅうまつ",
-        "vi": "Cuối tuần"
+        "vi": "Cuối tuần",
+        "reading": "しゅうまつ"
       },
       {
         "jp": "家",
-        "reading": "いえ",
-        "vi": "Nhà"
+        "vi": "Nhà",
+        "reading": "いえ"
       },
       {
         "jp": "部屋",
-        "reading": "へや",
-        "vi": "Phòng"
+        "vi": "Phòng",
+        "reading": "へや"
       },
       {
         "jp": "家族",
-        "reading": "かぞく",
-        "vi": "Gia đình"
+        "vi": "Gia đình",
+        "reading": "かぞく"
       },
       {
         "jp": "恋人",
-        "reading": "こいびと",
-        "vi": "Người yêu"
+        "vi": "Người yêu",
+        "reading": "こいびと"
       },
       {
         "jp": "友達",
-        "reading": "ともだち",
-        "vi": "Bạn bè"
+        "vi": "Bạn bè",
+        "reading": "ともだち"
       },
       {
         "jp": "ルームメイト",
-        "reading": "ルームメイト",
-        "vi": "Bạn cùng phòng"
+        "vi": "Bạn cùng phòng",
+        "reading": "ルームメイト"
       },
       {
         "jp": "どこか（へ）",
-        "reading": "どこか（へ）",
-        "vi": "(Đi) đâu đó"
+        "vi": "(Đi) đâu đó",
+        "reading": "どこか（へ）"
       },
       {
         "jp": "会います",
-        "reading": "あいます",
-        "vi": "Gặp gỡ"
+        "vi": "Gặp gỡ",
+        "reading": "あいます"
       },
       {
         "jp": "作ります",
-        "reading": "つくります",
-        "vi": "Làm, nấu, chế tạo"
+        "vi": "Làm, nấu, chế tạo",
+        "reading": "つくります"
       },
       {
         "jp": "買い物をします",
-        "reading": "かいものをします",
-        "vi": "Mua sắm"
+        "vi": "Mua sắm",
+        "reading": "かいものをします"
       },
       {
         "jp": "食事をします",
-        "reading": "しょくじをします",
-        "vi": "Dùng bữa, ăn uống"
+        "vi": "Dùng bữa, ăn uống",
+        "reading": "しょくじをします"
       },
       {
         "jp": "洗濯をします",
-        "reading": "せんたくをします",
-        "vi": "Giặt giũ"
+        "vi": "Giặt giũ",
+        "reading": "せんたくをします"
       },
       {
         "jp": "掃除をします",
-        "reading": "そうじをします",
-        "vi": "Dọn dẹp"
+        "vi": "Dọn dẹp",
+        "reading": "そうじをします"
       },
       {
         "jp": "一人で",
-        "reading": "ひとりで",
-        "vi": "Một mình"
+        "vi": "Một mình",
+        "reading": "ひとりで"
       },
       {
         "jp": "今朝",
-        "reading": "けさ",
-        "vi": "Sáng nay"
+        "vi": "Sáng nay",
+        "reading": "けさ"
       },
       {
         "jp": "風邪",
-        "reading": "かぜ",
-        "vi": "Cảm cúm"
+        "vi": "Cảm cúm",
+        "reading": "かぜ"
       }
     ],
     "grammar": [
@@ -2906,9 +2876,9 @@ const LESSONS = [
         "reading": "いちばん"
       },
       {
-        "jp": "～より",
+        "jp": "〜より",
         "vi": "hơn ~",
-        "reading": "～より"
+        "reading": "より"
       },
       {
         "jp": "どちら",
@@ -2921,7 +2891,7 @@ const LESSONS = [
         "reading": "のほうが"
       },
       {
-        "jp": "～枚",
+        "jp": "〜枚",
         "vi": "~ tờ / ~ vé",
         "reading": "まい"
       },
@@ -2943,22 +2913,22 @@ const LESSONS = [
       {
         "jp": "〜ね",
         "vi": "nhỉ / phải không",
-        "reading": "〜ね"
+        "reading": "ね"
       },
       {
         "jp": "〜よ",
         "vi": "đấy / nhé",
-        "reading": "〜よ"
+        "reading": "よ"
       },
       {
-        "jp": "Vましょうか",
+        "jp": "〜ましょうか",
         "vi": "hãy cùng ~ nhé",
-        "reading": "Vましょうか"
+        "reading": "ましょうか"
       },
       {
-        "jp": "Vませんか",
+        "jp": "〜ませんか",
         "vi": "~ thì sao",
-        "reading": "Vませんか"
+        "reading": "ませんか"
       },
       {
         "jp": "一緒に",
@@ -2971,19 +2941,19 @@ const LESSONS = [
         "reading": "たのしみ"
       },
       {
-        "jp": "～のほうが",
-        "reading": "～のほうが",
-        "vi": "Phía ~, bên ~ hơn (so sánh)"
+        "jp": "〜のほうが",
+        "vi": "Phía ~, bên ~ hơn (so sánh)",
+        "reading": "のほうが"
       },
       {
         "jp": "北海道",
-        "reading": "ほっかいどう",
-        "vi": "Hokkaido"
+        "vi": "Hokkaido",
+        "reading": "ほっかいどう"
       },
       {
         "jp": "楽しみですね",
-        "reading": "たのしみですね",
-        "vi": "Mong chờ, háo hức quá nhỉ"
+        "vi": "Mong chờ, háo hức quá nhỉ",
+        "reading": "たのしみですね"
       }
     ],
     "grammar": [
@@ -3167,7 +3137,7 @@ const LESSONS = [
       {
         "jp": "家",
         "vi": "nhà",
-        "reading": "いえ・うち"
+        "reading": "いえ / うち"
       },
       {
         "jp": "部屋",
@@ -3395,19 +3365,19 @@ const LESSONS = [
         "reading": "あります"
       },
       {
-        "jp": "Vてください",
+        "jp": "〜てください",
         "vi": "xin hãy ~",
-        "reading": "Vてください"
+        "reading": "てください"
       },
       {
-        "jp": "Vています",
+        "jp": "〜ています",
         "vi": "đang ~",
-        "reading": "Vています"
+        "reading": "ています"
       },
       {
-        "jp": "Vましょうか",
+        "jp": "〜ましょうか",
         "vi": "để tôi ~ nhé",
-        "reading": "Vましょうか"
+        "reading": "ましょうか"
       },
       {
         "jp": "取ります",
@@ -3461,28 +3431,28 @@ const LESSONS = [
       },
       {
         "jp": "作り方",
-        "reading": "つくりかた",
-        "vi": "Cách làm, công thức"
+        "vi": "Cách làm, công thức",
+        "reading": "つくりかた"
       },
       {
         "jp": "電話",
-        "reading": "でんわ",
-        "vi": "Điện thoại"
+        "vi": "Điện thoại",
+        "reading": "でんわ"
       },
       {
         "jp": "手伝います",
-        "reading": "てつだいます",
-        "vi": "Giúp đỡ"
+        "vi": "Giúp đỡ",
+        "reading": "てつだいます"
       },
       {
         "jp": "お皿",
-        "reading": "おさら",
-        "vi": "Cái đĩa đựng thức ăn"
+        "vi": "Cái đĩa đựng thức ăn",
+        "reading": "おさら"
       },
       {
         "jp": "料金",
-        "reading": "りょうきん",
-        "vi": "Tiền phí, cước phí"
+        "vi": "Tiền phí, cước phí",
+        "reading": "りょうきん"
       }
     ],
     "grammar": [

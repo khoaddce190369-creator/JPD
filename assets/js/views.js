@@ -7,19 +7,18 @@
    - renderExamHome, startExam, submitExam: Mock test FE chấm điểm & giải thích
    ============================================================ */
 
-/* Helper: Web Speech API phát âm tiếng Nhật */
-function playJapaneseSpeech(text) {
-  if (!window.speechSynthesis) {
-    alert("Trình duyệt của bạn không hỗ trợ tính năng Web Speech API.");
-    return;
+/* Helper: Web Speech API phát âm tiếng Nhật chuẩn hóa qua audio.js */
+function playJapaneseSpeech(text, btn = null) {
+  if (typeof playVocabularyAudio === "function") {
+    playVocabularyAudio(text, null, btn);
+  } else if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    const clean = (text || '').replace(/\([^)]*\)/g, '').replace(/（[^）]*）/g, '');
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang = 'ja-JP';
+    u.rate = 0.88;
+    window.speechSynthesis.speak(u);
   }
-  window.speechSynthesis.cancel();
-  // Strip romaji / parentheses if any
-  const clean = text.replace(/\([^)]*\)/g, '').replace(/（[^）]*）/g, '');
-  const u = new SpeechSynthesisUtterance(clean);
-  u.lang = 'ja-JP';
-  u.rate = 0.88;
-  window.speechSynthesis.speak(u);
 }
 
 function markLessonDone(id) {
@@ -348,7 +347,12 @@ function renderLesson(id, preserveScroll = false) {
             <tbody>
               ${lesson.vocab.map(v => `
                 <tr>
-                  <td class="jp"><strong>${v.jp}</strong></td>
+                  <td class="jp">
+                    <div class="vocab-cell">
+                      <strong>${v.jp}</strong>
+                      ${typeof renderSpeakerBtnHtml === 'function' ? renderSpeakerBtnHtml(v.jp, v.reading) : ''}
+                    </div>
+                  </td>
                   <td class="jp">${v.reading || "—"}</td>
                   <td>${v.vi}</td>
                 </tr>
@@ -419,7 +423,10 @@ function renderLesson(id, preserveScroll = false) {
           <div class="kata-grid">
             ${lesson.katakana.map(k => `
               <div class="kata-item">
-                <div class="jp kata-word">${k.word}</div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div class="jp kata-word">${k.word}</div>
+                  ${typeof renderSpeakerBtnHtml === 'function' ? renderSpeakerBtnHtml(k.word, k.word) : ''}
+                </div>
                 <div class="kata-note">${k.note}</div>
               </div>
             `).join("")}
@@ -429,10 +436,13 @@ function renderLesson(id, preserveScroll = false) {
 
         <section class="card">
           <div class="section-head">
-            <h3>4. Passage</h3>
-            <button class="status-toggle-btn ${isSectionDone(`l${id}-reading`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-reading">
-              ${isSectionDone(`l${id}-reading`) ? '✓ Đã xong' : '○ Chưa xong'}
-            </button>
+            <h3>4. Đoạn văn ứng dụng</h3>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button class="btn btn-xs btn-primary play-tts-btn" data-text="${(lesson.reading || '').replace(/"/g, '&quot;')}">Nghe đọc (TTS)</button>
+              <button class="status-toggle-btn ${isSectionDone(`l${id}-reading`) ? 'status-done' : 'status-undone'} toggle-section-btn" data-key="l${id}-reading">
+                ${isSectionDone(`l${id}-reading`) ? '✓ Đã xong' : '○ Chưa xong'}
+              </button>
+            </div>
           </div>
           <div class="reading jp">${lesson.reading}</div>
         </section>
@@ -452,7 +462,10 @@ function renderLesson(id, preserveScroll = false) {
         <div class="k-grid">
           ${lesson.kanji.map(k => `
             <div class="kanji-item">
-              <div class="kanji-word jp">${k.word}</div>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="kanji-word jp">${k.word}</div>
+                ${typeof renderSpeakerBtnHtml === 'function' ? renderSpeakerBtnHtml(k.word, k.reading) : ''}
+              </div>
               <div class="kanji-reading jp">${k.reading}</div>
               <div class="kanji-meaning">${k.meaning}</div>
             </div>
@@ -485,12 +498,18 @@ function renderLesson(id, preserveScroll = false) {
           ${lesson.speaking.map((s, i) => `
             <div class="speaking-item">
               <div class="speaking-label">Q${i + 1}</div>
-              <div class="speaking-q jp">${s.q}</div>
-              <div class="speaking-a jp">${s.a}</div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                <div class="speaking-q jp">${s.q}</div>
+                ${typeof renderSpeakerBtnHtml === 'function' ? renderSpeakerBtnHtml(s.q, null) : ''}
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-top:6px;">
+                <div class="speaking-a jp">${s.a}</div>
+                ${typeof renderSpeakerBtnHtml === 'function' ? renderSpeakerBtnHtml(s.a, null) : ''}
+              </div>
             </div>
           `).join("")}
         </div>
-        <div class="callout" style="margin-top:12px">Trả lời trong 3–6 giây. Đúng mẫu trước, thêm ý sau.</div>
+        <div class="callout" style="margin-top:12px">Trả lời trong 3–6 giây. Đúng mẫu trước, thêm ý sau. Bấm loa để nghe phát âm giọng chuẩn.</div>
       </section>
 
       <!-- 7. Small Test Tổng Hợp Chuẩn FPT -->
@@ -678,7 +697,7 @@ function renderSpeaking() {
     const ttsBtn = e.target.closest(".play-tts-btn");
     if (ttsBtn) {
       const text = ttsBtn.dataset.text;
-      if (text) playJapaneseSpeech(text);
+      if (text) playJapaneseSpeech(text, ttsBtn);
       return;
     }
 
